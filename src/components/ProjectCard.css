@@ -1,0 +1,30 @@
+:root {
+    --background-color-offset: white;
+
+}
+
+.project-card {
+    width: 100%;
+    /* border: 1px solid gray; */
+    box-shadow: 0px 0px 5px gray;
+    font-family: 'Montserrat', Arial, sans-serif; 
+    background-color: var(--background-color-offset);
+
+    /* padding: 4px; */
+}
+
+.project-card a {
+    text-decoration: none;
+    color: var(--offset-text);
+}
+
+.project-card img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.project-card h3 {
+    padding: 8px 8px;
+    margin: 8px 8px;
+}

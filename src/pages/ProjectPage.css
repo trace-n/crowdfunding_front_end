@@ -1,0 +1,23 @@
+.project-detail {
+    font-family: 'Bellota Text', Arial, sans-serif; 
+    display: grid;
+    grid-template-columns: auto auto;
+    column-gap: 16px;
+    row-gap: 16px;
+    width: 70%;
+    margin: auto;
+    border-style: solid;
+    vertical-align: middle;
+}
+
+.project-detail a {
+    text-decoration: none;
+}
+
+.project-detail img {
+    width: 100%;
+    /* height: 100%; */
+    /* height: 300px; */
+    object-fit: contain;
+
+}

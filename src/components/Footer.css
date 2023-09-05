@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bellota:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bellota+Text:wght@300;400;700&display=swap');
+
+.footer {
+    width: 100%;
+    /* border-style: solid; */
+    font-family: 'Montserrat', Arial, sans-serif;  
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.footer ul {
+    display: flex;   
+    flex-direction: row; 
+    justify-content: center;
+    align-items: center;
+}
+
+.footer li {
+    /* display: inline-block; */
+    vertical-align: middle;
+    padding: 0px 56px;
+    list-style-type: none;
+}
+
+.footer a {
+    text-decoration: none;   
+    cursor: url(../assets/fundling-website-favicon-black.png) 40 40, pointer, auto;
+}
+
+.logo-text  {
+    font-family: 'Bellota', Arial, sans-serif;  
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.logo-text img {
+    height: 40px;
+    
+}
+
+

@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bellota:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bellota+Text:wght@300;400;700&display=swap');
+
+/* Base styles across all pages */
+:root {
+	--main-text: white;
+	--main-background: #9fcae6;
+	--main-button: #ffdfb9;
+    --main-background-offset: white;
+    --offset-text: #373737;
+}
+
+body {
+    background-color: var(--main-background);
+    /* font-family: 'Inter', Arial, sans-serif;  */
+    color: var(--main-text);
+    text-decoration: none;  
+    text-align: center;  
+    cursor: url(../assets/fundling-website-favicon-black.png) 40 40, auto;
+}
+
+body a {
+    color: var(--main-text);
+    font-weight: bold;
+}
+
+.nav-bar {
+    width: 100%;
+    /* border-style: solid; */
+    font-family: 'Montserrat', Arial, sans-serif; 
+
+}
+
+.nav-bar ul {
+    display: flex;   
+    flex-direction: row; 
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-bar li {
+    /* display: inline-block; */
+    vertical-align: middle;
+    padding: 0px 56px;
+    list-style-type: none;
+}
+
+.nav-bar a {
+    text-decoration: none;
+    /* font-weight: bold; */
+    font-size: 1rem;
+    cursor: url(../assets/fundling-website-favicon-black.png) 40 40, move, auto;
+}
+
+.login-button {
+    border-style: solid;
+    border-color: var(--main-button);
+    padding: 4px 20px;
+}
+
+h1 {
+    font-family: 'Bellota', Arial, sans-serif;  
+    font-size: 4rem;
+}
+
+h2 {
+    font-family: 'Bellota Text', Arial, sans-serif;  
+    font-size: 3rem;
+}
+
+h3 {
+    font-family: 'Bellota Text', Arial, sans-serif;  
+    font-size: 1.2rem;
+}
+
+/* ul li {
+    font-family: 'Inter', Arial, sans-serif;  
+} */
+

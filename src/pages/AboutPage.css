@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bellota:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bellota+Text:wght@300;400;700&display=swap');
+
+.main-section {
+    width: 70%;
+    /* border-style: solid; */
+    font-family: 'Montserrat', Arial, sans-serif;  
+    background-color: var(--main-background-offset); 
+    color: var(--offset-text);
+    margin: auto;
+    /* margin-bottom: 30px; */
+    padding: 48px;
+    
+}
+
+.main-section p {
+    font-size: 1.2rem;
+    text-align: left;
+    margin: 5% 10%;
+    
+}
+
+.main-section h3 {
+    font-size: 1.8rem;  
+    font-weight: bold;  
+}
+
+

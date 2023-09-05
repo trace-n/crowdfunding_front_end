@@ -1,0 +1,41 @@
+#project-list {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    column-gap: 16px;
+    row-gap: 16px;
+    width: 100%;
+    margin: auto;
+    /* border-style: solid; */
+    /* border-color: red; */
+    /* text-align: center; */
+}
+
+.statistics-card {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    width: 100%;
+    margin: auto;
+    background-color: white;
+    color: #373737;
+    /* border-style: solid; */
+    margin-bottom: 50px;
+    margin-top: 50px;
+}
+
+.statistics-card h2 {
+    margin-top: 16px;
+    margin-bottom: 0px;
+}
+
+.home-box {
+    margin: auto;
+    width: 70%;
+    /* border-style: solid; */
+}
+
+.headline img {
+    margin-top: 50px;
+    width: 60%;
+    object-fit: contain;
+}
+
