@@ -8,10 +8,24 @@
     margin: auto;
     border-style: solid;
     vertical-align: middle;
+    background-color: var(--background-color-offset);
+    color: var(--offset-text);
+}
+
+.project-side {
+    text-align: left;
 }
 
 .project-detail a {
     text-decoration: none;
+    /* color: var(--offset-text); */
+    color: var(--main-text);
+    width: 100%;
+    border-style: solid;
+    border-color: var(--main-background);
+    background-color: var(--main-background);;
+    padding: 4px 32px;
+    text-align: center;
 }
 
 .project-detail img {
@@ -21,3 +35,8 @@
     object-fit: contain;
 
 }
+
+.progress-bar {
+    margin: 0px;
+}
+

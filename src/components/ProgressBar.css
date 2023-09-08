@@ -1,0 +1,21 @@
+.bar-container {
+    height: 20px;
+    width: 100%;
+    background-color: gray;
+    border-radius: 50px;
+    margin: 50px;
+}
+
+.bar-filler {
+    height: 100%;
+    /* width: ''; */
+    background-color: var(--main-background);
+    border-radius: inherit;
+    text-align: right;
+}
+
+.bar-label {
+    padding: 5px;
+    color: var(--main-text);
+    font-weight: bold;
+}

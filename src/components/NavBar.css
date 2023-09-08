@@ -10,6 +10,7 @@
 	--main-button: #ffdfb9;
     --main-background-offset: white;
     --offset-text: #373737;
+    --main-button-hover: #82BEE6;
 }
 
 body {
@@ -18,7 +19,7 @@ body {
     color: var(--main-text);
     text-decoration: none;  
     text-align: center;  
-    cursor: url(../assets/fundling-website-favicon-black.png) 40 40, auto;
+    /* cursor: url(../assets/fundling-website-favicon-black.png) 40 40, auto; */
 }
 
 body a {
@@ -56,8 +57,13 @@ body a {
 
 .login-button {
     border-style: solid;
+    border-width: 2px;
     border-color: var(--main-button);
     padding: 4px 20px;
+}
+
+.login-button:hover {
+    background-color: var(--main-button-hover);
 }
 
 h1 {
@@ -65,13 +71,16 @@ h1 {
     font-size: 4rem;
 }
 
-h2 {
+h2, h3 {
     font-family: 'Bellota Text', Arial, sans-serif;  
+}
+
+h2 {
     font-size: 3rem;
 }
 
 h3 {
-    font-family: 'Bellota Text', Arial, sans-serif;  
+    /* font-family: 'Bellota Text', Arial, sans-serif;   */
     font-size: 1.2rem;
 }
 

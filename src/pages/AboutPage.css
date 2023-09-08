@@ -27,4 +27,9 @@
     font-weight: bold;  
 }
 
+.main-section img {
+    object-fit: contain;  
+    width: 80%;  
+}
+
 

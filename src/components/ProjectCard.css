@@ -6,7 +6,8 @@
 .project-card {
     width: 100%;
     /* border: 1px solid gray; */
-    box-shadow: 0px 0px 5px gray;
+    /* box-shadow: 0px 0px 5px gray; */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     font-family: 'Montserrat', Arial, sans-serif; 
     background-color: var(--background-color-offset);
 
