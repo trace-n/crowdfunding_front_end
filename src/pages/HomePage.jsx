@@ -9,19 +9,20 @@ import fundlingLogo from '../assets/logo-no-background.png';
 
 const HomePage = () => {
     
-    const { statistics, isLoadingStats, errorStats } = useStatistics();
+    // make sure to declare the calls to hooks first before checking the isloading and errors
 
-    // console.log("homepage",statistics);
+    const { statistics, isLoadingStats, errorStats } = useStatistics();
+    const { projects, isLoading, error } = useProjects();
+
+    // console.log("looking for stats",isLoadingStats,"error message", errorStats);
     if (isLoadingStats) {
-        return (<p>loading...</p>);
+        return (<p>loading stats...</p>);
     }
 
     if (errorStats) {
         console.log(errorStats.message);
         return (<p>{errorStats.message}</p>);
     }    
-
-    const { projects, isLoading, error } = useProjects();
 
     if (isLoading) {
         return (<p>loading...</p>);
@@ -32,8 +33,6 @@ const HomePage = () => {
     }    
     
     // const pledge_amount_formatted = parseInt(statistics.pledge_amount).toLocaleString();
-    
-
 
     return (
         <div className='home-box'>

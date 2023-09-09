@@ -34,15 +34,27 @@ const NavBar = () => {
                     <li>
                         <Link to='#'>SEARCH</Link>
                     </li>
-                    <li>
                         {auth.token ? (
-                            <Link to='/' className='login-button' onClick={handleLogout}>
-                                LOG OUT
-                            </Link>
+                            //  needs a react fragment eg. <React Fragment> but this can be short hand as <> to infer a fragment as there is more than one element 
+                        <>
+                            <li>                        
+                                <Link to='/project' className='login-button'>
+                                    CREATE
+                                </Link>                        
+                            </li>                          
+                            <li>
+                                <Link to='/' className='login-button' onClick={handleLogout}>
+                                    LOG OUT
+                                </Link>
+                            </li>
+                        </>
                         ) : (
-                            <Link to='/login' className='login-button'>LOG IN</Link>
+                            <li>
+                                <Link to='/login' 
+                                className='login-button'>LOG IN</Link>
+                            </li>
                         )}
-                    </li>                    
+                    {/* </li>                     */}
                 </ul>
             </nav>
             {/* <Outlet /> */}

@@ -18,7 +18,7 @@ const ProjectPage = () => {
     // console.log(isLoading);
 
     if (isLoading) {
-        return (<p>loading...</p>);
+        return (<p>LOADING...</p>);
     }
 
     if (error) {
@@ -26,40 +26,40 @@ const ProjectPage = () => {
     }
 
 
-    if ( auth.token ) {
+    // if ( auth.token ) {
  // need to update this to check if the auth owner of project is the person logged in? Can we get this from useAuth? 
-        return (
+    //     return (
 
-            <form>
-                <h2>Edit your project</h2>
-                <div>
-                    <h3 className='login-text'>LOGIN</h3>
-                    {/* <label htmlFor='username'>Username:</label> */}
-                    <input 
-                        type='text' 
-                        id='username' 
-                        placeholder='Enter username' 
-                        // onChange = {handleChange}
-                    />
-                </div>
-                <div>
-                    {/* <label htmlFor='password'>Password:</label> */}
-                    <input 
-                        type='password' 
-                        id='password' 
-                        placeholder='Password' 
-                        // onChange = {handleChange}
-                    />
-                </div>
-                <button type='submit' >
-                {/* onClick={handleSubmit}>  */}
-                SAVE</button>
+    //         <form>
+    //             <h2>Edit your project</h2>
+    //             <div>
+    //                 <h3 className='login-text'>LOGIN</h3>
+    //                 {/* <label htmlFor='username'>Username:</label> */}
+    //                 <input 
+    //                     type='text' 
+    //                     id='username' 
+    //                     placeholder='Enter username' 
+    //                     // onChange = {handleChange}
+    //                 />
+    //             </div>
+    //             <div>
+    //                 {/* <label htmlFor='password'>Password:</label> */}
+    //                 <input 
+    //                     type='password' 
+    //                     id='password' 
+    //                     placeholder='Password' 
+    //                     // onChange = {handleChange}
+    //                 />
+    //             </div>
+    //             <button type='submit' >
+    //             {/* onClick={handleSubmit}>  */}
+    //             SAVE</button>
             
-            </form>
+    //         </form>
 
-        );
+    //     );
 
-    } else {
+    // } else {
            
 
     // return the screen as display
@@ -120,19 +120,19 @@ const ProjectPage = () => {
                         <ProgressBar key={idx} bgcolor={item.bgcolor} completed={item.completed} />
                     ))} */}
                 </div>
-                <h2>Goal: $ {project.goal}</h2>
-                <h3>{valuePledges}</h3>
+                <h2>Goal: $ {project.goal.toLocaleString()}</h2>
+                <h3>{valuePledges.toLocaleString()}</h3>
                 <p>RAISED</p>  
                 <h3>Created By: {project.owner}</h3>
    
-                <h3>{numberPledges}</h3>
+                <h3>{numberPledges.toLocaleString()}</h3>
                 <p>Pledges</p>                
 
                 {/* <h3>{`Status: ${project.is_open}`}</h3> */}
                 <h3>{`${ today < endDate ? daysToGo : 'Project Ended'}`}</h3>
                 <p>{`${ today < endDate ? 'Days to Go': ''}`}</p>
 
-                <a href='#'className='login-button'>DONATE</a>                
+                <a href='/pledges' className='login-button'>DONATE</a>                
                 <p>{project.description}</p>
                 <h3>Pledges:</h3>
                 <ul>
@@ -154,7 +154,7 @@ const ProjectPage = () => {
         
     );
 
-    }
+    // }
 }
 
 export default ProjectPage;

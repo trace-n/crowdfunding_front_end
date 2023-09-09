@@ -29,7 +29,7 @@ const LoginForm = () => {
                 credentials.username,
                 credentials.password
             ).then((response) => {
-                // console.log(response);
+
                 // allows storage of auth token in browser
                 window.localStorage.setItem('token', response.token);
                 setAuth({
@@ -37,6 +37,8 @@ const LoginForm = () => {
                 });
                 // Navigate back to home page
                 navigate('/');
+            }).catch((error) => {
+                console.log("error",error);
             });
         }
     };

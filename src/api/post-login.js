@@ -17,8 +17,15 @@ async function postLogin(username, password) {
             throw new Error(fallbackError);
         });
         const errorMessage = data?.detail ?? fallbackError;
+        console.log("data", data, "non field",data.non_field_errors);
         throw new Error(errorMessage);
     }
+
+    //  then can handle this in the front end without throwing the error
+    // return {
+    //     errors: [],
+    //     response: await response.json(),
+    // }
 
     return await response.json();
 }

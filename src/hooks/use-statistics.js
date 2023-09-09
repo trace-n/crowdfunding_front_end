@@ -3,7 +3,7 @@ import getStatistics from '../api/get-statistics';
 
 export default function useStatistics() {
     const [statistics, setStatistics] = useState();
-    const [isLoadingStats, setIsLoadingStats] = useState();
+    const [isLoadingStats, setIsLoadingStats] = useState(true);
     const [errorStats, setErrorStats] = useState();
 
     useEffect(() => {
