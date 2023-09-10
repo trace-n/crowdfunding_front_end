@@ -1,4 +1,4 @@
-// import './LoginForm.css';
+import './style.css';
 // import { useParams } from 'react-router-dom';
 import { useState } from 'react';
 import postPledge from '../../api/post-pledge';
@@ -55,20 +55,21 @@ const CreatePledgeForm = (props) => {
 
     return (
 // changed the handleSubmit to form onSubmit rather than on button onClick to  use standard HTML user input required validation
-        <form className='login-form' onSubmit={handleSubmit}>
+        <form className='donate-form' onSubmit={handleSubmit}>
             <div>
-                <h3 className='login-text'>DONATE</h3>
-                <label htmlFor='amount'>Amount $*:</label>
+                {/* <h3 className='login-text'>DONATE</h3> */}
+                <label htmlFor='amount'>Amount* $</label>
                 <input 
-                    type='number'                 
+                    type='number'         
                     id='amount' 
-                    placeholder='Amount' 
+                    // placeholder='Amount' 
                     onChange = {handleChange}
                     required
+                    value='1'
                 />
             </div>
             <div>
-                <label htmlFor='comment'>Comment*:</label>
+                <label htmlFor='comment'>Comment*</label>
                 <input 
                     type='text' 
                     required
@@ -83,11 +84,12 @@ const CreatePledgeForm = (props) => {
                     type='checkbox' 
                     id='anonymous' 
                     onChange = {handleChange}
+                    className='anon-button'
                 />
             </div>           
             {/* <input type='submit' value='DONATE'/>                       */}
             {/* <button type='submit' onClick={handleSubmit}>DONATE</button> */}
-            <button type='submit'>DONATE</button>
+            <button type='submit' className='donate-button'>DONATE</button>
         </form>
     );
 }

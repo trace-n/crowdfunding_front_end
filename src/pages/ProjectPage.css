@@ -1,4 +1,4 @@
-.project-detail {
+.project-summary {
     font-family: 'Bellota Text', Arial, sans-serif; 
     display: grid;
     grid-template-columns: auto auto;
@@ -6,17 +6,19 @@
     row-gap: 16px;
     width: 70%;
     margin: auto;
-    border-style: solid;
+    /* border-style: solid; */
     vertical-align: middle;
     background-color: var(--background-color-offset);
     color: var(--offset-text);
 }
 
 .project-side {
-    text-align: left;
+    text-align: center;
+    margin-top: 10px;
+    /* margin-left: 30px; */
 }
 
-.project-detail a {
+.project-summary a {
     text-decoration: none;
     /* color: var(--offset-text); */
     color: var(--main-text);
@@ -28,7 +30,7 @@
     text-align: center;
 }
 
-.project-detail img {
+.project-summary img {
     width: 100%;
     /* height: 100%; */
     /* height: 300px; */
@@ -36,7 +38,47 @@
 
 }
 
+.project-summary h2, h4, p {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.pledge-amount {
+    color: var(--main-text-dark);
+    font-weight: bold;
+}
+
+.project-h2 {
+    font-size: 1.8rem;
+}
+
+.project-summary h3 {
+    margin-bottom: 10px;
+    margin-top: 0px;
+    font-size: 1rem;
+}
+
+
 .progress-bar {
     margin: 0px;
 }
 
+.project-detail {
+    font-family: 'Bellota Text', Arial, sans-serif; 
+    /* display: grid;
+    grid-template-columns: auto auto;
+    column-gap: 16px;
+    row-gap: 16px; */
+    width: 70%;
+    margin: auto;
+    /* border-style: solid; */
+    vertical-align: middle;
+    background-color: var(--background-color-offset);
+    color: var(--offset-text);
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.project-detail h3 {
+    margin: 0px;
+}

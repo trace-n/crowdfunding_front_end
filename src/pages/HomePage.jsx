@@ -1,21 +1,25 @@
 // import { allProjects } from '../data';
+import './HomePage.css';
 import useProjects from '../hooks/use-projects';
 import useStatistics from '../hooks/use-statistics';
+import useUsers from '../hooks/use-users';
+import { useAuth } from '../hooks/use-auth';
 import ProjectCard from '../components/ProjectCard';
-import './HomePage.css';
-import fundlingLogo from '../assets/logo-no-background.png';
+import fundlingLogoHeader from '../assets/logo-no-background-no-icon.png';
+import fundlingLogoCol from '../assets/fundling-website-favicon-color.png';
 
 // import StatisticsCard from '../components/StatisticsCard';
 
 const HomePage = () => {
     
     // make sure to declare the calls to hooks first before checking the isloading and errors
-
+    const {auth, setAuth} = useAuth();
+    const { users, isLoading: isLoadingUsers, error: errorUsers } = useUsers();
     const { statistics, isLoading: isLoadingStats, error: errorStats } = useStatistics();
     const { projects, isLoading: isLoadingProjects, error: errorProjects } = useProjects();
 
     // console.log("looking for stats",isLoading,"error message", error);
-    if (isLoadingStats || isLoadingProjects) {
+    if (isLoadingStats || isLoadingProjects || isLoadingUsers) {
         return (<p>Loading ...</p>);
     }
 
@@ -27,13 +31,33 @@ const HomePage = () => {
     if (errorProjects) {
         return (<p>{errorProjects.message}</p>);
     }    
+
+    if (errorUsers) {
+        return (<p>{errorUsers.message}</p>);
+    }    
     
     // const pledge_amount_formatted = parseInt(statistics.pledge_amount).toLocaleString();
+
+    // after login, reroute to home, take username and store the user Id so that it can be used
+    console.log("auth",auth);
+    if (auth.token) {
+        const userId = users.filter(user => user.username === auth.username)[0].id;
+        console.log("userid", userId);
+
+
+    // window.localStorage.setItem('userId', userId);
+    setAuth({
+        token: auth.token,
+        username: auth.username,
+        id: userId,
+    });
+}
 
     return (
         <div className='home-box'>
         <section className='headline'>    
-            <img src={fundlingLogo} alt='Fundling Logo'></img>
+            <img src={fundlingLogoHeader} alt='Fundling Logo header' className='headline-image'></img>
+            <img src={fundlingLogoCol} alt='Fundling Logo Icon' className='headline-image-icon'></img>
         </section>
         <div className='statistics-card'>
             {/* <div> */}

@@ -13,7 +13,7 @@ const Footer = () => {
                         <Link to='/contact'>CONTACT</Link>
                     </li>      
                     <li>
-                        <Link to='/' className='logo-text'>© FUNDLING 2023<img src={fundlingLogoCol} alt='fundling icon' /></Link>
+                        <Link to='/' className='logo-text'>© FUNDLING 2023<img src={fundlingLogoCol} alt='fundling icon' className='image-footer' /></Link>
                     </li>                    
                 </ul>
             </nav>

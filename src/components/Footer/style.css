@@ -30,6 +30,10 @@
     background-color: var(--main-button-hover);
 }
 
+.image-footer:hover {
+    animation: Shake 0.7s linear infinite;
+}
+
 .logo-text  {
     font-family: 'Bellota', Arial, sans-serif;  
     font-weight: bold;

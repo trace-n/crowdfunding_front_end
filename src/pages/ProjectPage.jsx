@@ -1,12 +1,10 @@
 // import { oneProject } from '../data';
-import { useParams, Link } from 'react-router-dom';
-import useProject from '../hooks/use-project';
 import './ProjectPage.css';
-import ProgressBar from '../components/ProgressBar';
+import { useParams, Link } from 'react-router-dom';
 import { useAuth } from '../hooks/use-auth';
+import useProject from '../hooks/use-project';
+import ProgressBar from '../components/ProgressBar';
 import CreatePledgeForm from '../components/CreatePledgeForm';
-// import DelPledgeLink from '../components/DelPledgeLink';
-// import delPledge from '../api/del-pledge';
 import DeletePledgeButton from '../components/DeletePledgeButton';
 import useUsers from '../hooks/use-users';
 
@@ -76,12 +74,14 @@ const ProjectPage = () => {
 
     const today = Date.parse(new Date());
     const endDate = Date.parse(project.date_end);
-
+    let projectEnded = false;
     let daysToGo;
     if ( today < endDate ) {
         // convert the time difference in milliseconds back to days
         daysToGo = Math.ceil((endDate - today) / (1000 * 3600 * 24));
-    } 
+    } else {
+        projectEnded = true;
+    }
 
     // total value of pledges
     const valuePledges = project.pledges.reduce((total, pledge) => total + pledge.amount, 0);
@@ -107,31 +107,37 @@ const ProjectPage = () => {
             <div>
                 <h2>{project.title}</h2>
             </div>    
-            <div className='project-detail'>
+            <div className='project-summary'>
                 <section><img src={project.image} alt='project image'></img></section>
                 <section className='project-side'>
+                <h2 className='pledge-amount'>${valuePledges.toLocaleString()}</h2>
+                <h3> Raised of $ {project.goal.toLocaleString()} Goal</h3>
+ 
                 <div className='progress-bar'>
                     <ProgressBar bgcolor={'#6a1b9a'} completed={progress} />
                     {/* {testData.map((item, idx) => (
                         <ProgressBar key={idx} bgcolor={item.bgcolor} completed={item.completed} />
                     ))} */}
                 </div>
-                <h2>Goal: $ {project.goal.toLocaleString()}</h2>
-                <h3>${valuePledges.toLocaleString()}</h3>
-                <p>RAISED</p>  
-                <h3>Created By: {project.owner} {users.filter(user => user.id === project.owner)[0].username}</h3>
-   
-                <h3>{numberPledges.toLocaleString()}</h3>
-                <p>Pledges</p>                
-                <h3>{`${ today < endDate ? daysToGo : 'Project Ended'}`}</h3>
-                <p>{`${ today < endDate ? 'Days to Go': ''}`}</p>             
-                {auth.token ? (
+                <h2 className='project-h2'>{numberPledges.toLocaleString()}</h2>
+                <h3>Pledges</h3>                
+                <h2 className='project-h2'>{`${ !projectEnded ? daysToGo : 'Project Ended'}`}</h2>
+                <h3>{`${ today < endDate ? 'Days to Go': ''}`}</h3>          
+                { (!projectEnded) ? ( 
+                    <>
+                { (auth.token) ? (
                     <CreatePledgeForm projectId={id}/>   
                 ) : ( 
                     <Link to='/login' 
                     className='login-button'>DONATE</Link>
-                )}           
-                <p>{project.description}</p>
+                )}   </>
+                ) : null }  
+                </section>
+                </div>    
+            <div className='project-detail'>
+            <section>
+                <h3>Created By: {project.owner} {users.filter(user => user.id === project.owner)[0].username}</h3>
+            <p>{project.description}</p>
                 <h3>Pledges:</h3>
                 <ul>
                     {project.pledges.map((pledgeData, key) => {

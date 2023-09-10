@@ -14,17 +14,20 @@
     display: grid;
     grid-template-columns: auto auto auto;
     width: 100%;
-    margin: auto;
+    margin: 50px auto;
     background-color: white;
     color: #373737;
+    padding-bottom: 20px;
+    border-radius: 2px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     /* border-style: solid; */
-    margin-bottom: 50px;
-    margin-top: 50px;
+    /* margin-bottom: 50px;
+    margin-top: 50px; */
 }
 
 .statistics-card h2 {
     margin-top: 16px;
-    margin-bottom: 0px;
+    margin-bottom: 10px;
 }
 
 .home-box {
@@ -33,9 +36,19 @@
     /* border-style: solid; */
 }
 
-.headline img {
-    margin-top: 50px;
-    width: 60%;
+.headline-image {
+    margin-top: 40px;
+    width: 40%;
     object-fit: contain;
+    vertical-align: middle;
 }
 
+.headline-image-icon {
+    margin-top: 40px;
+    width: 15%;
+    vertical-align: middle;
+}
+
+.headline-image-icon:hover {
+    animation: Shake 0.7s linear infinite;
+}
