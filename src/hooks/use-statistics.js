@@ -3,21 +3,21 @@ import getStatistics from '../api/get-statistics';
 
 export default function useStatistics() {
     const [statistics, setStatistics] = useState();
-    const [isLoadingStats, setIsLoadingStats] = useState(true);
-    const [errorStats, setErrorStats] = useState();
+    const [isLoading, setIsLoading] = useState(true);
+    const [error, setError] = useState();
 
     useEffect(() => {
         getStatistics()
             .then((statistics) => {
                 setStatistics(statistics);
-                setIsLoadingStats(false);
+                setIsLoading(false);
                 // console.log(statistics, statistics.project_count)
             })
             .catch((error) => {
-                setErrorStats(error);
-                setIsLoadingStats(false);
+                setError(error);
+                setIsLoading(false);
             });
     }, [] );
 
-    return { statistics, isLoadingStats, errorStats };
+    return { statistics, isLoading, error };
 }

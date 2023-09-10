@@ -1,5 +1,5 @@
 async function getStatistics() {
-    const url = `${import.meta.env.VITE_API_URL}/projects/statistics`;
+    const url = `${import.meta.env.VITE_API_URL}/projects/statistics/`;
     const response = await fetch(url, { method: 'GET' });
 
     if (!response.ok) {

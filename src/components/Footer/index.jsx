@@ -1,5 +1,7 @@
 import { Link, Outlet } from 'react-router-dom';
-import './Footer.css'
+import './style.css';
+import fundlingLogoCol from '../../assets/fundling-website-favicon-color.png';
+
 
 const Footer = () => {
     return (
@@ -11,7 +13,7 @@ const Footer = () => {
                         <Link to='/contact'>CONTACT</Link>
                     </li>      
                     <li>
-                        <Link to='/' className='logo-text'>© FUNDLING 2023</Link>
+                        <Link to='/' className='logo-text'>© FUNDLING 2023<img src={fundlingLogoCol} alt='fundling icon' /></Link>
                     </li>                    
                 </ul>
             </nav>

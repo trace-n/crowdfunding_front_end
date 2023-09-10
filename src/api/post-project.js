@@ -9,7 +9,7 @@ async function postProject(title, description, goal, image, date_end ) {
             // 'Accept': 'application/json',
             'Content-Type': 'application/json',
             'Authorization': 'Token ' + userToken,            
-            // 'Authentication': 'Bearer ' + userToken,   
+            // 'Authentication': 'Token ' + userToken,   
             // 'mode': 'cors',
             // 'Access-Control-Allow-Origin':'*',         
         },

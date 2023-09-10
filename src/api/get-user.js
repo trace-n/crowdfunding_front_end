@@ -1,10 +1,10 @@
-async function getProject(projectId) {
+async function getUser(userId) {
     // GET single project id
-    const url = `${import.meta.env.VITE_API_URL}/projects/${projectId}/`;
+    const url = `${import.meta.env.VITE_API_URL}/user/${userId}/`;
     const response = await fetch(url, { method: 'GET' });
     
     if (!response.ok) {
-        const fallbackError = `Error fetching project with id ${projectId}`;
+        const fallbackError = `Error fetching user id ${userId}`;
 
         const data = await response.json().catch(() => {
             throw new Error(fallbackError);
@@ -17,4 +17,4 @@ async function getProject(projectId) {
     return await response.json();
 }
 
-export default getProject;
+export default getUser;

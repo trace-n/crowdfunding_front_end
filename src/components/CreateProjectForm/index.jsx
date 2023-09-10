@@ -1,6 +1,6 @@
-import './LoginForm.css';
+// import './LoginForm.css';
 import { useState } from 'react';
-import postProject from '../api/post-project';
+import postProject from '../../api/post-project';
 import { useNavigate } from 'react-router-dom';
 // import { useAuth } from '../hooks/use-auth';
 
@@ -51,7 +51,7 @@ const CreateProjectForm = () => {
 
         <form className='login-form'>
             <div>
-                <h3 className='login-text'>CREATE PROJECT</h3>
+                {/* <h3 className='login-text'>CREATE PROJECT</h3> */}
                 {/* <label htmlFor='username'>Username:</label> */}
                 <input 
                     type='text' 

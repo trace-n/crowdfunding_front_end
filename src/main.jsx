@@ -1,17 +1,18 @@
 import React from 'react';
+import './main.css';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-import LandingPage from './components/LandingPage.jsx';
+import LandingPage from './components/LandingPage/index.jsx';
 import Homepage from './pages/HomePage.jsx';
 import ProjectPage from './pages/ProjectPage.jsx';
 import AboutPage from './pages/AboutPage.jsx';
 import ContactPage from './pages/ContactPage.jsx';
 import LoginPage from './pages/LoginPage.jsx';
 import SignupPage from './pages/SignupPage.jsx';
-import CreatePledgePage from './pages/CreatePledgePage.jsx';
+// import CreatePledgePage from './pages/CreatePledgePage.jsx';
 import CreateProjectPage from './pages/CreateProjectPage.jsx';
-import { AuthProvider } from './components/AuthProvider.jsx';
+import { AuthProvider } from './components/AuthProvider/index.jsx';
 
 
 const router = createBrowserRouter([
@@ -23,7 +24,7 @@ const router = createBrowserRouter([
       { path: '/', element: <Homepage /> },
       { path: '/project/:id', element: <ProjectPage /> },
       { path: '/project', element: <CreateProjectPage /> },  
-      { path: '/pledges', element: <CreatePledgePage /> },            
+      // { path: '/pledge/:projectId', element: <CreatePledgePage /> },            
       { path: '/about', element: <AboutPage /> },
       { path: '/contact', element: <ContactPage /> },
       { path: '/login', element: <LoginPage /> },

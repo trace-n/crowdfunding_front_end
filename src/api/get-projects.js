@@ -1,6 +1,6 @@
 async function getProjects() {
     // create URL for request Vite environment variable and API endpoint
-    const url = `${import.meta.env.VITE_API_URL}/projects`;
+    const url = `${import.meta.env.VITE_API_URL}/projects/`;
 
     // call fetch function, pass in URL and method. Set 'GET' method to fetch data 
     // returns a "promise" 

@@ -11,12 +11,12 @@ const HomePage = () => {
     
     // make sure to declare the calls to hooks first before checking the isloading and errors
 
-    const { statistics, isLoadingStats, errorStats } = useStatistics();
-    const { projects, isLoading, error } = useProjects();
+    const { statistics, isLoading: isLoadingStats, error: errorStats } = useStatistics();
+    const { projects, isLoading: isLoadingProjects, error: errorProjects } = useProjects();
 
-    // console.log("looking for stats",isLoadingStats,"error message", errorStats);
-    if (isLoadingStats) {
-        return (<p>loading stats...</p>);
+    // console.log("looking for stats",isLoading,"error message", error);
+    if (isLoadingStats || isLoadingProjects) {
+        return (<p>Loading ...</p>);
     }
 
     if (errorStats) {
@@ -24,12 +24,8 @@ const HomePage = () => {
         return (<p>{errorStats.message}</p>);
     }    
 
-    if (isLoading) {
-        return (<p>loading...</p>);
-    }
-
-    if (error) {
-        return (<p>{error.message}</p>);
+    if (errorProjects) {
+        return (<p>{errorProjects.message}</p>);
     }    
     
     // const pledge_amount_formatted = parseInt(statistics.pledge_amount).toLocaleString();

@@ -1,6 +1,6 @@
-import './LoginForm.css';
+import './style.css';
 import { useState } from 'react';
-import postSignup from '../api/post-signup';
+import postSignup from '../../api/post-signup';
 import { useNavigate } from 'react-router-dom';
 // import { useAuth } from '../hooks/use-auth';
 
@@ -37,13 +37,7 @@ const SignupForm = () => {
                 credentials.email,
                 credentials.image,
             ).then((response) => {
-                // console.log(response);
-                // allows storage of auth token in browser
-                // window.localStorage.setItem('token', response.token);
-                // setAuth({
-                //     token: response.token,
-                // });
-                // Navigate to login page
+                // Navigate to signup page on successful login
                 navigate('/login');
             });
         }
@@ -51,15 +45,17 @@ const SignupForm = () => {
 
     return (
 
-        <form className='login-form'>
+        <form className='signup-form' onSubmit={handleSubmit}>
             <div>
-                <h3 className='login-text'>SIGN UP</h3>
+                <h3>SIGN UP</h3>
                 {/* <label htmlFor='username'>Username:</label> */}
                 <input 
                     type='text' 
                     id='username' 
                     placeholder='Username' 
                     onChange = {handleChange}
+                    required
+                    autoComplete='off'
                 />
             </div>
             <div>
@@ -68,6 +64,8 @@ const SignupForm = () => {
                     id='first_name' 
                     placeholder='First Name' 
                     onChange = {handleChange}
+                    required
+                    autoComplete='given-name'
                 />
             </div>
             <div>
@@ -76,22 +74,27 @@ const SignupForm = () => {
                     id='last_name' 
                     placeholder='Last Name' 
                     onChange = {handleChange}
+                    required
+                    autoComplete='family-name'
                 />
             </div>
             <div>
                 <input 
-                    type='text' 
+                    type='email' 
                     id='email' 
                     placeholder='Email' 
                     onChange = {handleChange}
+                    required
+                    autoComplete='email'
                 />
             </div> 
             <div>
                 <input 
-                    type='text' 
+                    type='url' 
                     id='image' 
                     placeholder='Image URL' 
                     onChange = {handleChange}
+                    required
                 />
             </div>                                                
             <div>
@@ -101,9 +104,11 @@ const SignupForm = () => {
                     id='password' 
                     placeholder='Password' 
                     onChange = {handleChange}
+                    required
+                    autoComplete='off'
                 />
             </div>
-            <button type='submit' onClick={handleSubmit}>SIGN UP</button>
+            <button type='submit'>SIGN UP</button>
         </form>
     );
 }

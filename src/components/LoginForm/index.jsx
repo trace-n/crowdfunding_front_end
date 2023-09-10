@@ -1,8 +1,8 @@
-import './LoginForm.css';
+import './style.css';
 import { useState } from 'react';
-import postLogin from '../api/post-login';
+import postLogin from '../../api/post-login';
 import { Link, useNavigate } from 'react-router-dom';
-import { useAuth } from '../hooks/use-auth';
+import { useAuth } from '../../hooks/use-auth';
 
 const LoginForm = () => {
 
@@ -30,11 +30,15 @@ const LoginForm = () => {
                 credentials.password
             ).then((response) => {
 
-                // allows storage of auth token in browser
+                console.log("username:",credentials.username);
+                //  Set the username on then on the main landing page, can check the name of user and id from get all users for using in the nav bar
+                window.localStorage.setItem('username', credentials.username);
                 window.localStorage.setItem('token', response.token);
                 setAuth({
                     token: response.token,
+                    username: credentials.username
                 });
+                // consoleLog("auth",auth);
                 // Navigate back to home page
                 navigate('/');
             }).catch((error) => {
@@ -44,8 +48,8 @@ const LoginForm = () => {
     };
 
     return (
-        <div className='login-form'>
-            <form className='login-form'>
+        <div className='login-form-section'>
+            <form className='login-form' onSubmit={handleSubmit}>
                 <div>
                     <h3 className='login-text'>LOGIN</h3>
                     {/* <label htmlFor='username'>Username:</label> */}
@@ -54,6 +58,7 @@ const LoginForm = () => {
                         id='username' 
                         placeholder='Enter username' 
                         onChange = {handleChange}
+                        required
                     />
                 </div>
                 <div>
@@ -63,12 +68,14 @@ const LoginForm = () => {
                         id='password' 
                         placeholder='Password' 
                         onChange = {handleChange}
+                        required
                     />
                 </div>
-                <button type='submit' onClick={handleSubmit}>LOG IN</button>
+                {/* <button type='submit' onClick={handleSubmit}>LOG IN</button> */}
+                <button type='submit'>LOG IN</button>
             </form>
-            <p>Don't have an account?</p>
-            <Link to='/signup' className='signup-button'>SIGN UP</Link>
+            <p className='signup-text'>Don't have an account?</p>
+                <Link to='/signup'>SIGN UP</Link>
         </div>        
     );
 }

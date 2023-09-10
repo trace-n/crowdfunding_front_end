@@ -14,7 +14,7 @@ const AboutPage = () => {
                 </p>
                  <p>Kids, it's your time to shine! Fundling is all about supporting the pint-sized innovators, sports enthusiasts, and creative minds of tomorrow. Whether you're a soccer star in the making, a budding scientist with a penchant for exploding volcanoes, or just someone with a quirky idea that'll leave your parents scratching their heads, we've got your back.   </p>   
                  <h3>Get cracking and start a project today!</h3>    
-                 <img src={fundingIdea1} alt='image of hot air balloons'></img>                          
+                 <img src={fundingIdea1} alt='image of hot air balloons'></img>
             </section>
         </div>
     );
