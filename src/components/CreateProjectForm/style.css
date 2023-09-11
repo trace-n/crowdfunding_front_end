@@ -1,0 +1,65 @@
+.project-form {
+    font-family: 'Bellota', Arial, sans-serif;  
+    background-color: var(--background-color-offset);
+    max-width: 400px;
+    height: 470px;
+    margin: 20px auto;
+    color: var(--offset-text);
+    padding-top: 4px;
+}
+
+.project-form div {
+    /* padding: 20px; */
+    width: 80%;
+    margin: auto;
+}
+
+.project-form input {
+    height: 32px;
+    margin-bottom:20px;
+    width: 80%;
+    padding-left: 12px;
+}
+
+.project-form button {
+    width: 68%;
+    height: 40px;
+    /* margin-bottom: 30px; */
+    background-color: var(--main-background);
+    font-weight: bold;
+    color: var(--main-text);
+    box-shadow: 5px 4px 6px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);    
+    border-style: none;
+    padding: 4px;
+    margin-bottom: 20px;
+}
+
+/* .login-text {
+    padding-top: 20px;
+    text-align: center;
+    padding-bottom: 20px;
+} */
+
+/* .project-form a {
+    box-shadow: 5px 4px 6px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);    
+    padding: 12px 110px ;
+    background-color: var(--main-background);
+    font-family: Arial, sans-serif;  
+    font-size: 0.8rem;
+    margin-bottom: 80px;
+} */
+
+.project-form button:hover, a:hover {
+    background-color: var(--main-button-hover);
+}
+ 
+/* .signup-text {
+    border-top: solid;
+    border-color: var(--main-divider); 
+    border-width: 1px;
+    width: 70%;
+    margin: 20px auto 40px;
+    padding-top: 20px;
+    text-align: center;
+    /* margin-bottom: 40px; */
+} */

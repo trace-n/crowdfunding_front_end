@@ -1,4 +1,4 @@
-// import './LoginForm.css';
+import './style.css';
 import { useState } from 'react';
 import postProject from '../../api/post-project';
 import { useNavigate } from 'react-router-dom';
@@ -41,7 +41,7 @@ const CreateProjectForm = () => {
                 // setAuth({
                 //     token: response.token,
                 // });
-                // Navigate to login page
+                // Navigate to project page
                 navigate('/');
             });
         }
@@ -49,9 +49,9 @@ const CreateProjectForm = () => {
 
     return (
 
-        <form className='login-form'>
+        <form className='project-form'>
             <div>
-                {/* <h3 className='login-text'>CREATE PROJECT</h3> */}
+                {/* <h3 className='project-text'>CREATE PROJECT</h3> */}
                 {/* <label htmlFor='username'>Username:</label> */}
                 <input 
                     type='text' 

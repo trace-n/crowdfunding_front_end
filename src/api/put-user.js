@@ -1,5 +1,5 @@
 async function putUser(userId, firstName, lastName, email, image ) {
-    const url = `${import.meta.env.VITE_API_URL}/usere/${userId}/`;
+    const url = `${import.meta.env.VITE_API_URL}/users/${userId}/`;
     const userToken = window.localStorage.getItem('token');
 
     const response = await fetch(url, { method: 'PUT',

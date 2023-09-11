@@ -41,9 +41,11 @@ const HomePage = () => {
     // after login, reroute to home, take username and store the user Id so that it can be used
     console.log("auth",auth);
     if (auth.token) {
-        const userId = users.filter(user => user.username === auth.username)[0].id;
-        console.log("userid", userId);
-
+        let userId = '';
+        if (auth.username){
+            userId = users.filter(user => user.username === auth.username)[0].id;
+            console.log("userid", userId);
+        }
 
     // window.localStorage.setItem('userId', userId);
     setAuth({
@@ -55,32 +57,29 @@ const HomePage = () => {
 
     return (
         <div className='home-box'>
-        <section className='headline'>    
-            <img src={fundlingLogoHeader} alt='Fundling Logo header' className='headline-image'></img>
-            <img src={fundlingLogoCol} alt='Fundling Logo Icon' className='headline-image-icon'></img>
-        </section>
-        <div className='statistics-card'>
-            {/* <div> */}
-            {/* header block */}
-            {/* <section className='statistics-card'> */}
-            <h2>{statistics.project_count.toLocaleString()}</h2>
-            <h2>$ {statistics.pledge_amount.toLocaleString()}</h2>
-            {/* <h2>$ {pledge_amount_formatted}</h2> */}
-            <h2>{statistics.pledge_count.toLocaleString()}</h2>
-            <h3>PROJECTS</h3>
-            <h3>AMOUNT RAISED</h3>
-            <h3>PLEDGES</h3>      
-                 
-            {/* </section> */}
+            <section className='headline'>    
+                <img src={fundlingLogoHeader} alt='Fundling Logo header' className='headline-image'></img>
+                <img src={fundlingLogoCol} alt='Fundling Logo Icon' className='headline-image-icon'></img>
+            </section>
+            <div className='statistics-card'>
+                <h2>{statistics.project_count.toLocaleString()}</h2>
+                <h2>$ {statistics.pledge_amount.toLocaleString()}</h2>
+                <h2>{statistics.pledge_count.toLocaleString()}</h2>
+                <h3>PROJECTS</h3>
+                <h3>AMOUNT RAISED</h3>
+                <h3>PLEDGES</h3>      
+                    
             </div>
             {/* {allProjects.map((projectData, key) => { */}
-            <div id='project-list'>            
-                {projects.map((projectData, key) => {
-                    // return <div key={key}>{projectData.title}</div>;
-                    return <ProjectCard key={key} projectData={projectData} />
-                })}
+            <>
+                <div id='project-list'>            
+                    {projects.map((projectData, key) => {
+                        // return <div key={key}>{projectData.title}</div>;
+                        return <ProjectCard key={key} projectData={projectData} />
+                    })}
 
-            </div>
+                </div>
+            </>
         </div>
     );
 }

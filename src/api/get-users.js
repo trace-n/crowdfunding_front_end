@@ -8,6 +8,7 @@ async function getUsers() {
         const data = await response.json().catch(() => {
             throw new Error(fallbackError);
         });
+        console.log("json data",data);
         const errorMessage = data?.detail ?? fallbackError;
         throw new Error(errorMessage);
     }

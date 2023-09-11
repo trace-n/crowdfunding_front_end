@@ -10,7 +10,7 @@ export default function useUser(userId) {
         // Pass projectId to getProject function
         getUser(userId)
             .then((user) => {
-                setUser(project);
+                setUser(user);
                 setIsLoading(false);
             })
             .catch((error) => {
