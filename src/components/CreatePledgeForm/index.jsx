@@ -65,7 +65,7 @@ const CreatePledgeForm = (props) => {
                     // placeholder='Amount' 
                     onChange = {handleChange}
                     required
-                    value='1'
+                    // value='1'
                 />
             </div>
             <div>
