@@ -9,6 +9,7 @@ import DeletePledgeButton from '../components/DeletePledgeButton';
 import { useState } from 'react';
 import useUsers from '../hooks/use-users';
 import deletePledge from '../api/del-pledge';
+import postPledge from '../api/post-pledge';
 
 const ProjectPage = () => {
 
@@ -21,30 +22,20 @@ const ProjectPage = () => {
 
     // useProject returns 3 params
     const { project, pledges, isLoading: isLoadingProject, error: errorProject, setPledges } = useProject(id);
-    // const { project, isLoading: isLoadingProject, error: errorProject, setProject } = useProject(id);
-        // const { project, isLoading: isLoadingProject, error: errorProject, setProject } = useProject(id);
-    
 
+    const [pledge, setPledge] = useState({
+        amount: '',
+        comment: '',
+        anonymous: '',
+        project: '',
+    });
 
-    if (project) {
-        console.log("pledges:", project.pledges);
-    }
     // rename the parameters for unique reference 
     const { users, isLoading: isLoadingUsers, error: errorUsers } = useUsers();
-    // const initialState = project.pledges;
-    // console.log(initialState);
-    // const [pledges, setPledges] = useState([]);
 
-    
-            // // initial state
-    // if (!isLoadingProject) {
-
-    // }
     if (isLoadingProject || isLoadingUsers) {
         return (<p>LOADING...</p>);
     }
-
-    
 
     if (errorProject) {
         return (<p>{errorProject.message}</p>);
@@ -54,12 +45,16 @@ const ProjectPage = () => {
         return (<p>{errorUsers.message}</p>);
     }
 
-    // return the screen as display
-
+    // information for total value of pledges and progress
+    // if the project has ended, otherwise how many days are left til project ends
+    const numberPledges = (project.pledges).length;
+    const valuePledges = project.pledges.reduce((total, pledge) => total + pledge.amount, 0);    
     const today = Date.parse(new Date());
     const endDate = Date.parse(project.date_end);
+    
     let projectEnded = false;
     let daysToGo;
+    
     if ( today < endDate ) {
         // convert the time difference in milliseconds back to days
         daysToGo = Math.ceil((endDate - today) / (1000 * 3600 * 24));
@@ -67,39 +62,67 @@ const ProjectPage = () => {
         projectEnded = true;
     }
 
-    // total value of pledges
-    const valuePledges = project.pledges.reduce((total, pledge) => total + pledge.amount, 0);
-    // console.log('total',valuePledges);
-
+    // console.log(auth.token, auth.username);
+    
+    // total value of pledges compared to the total goal for progress bar display
     let progress = parseInt(valuePledges) / parseInt(project.goal);
     progress = Math.round(progress * 100);
     if ( progress > 100 ) {
         progress = 100;
     } 
 
-    const numberPledges = (project.pledges).length;
+    const handleChange = (event) => {
+        const { id, value } = event.target;
+        setPledge((prevPledge) => ({
+            ...prevPledge,
+            [id]: value,
+        }));
+    };
 
-    
+    const handleSubmit = (event) => {
+        // event.preventDefault();
+        if (pledge.amount && pledge.comment) {
+            if (pledge) {
+                if ( !pledge.anonymous ) {
+                    pledge.anonymous = false;
+                }
+
+                pledge.project = id; //projectId;
+
+                postPledge(
+                    pledge.amount,
+                    pledge.comment,
+                    pledge.anonymous,
+                    pledge.project,
+                ).then((response) => {
+                    console.log("before new pledges",newPledges);
+                    const newPledges = [...pledges, pledge];
+                    
+                    setPledges(newPledges);
+                    console.log("after pledges",pledges);                    
+                    // navigate(`project/${projectId}`);
+                });
+            }
+        } 
+    };
+
     const deleteSinglePledge = (pledgeId) => {
-        console.log(" onclick delete testinglepledge event called");
+        // console.log(" onclick delete testinglepledge event called");
         // event.preventDefault();
         if (pledgeId) {
             deletePledge(
                 pledgeId
             ).then((response) => {
-                console.log(response);
-                console.log("pledgeid", pledgeId)
-                console.log("before pledges",pledges);
+                // console.log(response);
+                // console.log("pledgeid", pledgeId)
+                // console.log("before pledges",pledges);
                 const filteredPledges = pledges.filter((pledge) => pledge.id !== pledgeId);
-                console.log("fitlered pledges",filteredPledges);
+                // console.log("fitlered pledges",filteredPledges);
                 setPledges(filteredPledges);
-                console.log("after pledges",pledges);
-
-            });
-            
-
+                // console.log("after pledges",pledges);
+            }); //end deletePledge
         }
-    };
+    }; //end deleteSinglePledge
 
     return (
         <div>
@@ -111,12 +134,8 @@ const ProjectPage = () => {
                 <section className='project-side'>
                 <h2 className='pledge-amount'>${valuePledges.toLocaleString()}</h2>
                 <h3> Raised of $ {project.goal.toLocaleString()} Goal</h3>
- 
-                <div className='progress-bar'>
+                 <div className='progress-bar'>
                     <ProgressBar bgcolor={'#6a1b9a'} completed={progress} />
-                    {/* {testData.map((item, idx) => (
-                        <ProgressBar key={idx} bgcolor={item.bgcolor} completed={item.completed} />
-                    ))} */}
                 </div>
                 <h2 className='project-h2'>{numberPledges.toLocaleString()}</h2>
                 <h3>Pledges</h3>                
@@ -125,7 +144,11 @@ const ProjectPage = () => {
                 { (!projectEnded) ? ( 
                     <>
                 { (auth.token) ? (
-                    <CreatePledgeForm projectId={id}/>   
+                    <CreatePledgeForm 
+                        projectId={id} 
+                        onClick={handleSubmit}
+                        onChange={handleChange}
+                    />   
                 ) : ( 
                     <Link to='/login' 
                     className='login-button'>DONATE</Link>
@@ -139,7 +162,7 @@ const ProjectPage = () => {
             <p>{project.description}</p>
                 <h3>Pledges:</h3>
                 <div>
-                    {JSON.stringify(pledges)}
+                    {/* {JSON.stringify(pledges)} */}
                 </div>
                 <ul>
                     {pledges.map((pledgeData, key) => {
@@ -149,7 +172,7 @@ const ProjectPage = () => {
                                 {users.filter(user => user.id === pledgeData.supporter)[0].username}
                                 {/* function to loop through users hook to find the support name for users get api */}
                                 {/* {pledgeData.amount} from {users.filter(user => user.id === pledgeData.supporter)[0].name}  */}
-                                {auth.token ? (
+                                { (auth.token && auth.id == pledgeData.supporter) ? (
                                     // <button intent="danger" onClick={() => deletePledge(pledgeData.id)}>Delete
                                     // </button>
                                     <DeletePledgeButton 

@@ -14,58 +14,57 @@ const CreatePledgeForm = (props) => {
     const projectId = props.projectId;
     // console.log("id from the create pledge form", projectId);
 
-    const [pledge, setPledge] = useState({
-        amount: '',
-        comment: '',
-        anonymous: '',
-        project: '',
-    });
+    // const [pledge, setPledge] = useState({
+    //     amount: '',
+    //     comment: '',
+    //     anonymous: '',
+    //     project: '',
+    // });
 
-    const handleChange = (event) => {
-        const { id, value } = event.target;
-        setPledge((prevPledge) => ({
-            ...prevPledge,
-            [id]: value,
-        }));
-    };
+    // const handleChange = (event) => {
+    //     const { id, value } = event.target;
+    //     setPledge((prevPledge) => ({
+    //         ...prevPledge,
+    //         [id]: value,
+    //     }));
+    // };
 
-    const handleSubmit = (event) => {
-        console.log("got here");
-        event.preventDefault();
-        if (pledge.amount && pledge.comment) {
-            if (pledge) {
-                if ( !pledge.anonymous ) {
-                    pledge.anonymous = false;
-                }
+    // const handleSubmit = (event) => {
+    //     console.log("got here");
+    //     event.preventDefault();
+    //     if (pledge.amount && pledge.comment) {
+    //         if (pledge) {
+    //             if ( !pledge.anonymous ) {
+    //                 pledge.anonymous = false;
+    //             }
 
-                pledge.project = projectId;
+    //             pledge.project = projectId;
 
-                postPledge(
-                    // pledge.supporter,
-                    pledge.amount,
-                    pledge.comment,
-                    pledge.anonymous,
-                    pledge.project,
-                ).then((response) => {
-                    // navigate(`project/${projectId}`);
-                });
-            }
-        } 
-    };
+    //             postPledge(
+    //                 pledge.amount,
+    //                 pledge.comment,
+    //                 pledge.anonymous,
+    //                 pledge.project,
+    //             ).then((response) => {
+    //                 // navigate(`project/${projectId}`);
+    //             });
+    //         }
+    //     } 
+    // };
 
     return (
 // changed the handleSubmit to form onSubmit rather than on button onClick to  use standard HTML user input required validation
-        <form className='donate-form' onSubmit={handleSubmit}>
+        // <form className='donate-form' onSubmit={handleSubmit}>
+        <form className='donate-form' onSubmit={() => props.onClick(projectId)}>
             <div>
                 {/* <h3 className='login-text'>DONATE</h3> */}
                 <label htmlFor='amount'>Amount* $</label>
                 <input 
                     type='number'         
                     id='amount' 
-                    // placeholder='Amount' 
-                    onChange = {handleChange}
+                    // onChange = {handleChange}
+                    onChange={props.onChange}
                     required
-                    // value='1'
                 />
             </div>
             <div>
@@ -74,8 +73,9 @@ const CreatePledgeForm = (props) => {
                     type='text' 
                     required
                     id='comment' 
-                    placeholder='Comment' 
-                    onChange = {handleChange}
+                    // placeholder='Comment' 
+                    // onChange = {handleChange}
+                    onChange={props.onChange}
                 />
             </div>         
             <div>
@@ -83,13 +83,14 @@ const CreatePledgeForm = (props) => {
                 <input 
                     type='checkbox' 
                     id='anonymous' 
-                    onChange = {handleChange}
+                    // onChange = {handleChange}
+                    onChange={props.onChange}
                     className='anon-button'
                 />
             </div>           
-            {/* <input type='submit' value='DONATE'/>                       */}
-            {/* <button type='submit' onClick={handleSubmit}>DONATE</button> */}
-            <button type='submit' className='donate-button'>DONATE</button>
+            <button type='submit' className='donate-button'>
+                DONATE
+            </button>
         </form>
     );
 }

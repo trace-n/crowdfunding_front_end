@@ -35,13 +35,6 @@ const CreateProjectForm = () => {
                 project.image,
                 project.date_end,
             ).then((response) => {
-                // console.log(response);
-                // allows storage of auth token in browser
-                // window.localStorage.setItem('token', response.token);
-                // setAuth({
-                //     token: response.token,
-                // });
-                // Navigate to project page
                 navigate('/');
             });
         }
@@ -51,7 +44,7 @@ const CreateProjectForm = () => {
 
         <form className='project-form'>
             <div>
-                {/* <h3 className='project-text'>CREATE PROJECT</h3> */}
+                <h3 className='project-text'>CREATE PROJECT</h3>
                 {/* <label htmlFor='username'>Username:</label> */}
                 <input 
                     type='text' 

@@ -7,7 +7,7 @@ by Tracey Nguyen
 
 ## Submission Documentation
 
-Deployed Frontend React Project: [https://wondrous-sopapillas-f5a6a6.netlify.app/] (https://wondrous-sopapillas-f5a6a6.netlify.app/)
+Deployed Frontend React Project: [https://fundling.netlify.app/] (https://fundling.netlify.app/)
 
 ## Features
 

@@ -30,15 +30,14 @@ const LoginForm = () => {
                 credentials.password
             ).then((response) => {
 
-                console.log("username:",credentials.username);
                 //  Set the username on then on the main landing page, can check the name of user and id from get all users for using in the nav bar
                 window.localStorage.setItem('username', credentials.username);
                 window.localStorage.setItem('token', response.token);
                 setAuth({
                     token: response.token,
-                    username: credentials.username
+                    username: credentials.username,
                 });
-                // consoleLog("auth",auth);
+                // console.log("auth",auth);
                 // Navigate back to home page
                 navigate('/');
             }).catch((error) => {

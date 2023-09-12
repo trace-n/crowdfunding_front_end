@@ -30,6 +30,7 @@ async function postProject(title, description, goal, image, date_end ) {
             throw new Error(fallbackError);
         });
         const errorMessage = data?.detail ?? fallbackError;
+        console.log(response);
         throw new Error(errorMessage);
     }
 

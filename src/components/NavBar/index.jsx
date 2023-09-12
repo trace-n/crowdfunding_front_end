@@ -6,17 +6,21 @@ import { useAuth } from '../../hooks/use-auth';
 // import useUsers from '../../hooks/use-users';
 
 const NavBar = () => {
-
+    
     const {auth, setAuth} = useAuth();
     
-    const userLink = `users/${auth.id}`;
-    
-    // console.log("auth", auth, "username", auth.username);
+    const userId = window.localStorage.getItem('id');
+    // console.log("nav bar user");
+    // const userLink = `users/${auth.id}`;
+    const userLink = `users/${userId}`;
+    // console.log("auth", auth, "USERLINK===",userLink);
+
 
 
     const handleLogout = () => {
         window.localStorage.removeItem('token');
         window.localStorage.removeItem('username');
+        window.localStorage.removeItem('id');
         setAuth({ 
             token: null, 
             username: null,
@@ -48,9 +52,9 @@ const NavBar = () => {
                     </div>
                     <div className='right-nav'>     
                     <ul>
-                    <li>
+                    {/* <li>
                         <Link to='#'>SEARCH</Link>
-                    </li>
+                    </li> */}
                         {auth.token ? (
                             //  needs a react fragment eg. <React Fragment> but this can be short hand as <> to infer a fragment as there is more than one element 
                         <>

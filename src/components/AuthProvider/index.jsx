@@ -9,6 +9,8 @@ export const AuthProvider = (props) => {
     const [auth, setAuth] = useState({
         // Initialise the context with token from local storage even if user refreshes
         token: window.localStorage.getItem('token'),
+        username: window.localStorage.getItem('username'),
+        id: window.localStorage.getItem('id'),
     });
 
     return (

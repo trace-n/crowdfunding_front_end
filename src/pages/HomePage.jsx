@@ -47,12 +47,12 @@ const HomePage = () => {
             console.log("userid", userId);
         }
 
-    // window.localStorage.setItem('userId', userId);
-    setAuth({
-        token: auth.token,
-        username: auth.username,
-        id: userId,
-    });
+    window.localStorage.setItem('id', userId);
+    // setAuth({
+    //     token: auth.token,
+    //     username: auth.username,
+    //     id: userId,
+    // });
 }
 
     return (

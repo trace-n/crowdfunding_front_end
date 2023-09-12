@@ -26,13 +26,8 @@ const fillerStyles = {
   backgroundColor: '#9FCAE6',
   borderRadius: 'inherit',
   textAlign: 'center',
-  // display: 'flex',
-  // justifyContent: 'center'
-  // borderStyle: 'solid'
 }
 
-
-console.log("completed", completed, completed == 100);
 
   return (
     <div className='bar-container'>
