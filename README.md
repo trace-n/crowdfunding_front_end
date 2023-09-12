@@ -7,17 +7,17 @@ by Tracey Nguyen
 
 ## Submission Documentation
 
-Deployed Project: [https://unicorn-rainbow-1618.fly.dev/projects/](https://unicorn-rainbow-1618.fly.dev/projects/)
+Deployed Frontend React Project: [https://wondrous-sopapillas-f5a6a6.netlify.app/] (https://wondrous-sopapillas-f5a6a6.netlify.app/)
 
 ## Features
 
 ### Release 1  
-* Refer to github [https://github.com/trace-n/crowdfunding_back_end] (https://github.com/trace-n/crowdfunding_back_end)
+* Deployed Backend DRF Project: Refer to github [https://github.com/trace-n/crowdfunding_back_end] (https://github.com/trace-n/crowdfunding_back_end)
 
 ### Release 2 - front end features include:
 
 * [X] Be separated into two distinct projects: an API built using the Django RestFramework and a website built using React.
-* [X] Have a  name, bonus points if it includes a pun and/or missing vowels. Seehttps://namelix.com/ for inspiration.  
+* [X] Have a  name, bonus points if it includes a pun and/or missing vowels. See https://namelix.com/ for inspiration.  
 * [X] Have a clear target audience.
 
 * [X] User can Login/Logout 
