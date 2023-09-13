@@ -38,3 +38,8 @@
 .donate-button:hover {
     background-color: var(--main-button-hover);
 }
+
+#amount {
+    appearance: none;
+    margin: 0;
+}

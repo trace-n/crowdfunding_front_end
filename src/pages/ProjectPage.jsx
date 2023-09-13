@@ -47,8 +47,8 @@ const ProjectPage = () => {
 
     // information for total value of pledges and progress
     // if the project has ended, otherwise how many days are left til project ends
-    const numberPledges = (project.pledges).length;
-    const valuePledges = project.pledges.reduce((total, pledge) => total + pledge.amount, 0);    
+    const numberPledges = (pledges).length;
+    const valuePledges = pledges.reduce((total, pledge) => total + pledge.amount, 0);    
     const today = Date.parse(new Date());
     const endDate = Date.parse(project.date_end);
     
@@ -72,20 +72,35 @@ const ProjectPage = () => {
     } 
 
     const handleChange = (event) => {
-        const { id, value } = event.target;
-        setPledge((prevPledge) => ({
-            ...prevPledge,
-            [id]: value,
-        }));
+        // const { id, value } = event.target;
+        // debugger
+
+        if ( event.target.id == 'anonymous') {
+            setPledge((prevPledge) => ({
+                ...prevPledge,
+                [event.target.id]: event.target.checked,
+            }));
+
+        } else {
+            setPledge((prevPledge) => ({
+                ...prevPledge,
+                [event.target.id]: event.target.value,
+            }));
+        }
+
+        
     };
 
     const handleSubmit = (event) => {
-        // event.preventDefault();
+        debugger
+        // event.preventDefault(); // why is this preventing the submit for Donate Create pledge?
         if (pledge.amount && pledge.comment) {
             if (pledge) {
-                if ( !pledge.anonymous ) {
-                    pledge.anonymous = false;
-                }
+
+                // handled by handleChange function
+                // if ( !pledge.anonymous ) {
+                //     pledge.anonymous = false;
+                // }
 
                 pledge.project = id; //projectId;
 

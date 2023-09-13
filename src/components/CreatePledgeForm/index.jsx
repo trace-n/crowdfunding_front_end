@@ -55,6 +55,8 @@ const CreatePledgeForm = (props) => {
     return (
 // changed the handleSubmit to form onSubmit rather than on button onClick to  use standard HTML user input required validation
         // <form className='donate-form' onSubmit={handleSubmit}>
+        // onSubmit - change this to be a function that references the props.onClick property. 
+        // otherwise this ends up calling the function during referecne of this component in a parent
         <form className='donate-form' onSubmit={() => props.onClick(projectId)}>
             <div>
                 {/* <h3 className='login-text'>DONATE</h3> */}
@@ -62,6 +64,9 @@ const CreatePledgeForm = (props) => {
                 <input 
                     type='number'         
                     id='amount' 
+                    placeholder='10'
+                    // use defaultValue instead of value so the value can be changed
+                    // defaultValue='10'
                     // onChange = {handleChange}
                     onChange={props.onChange}
                     required

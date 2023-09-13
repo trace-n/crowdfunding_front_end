@@ -1,16 +1,18 @@
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 
 const DeletePledgeButton = (props) => {
 
     const pledgeId = props.pledgeId;
 
     // const delPledgeLink = `/pledges/${pledgeId}`;
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
     return (
         <div>
+        {/* onSubmit - change this to be a function that references the props.onClick property. 
+        otherwise this ends up calling the function directly during referecne of this component in a parent */}
             <button 
                 type='submit'
                 onClick={() => props.onClick(pledgeId)}>

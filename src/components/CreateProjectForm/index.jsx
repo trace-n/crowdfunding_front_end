@@ -42,7 +42,7 @@ const CreateProjectForm = () => {
 
     return (
 
-        <form className='project-form'>
+        <form className='project-form' onSubmit={handleSubmit}>
             <div>
                 <h3 className='project-text'>CREATE PROJECT</h3>
                 {/* <label htmlFor='username'>Username:</label> */}
@@ -51,6 +51,7 @@ const CreateProjectForm = () => {
                     id='title' 
                     placeholder='Title' 
                     onChange = {handleChange}
+                    required
                 />
             </div>
             <div>
@@ -59,6 +60,7 @@ const CreateProjectForm = () => {
                     id='description' 
                     placeholder='Description' 
                     onChange = {handleChange}
+                    required
                 />
             </div>
             <div>
@@ -67,6 +69,7 @@ const CreateProjectForm = () => {
                     id='goal' 
                     placeholder='Goal' 
                     onChange = {handleChange}
+                    required
                 />
             </div> 
             <div>
@@ -75,6 +78,7 @@ const CreateProjectForm = () => {
                     id='image' 
                     placeholder='Image URL' 
                     onChange = {handleChange}
+                    required
                 />
             </div>                                                
             <div>
@@ -84,9 +88,10 @@ const CreateProjectForm = () => {
                     id='date_end' 
                     placeholder='End Date' 
                     onChange = {handleChange}
+                    required
                 />
             </div>
-            <button type='submit' onClick={handleSubmit}>CREATE</button>
+            <button type='submit'>CREATE</button>
         </form>
     );
 }
