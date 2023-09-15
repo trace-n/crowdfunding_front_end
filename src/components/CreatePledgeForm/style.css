@@ -39,7 +39,20 @@
     background-color: var(--main-button-hover);
 }
 
-#amount {
+/* #amount {
     appearance: none;
     margin: 0;
+} */
+
+/* Works for Chrome, Safari, Edge, Opera */
+/* hide the input number arrows */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Works for Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
 }

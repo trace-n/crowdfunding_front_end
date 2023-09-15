@@ -11,6 +11,7 @@ import ContactPage from './pages/ContactPage.jsx';
 import LoginPage from './pages/LoginPage.jsx';
 import SignupPage from './pages/SignupPage.jsx';
 import EditUserPage from './pages/EditUserPage.jsx';
+import MyProjectsPage from './pages/MyProjectsPage';
 import UserPage from './pages/UserPage';
 // import CreatePledgePage from './pages/CreatePledgePage.jsx';
 import CreateProjectPage from './pages/CreateProjectPage.jsx';
@@ -31,8 +32,10 @@ const router = createBrowserRouter([
       { path: '/contact', element: <ContactPage /> },
       { path: '/login', element: <LoginPage /> },
       { path: '/signup', element: <SignupPage /> },
-      // { path: '/users/:id', element: <EditUserPage /> },
-      { path: '/users/:id', element: <UserPage /> },
+      { path: '/users/:id', element: <EditUserPage /> },
+      { path: '/projects', element: <MyProjectsPage /> },
+
+      // { path: '/users/:id', element: <UserPage /> },
     ],
   },
 ]);

@@ -3,7 +3,7 @@ import './style.css';
 
 const ProjectCard = (props) => {
     const { projectData } = props;
-    const projectLink = `project/${projectData.id}`;
+    const projectLink = `/project/${projectData.id}`;
 
     return (
         <div className='project-card'>

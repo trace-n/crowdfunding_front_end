@@ -5,11 +5,13 @@ import { useState } from 'react';
 import getUser from '../../api/get-user';
 import { useAuth } from '../../hooks/use-auth';
 
-const GetUserForm = (props) => {
+const UserForm = (props) => {
 
+    const mode = props.mode;
     // const navigate = useNavigate();
     // const { register } useformContext;
     const {auth, setAuth} = useAuth();
+    const {mode, setMode}
 
     const userId = props.userId;
     // console.log("id from the create pledge form", projectId);
@@ -88,4 +90,4 @@ const GetUserForm = (props) => {
     );
 }
 
-export default EditUserForm;
+export default UserForm;

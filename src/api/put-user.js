@@ -11,7 +11,7 @@ async function putUser(userId, firstName, lastName, email, image ) {
             'first_name': firstName,
             'last_name': lastName,
             'email': email,
-            'url': url,
+            'image': image,
         }),
     });
 

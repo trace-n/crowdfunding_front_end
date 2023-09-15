@@ -14,24 +14,20 @@ import postPledge from '../api/post-pledge';
 const ProjectPage = () => {
 
     const {auth, setAuth} = useAuth();
-
-
     // use hook in react router called `useParams` to get id from URL to pass to useProject hook
-
     const { id } = useParams();
-
-    // useProject returns 3 params
+    // rename the parameters for unique reference 
+    const { users, isLoading: isLoadingUsers, error: errorUsers } = useUsers();
     const { project, pledges, isLoading: isLoadingProject, error: errorProject, setPledges } = useProject(id);
 
     const [pledge, setPledge] = useState({
-        amount: '',
+        id: '',
+        supporter: auth.id,
+        amount: '10', // initial state default value 10
         comment: '',
-        anonymous: '',
+        anonymous: false,
         project: '',
     });
-
-    // rename the parameters for unique reference 
-    const { users, isLoading: isLoadingUsers, error: errorUsers } = useUsers();
 
     if (isLoadingProject || isLoadingUsers) {
         return (<p>LOADING...</p>);
@@ -48,7 +44,7 @@ const ProjectPage = () => {
     // information for total value of pledges and progress
     // if the project has ended, otherwise how many days are left til project ends
     const numberPledges = (pledges).length;
-    const valuePledges = pledges.reduce((total, pledge) => total + pledge.amount, 0);    
+    const valuePledges = pledges.reduce((total, pledge) => total + parseInt(pledge.amount), 0);    
     const today = Date.parse(new Date());
     const endDate = Date.parse(project.date_end);
     
@@ -72,7 +68,7 @@ const ProjectPage = () => {
     } 
 
     const handleChange = (event) => {
-        // const { id, value } = event.target;
+        console.log("evt",event.target);
         // debugger
 
         if ( event.target.id == 'anonymous') {
@@ -91,9 +87,8 @@ const ProjectPage = () => {
         
     };
 
-    const handleSubmit = (event) => {
-        debugger
-        // event.preventDefault(); // why is this preventing the submit for Donate Create pledge?
+    const handleSubmit = (id, event) => {
+        event.preventDefault(); 
         if (pledge.amount && pledge.comment) {
             if (pledge) {
 
@@ -110,32 +105,23 @@ const ProjectPage = () => {
                     pledge.anonymous,
                     pledge.project,
                 ).then((response) => {
-                    console.log("before new pledges",newPledges);
+                    pledge.id = response.id;
                     const newPledges = [...pledges, pledge];
-                    
                     setPledges(newPledges);
-                    console.log("after pledges",pledges);                    
-                    // navigate(`project/${projectId}`);
                 });
             }
         } 
     };
 
     const deleteSinglePledge = (pledgeId) => {
-        // console.log(" onclick delete testinglepledge event called");
         // event.preventDefault();
         if (pledgeId) {
             deletePledge(
                 pledgeId
             ).then((response) => {
-                // console.log(response);
-                // console.log("pledgeid", pledgeId)
-                // console.log("before pledges",pledges);
                 const filteredPledges = pledges.filter((pledge) => pledge.id !== pledgeId);
-                // console.log("fitlered pledges",filteredPledges);
                 setPledges(filteredPledges);
-                // console.log("after pledges",pledges);
-            }); //end deletePledge
+            }); 
         }
     }; //end deleteSinglePledge
 
@@ -181,15 +167,18 @@ const ProjectPage = () => {
                 </div>
                 <ul>
                     {pledges.map((pledgeData, key) => {
+                        // console.log("users",users);
+                        // console.log("pledgeData.supporter",pledgeData.supporter);
+                        // const currentUser = users.find(user => user.id === pledgeData.supporter);
+                        // console.log("currentUser",currentUser);
                         return (
                             <li key={key}>
                                 ${pledgeData.amount.toLocaleString()} from {pledgeData.supporter}
-                                {users.filter(user => user.id === pledgeData.supporter)[0].username}
+                                {/* {currentUser.username} */}
+                                {/* {users.filter(user => user.id === pledgeData.supporter)[0].username} */}
                                 {/* function to loop through users hook to find the support name for users get api */}
                                 {/* {pledgeData.amount} from {users.filter(user => user.id === pledgeData.supporter)[0].name}  */}
                                 { (auth.token && auth.id == pledgeData.supporter) ? (
-                                    // <button intent="danger" onClick={() => deletePledge(pledgeData.id)}>Delete
-                                    // </button>
                                     <DeletePledgeButton 
                                         pledgeId={pledgeData.id} 
                                         onClick={deleteSinglePledge} />

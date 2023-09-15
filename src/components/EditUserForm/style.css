@@ -22,19 +22,17 @@
     width: 90%;
     /* border-style: solid; */
     margin: auto;
-    /* justify-content: left; */
 }
 
-.user-form input {
-    border: none;
-    background-color: var(--background-color-offset);
+.user-form li input {
+    border-style: solid;
+    border-width: 1px;
+    background-color: var(--background-color);
 }
 
 .user-form li {
-    /* border-style: solid; */
     padding-left: 20px;
     list-style-type: none;
-    /* margin-left: 0px; */
     text-align: left;
 }
 

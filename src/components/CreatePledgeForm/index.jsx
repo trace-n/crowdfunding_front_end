@@ -57,16 +57,17 @@ const CreatePledgeForm = (props) => {
         // <form className='donate-form' onSubmit={handleSubmit}>
         // onSubmit - change this to be a function that references the props.onClick property. 
         // otherwise this ends up calling the function during referecne of this component in a parent
-        <form className='donate-form' onSubmit={() => props.onClick(projectId)}>
+        <form className='donate-form' onSubmit={(event) => props.onClick(projectId,event)}>
             <div>
                 {/* <h3 className='login-text'>DONATE</h3> */}
                 <label htmlFor='amount'>Amount* $</label>
                 <input 
                     type='number'         
                     id='amount' 
-                    placeholder='10'
+                    min='1'
+                    // placeholder='10'
                     // use defaultValue instead of value so the value can be changed
-                    // defaultValue='10'
+                    defaultValue='10'
                     // onChange = {handleChange}
                     onChange={props.onChange}
                     required

@@ -24,7 +24,6 @@ const HomePage = () => {
     }
 
     if (errorStats) {
-        console.log(errorStats.message);
         return (<p>{errorStats.message}</p>);
     }    
 
@@ -39,12 +38,12 @@ const HomePage = () => {
     // const pledge_amount_formatted = parseInt(statistics.pledge_amount).toLocaleString();
 
     // after login, reroute to home, take username and store the user Id so that it can be used
-    console.log("auth",auth);
+    // console.log("auth",auth);
     if (auth.token) {
         let userId = '';
         if (auth.username){
             userId = users.filter(user => user.username === auth.username)[0].id;
-            console.log("userid", userId);
+            // console.log("userid", userId);
         }
 
     window.localStorage.setItem('id', userId);
