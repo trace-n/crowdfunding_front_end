@@ -7,9 +7,9 @@ import { useParams } from 'react-router-dom';
 const EditUserPage = () => {
 
     const {auth, setAuth} = useAuth();
-    const { userId } = useParams();
-    console.log('userid',userId);
-    console.log("auth id",auth.id);
+    const { id } = useParams();
+    // console.log('userid',id);
+    // console.log("auth id",auth.id);
     
     return (
 
@@ -18,7 +18,7 @@ const EditUserPage = () => {
                 <>
                     <h3 className='login-text'>ACCOUNT</h3>    
                         {/* <EditUserForm userId={auth.id}/> */}
-                        <EditUserForm userId={userId}/>
+                        <EditUserForm userId={id}/>
                 </>
                 ) : (
                     <LoginForm />

@@ -10,6 +10,7 @@ import { useState } from 'react';
 import useUsers from '../hooks/use-users';
 import deletePledge from '../api/del-pledge';
 import postPledge from '../api/post-pledge';
+import EditPledgeButton from '../components/EditPledgeButton';
 
 const ProjectPage = () => {
 
@@ -68,7 +69,7 @@ const ProjectPage = () => {
     } 
 
     const handleChange = (event) => {
-        console.log("evt",event.target);
+        // console.log("evt",event.target);
         // debugger
 
         if ( event.target.id == 'anonymous') {
@@ -125,6 +126,9 @@ const ProjectPage = () => {
         }
     }; //end deleteSinglePledge
 
+    let currentUser = users.find(user => user.id === project.owner); 
+    //  users.find(user => user.id === pledgeData.supporter);
+
     return (
         <div>
             <div>
@@ -159,7 +163,9 @@ const ProjectPage = () => {
                 </div>    
             <div className='project-detail'>
             <section>
-                <h3>Created By: {project.owner} {users.filter(user => user.id === project.owner)[0].username}</h3>
+                <h3>Created By: {project.owner} {currentUser.username}
+                {/* {users.filter(user => user.id === project.owner)[0].username} */}
+                </h3>
             <p>{project.description}</p>
                 <h3>Pledges:</h3>
                 <div>
@@ -168,20 +174,26 @@ const ProjectPage = () => {
                 <ul>
                     {pledges.map((pledgeData, key) => {
                         // console.log("users",users);
-                        // console.log("pledgeData.supporter",pledgeData.supporter);
-                        // const currentUser = users.find(user => user.id === pledgeData.supporter);
+                        console.log("pledgeData.supporter",pledgeData.supporter);
+                        currentUser = users.find(user => user.id === parseInt(pledgeData.supporter));
                         // console.log("currentUser",currentUser);
                         return (
                             <li key={key}>
                                 ${pledgeData.amount.toLocaleString()} from {pledgeData.supporter}
-                                {/* {currentUser.username} */}
+                                {currentUser.username}
                                 {/* {users.filter(user => user.id === pledgeData.supporter)[0].username} */}
                                 {/* function to loop through users hook to find the support name for users get api */}
                                 {/* {pledgeData.amount} from {users.filter(user => user.id === pledgeData.supporter)[0].name}  */}
                                 { (auth.token && auth.id == pledgeData.supporter) ? (
+                                    <>
+                                    <EditPledgeButton 
+                                        pledgeId={pledgeData.id} 
+                                    />
                                     <DeletePledgeButton 
                                         pledgeId={pledgeData.id} 
                                         onClick={deleteSinglePledge} />
+                                    </>
+
                                 ) : null }
                             </li>
                         );
