@@ -36,6 +36,7 @@ const router = createBrowserRouter([
       { path: '/users/:id', element: <EditUserPage /> },
       { path: '/projects', element: <MyProjectsPage /> },
       { path: '/pledges/:id', element: <EditPledgePage /> },
+      { path: '/editProject/:id', element: <EditProjectPage /> },  
 
       // { path: '/users/:id', element: <UserPage /> },
     ],

@@ -93,12 +93,7 @@ const ProjectPage = () => {
         if (pledge.amount && pledge.comment) {
             if (pledge) {
 
-                // handled by handleChange function
-                // if ( !pledge.anonymous ) {
-                //     pledge.anonymous = false;
-                // }
-
-                pledge.project = id; //projectId;
+                pledge.project = id; 
 
                 postPledge(
                     pledge.amount,
@@ -127,6 +122,8 @@ const ProjectPage = () => {
     }; //end deleteSinglePledge
 
     let currentUser = users.find(user => user.id === project.owner); 
+
+    // console.log('type of auth id', typeof(auth.id), 'type of proj owner', typeof(project.owner));
     //  users.find(user => user.id === pledgeData.supporter);
 
     return (
@@ -145,10 +142,29 @@ const ProjectPage = () => {
                 <h2 className='project-h2'>{numberPledges.toLocaleString()}</h2>
                 <h3>Pledges</h3>                
                 <h2 className='project-h2'>{`${ !projectEnded ? daysToGo : 'Project Ended'}`}</h2>
-                <h3>{`${ today < endDate ? 'Days to Go': ''}`}</h3>          
-                { (!projectEnded) ? ( 
+                <h3>{`${ today < endDate ? 'Days to Go': ''}`}</h3>    
+
+                { (auth.token) ? ( 
                     <>
-                { (auth.token) ? (
+                { (!projectEnded && parseInt(auth.id) !== project.owner) ? (
+                    
+                    <CreatePledgeForm 
+                        projectId={id} 
+                        onClick={handleSubmit}
+                        onChange={handleChange}
+                    />   
+                ) : ( 
+                    null
+                )}   </>
+                ) :  ( 
+                <Link to='/login' 
+                className='login-button'>DONATE</Link>
+                 ) }
+                        
+                {/* { (!projectEnded) ? ( 
+                    <>
+                { (auth.token && parseInt(auth.id) !== project.owner) ? (
+
                     <CreatePledgeForm 
                         projectId={id} 
                         onClick={handleSubmit}
@@ -158,7 +174,7 @@ const ProjectPage = () => {
                     <Link to='/login' 
                     className='login-button'>DONATE</Link>
                 )}   </>
-                ) : null }  
+                ) : null }   */}
                 </section>
                 </div>    
             <div className='project-detail'>

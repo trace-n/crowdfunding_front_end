@@ -9,7 +9,7 @@ import LoginForm from '../LoginForm';
 import { useParams } from 'react-router-dom';
 
 
-const EditUserForm = () => {
+const EditProjectForm = () => {
 
     const {auth, setAuth} = useAuth();
     // const userId = props.userId;
@@ -227,4 +227,4 @@ const EditUserForm = () => {
     ); */
 } 
 
-export default EditUserForm;
+export default EditProjectForm;

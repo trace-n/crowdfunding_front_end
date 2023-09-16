@@ -3,17 +3,33 @@ import { useState } from 'react';
 import postLogin from '../../api/post-login';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../hooks/use-auth';
-import useUser from '../../hooks/use-user';
+import useUsers from '../../hooks/use-users';
 
 const LoginForm = () => {
 
     const navigate = useNavigate();
     const {auth, setAuth} = useAuth();
 
+    const { users, isLoading: isLoadingUsers, error: errorUsers } = useUsers();
+
     const [credentials, setCredentials] = useState({
         username: '',
         password: '',
     });
+    
+    let userId = '';
+
+    if (isLoadingUsers) {
+        return (<p>LOADING...</p>);
+    }
+
+    if (errorUsers) {
+        return (<p>{errorUsers.message}</p>);
+    }
+
+
+
+    window.localStorage.setItem('id', userId);
 
     const handleChange = (event) => {
         const { id, value } = event.target;
@@ -30,13 +46,24 @@ const LoginForm = () => {
                 credentials.username,
                 credentials.password
             ).then((response) => {
+                // console.log('credentials uname', credentials.username);
+                if (credentials.username) {
 
+                    // if (auth.username){
+                        userId = users.find(user => user.username === credentials.username).id;
+                        // console.log("userid", userId);
+                    // }
+                }
                 //  Set the username on then on the main landing page, can check the name of user and id from get all users for using in the nav bar
                 window.localStorage.setItem('username', credentials.username);
                 window.localStorage.setItem('token', response.token);
+
+                // console.log('resp token', response.token);
+                // console.log('credentials uname', credentials.username);
                 setAuth({
                     token: response.token,
                     username: credentials.username,
+                    id: userId,
                 });
                 // console.log("auth",auth);
                 // Navigate back to home page
