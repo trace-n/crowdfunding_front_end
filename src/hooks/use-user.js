@@ -21,5 +21,5 @@ export default function useUser(userId) {
             // Pass userId to dependency array so hook will re-run if userId changes 
     }, [userId]);
 
-    return { user, isLoading, error };
+    return { user, isLoading, error, setUser };
 }

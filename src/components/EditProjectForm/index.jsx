@@ -66,7 +66,12 @@ const EditProjectForm = () => {
         // } 
     };
 
-    console.log('project', project )
+    // console.log('project', project )
+    // const endDate = (project.date_end);
+    // console.log('project end date', typeof(project.date_end), project.date_end);
+    const dateStrip = project.date_end.substr(0, 10);
+    // console.log(dateStrip);
+
 
     if ( auth.token ) {
         if (auth.id == project.owner) {
@@ -76,9 +81,9 @@ const EditProjectForm = () => {
                     <>
                         
                         {/* <img src={user.image} alt='avatar' className='avatar' />                           */}
-                            <h3>'Edit Project'</h3>
+                            <h3>EDIT PROJECT</h3>
                             <h3 className='login-text'>Welcome {project.owner}</h3> 
-                <form className='project-form' onSubmit={handleSubmit}>
+                <form className='user-form' onSubmit={handleSubmit}>
         
                     <li className='label'>
                         <label htmlFor='title'>Title</label>
@@ -87,7 +92,7 @@ const EditProjectForm = () => {
                             type='text' 
                             required
                             id='title' 
-                            // name='first_name'
+                            // size='35'
                             defaultValue={project.title}
                             onChange = {handleChange}
                         />
@@ -96,59 +101,62 @@ const EditProjectForm = () => {
                         <li className='label'>
                         <label htmlFor='description'>Description</label>
                         </li><li className='label'>
-                        <input 
+                        {/* <input  */}
+                        <textarea
                             type='text' 
                             id='description' 
-                            // required
+                            required
+                            rows='10'
+                            cols='36'
                             defaultValue={project.description}
                             onChange = {handleChange}
                             // className='anon-button'
                         />
                         </li>
-                                
-                                <li className='label'>
-                                    <label htmlFor='goal'>goal</label>
-                                </li><li>
-                                    <input 
-                                        type='number' 
-                                        id='goal' 
-                                        // placeholder='Email' 
-                                        onChange = {handleChange}
-                                        required
-                                        // disabled
-                                        defaultValue={project.goal}    
-                                        min='1'
-                                        // size='30'                            
-                                    />
-                                </li> 
-                                <li className='label'>
-                                <label htmlFor='image'>Image</label>
-                                </li><li>
-                                    <input 
-                                        type='url' 
-                                        id='image' 
-                                        // placeholder='Image URL' 
-                                        onChange = {handleChange}
-                                        required
-                                        // disabled
-                                        defaultValue={project.image}
-                                        size='30'
-                                    />
-                                </li> 
-                                <li className='label'>
-                                <label htmlFor='date_end'>End Date</label>
-                                </li><li>
-                                    <input 
-                                        type='date' 
-                                        id='date_end' 
-                                        // placeholder='Image URL' 
-                                        onChange = {handleChange}
-                                        required
-                                        // disabled
-                                        defaultValue={project.date_end}
-                                        // size='30'
-                                    />
-                                </li> 
+
+                        <li className='label'>
+                        <label htmlFor='image'>Image</label>
+                        </li>
+                        <li>
+                            <input 
+                                type='url' 
+                                id='image' 
+                                // placeholder='Image URL' 
+                                onChange = {handleChange}
+                                required
+                                // disabled
+                                defaultValue={project.image}
+                                // size='35'
+                            />
+                        </li> 
+                        <li className='label'>
+                            <label htmlFor='goal'>Goal $</label>
+                        </li><li>
+                            <input 
+                                type='number' 
+                                id='goal' 
+                                // placeholder='Email' 
+                                onChange = {handleChange}
+                                required
+                                // disabled
+                                defaultValue={project.goal}    
+                                min='1'
+                                // size='30'                            
+                            />
+                        </li>                                 
+                        <li className='label'>
+                        <label htmlFor='date_end'>End Date</label>
+                        </li><li>
+                            <input 
+                                type='date' 
+                                id='date_end' 
+                                onChange = {handleChange}
+                                required
+                                // disabled
+                                defaultValue={dateStrip}
+                                // size='30'
+                            />
+                        </li> 
                                                                       
                     <button type='submit'>SAVE</button>
                 </form>

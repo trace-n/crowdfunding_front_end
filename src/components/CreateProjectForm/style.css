@@ -1,11 +1,19 @@
 .project-form {
     font-family: 'Bellota', Arial, sans-serif;  
     background-color: var(--background-color-offset);
-    max-width: 400px;
-    height: 470px;
+    max-width: 500px;
+    /* height: 470px; */
     margin: 20px auto;
     color: var(--offset-text);
     padding-top: 4px;
+}
+
+.project-form p {
+    font-family: 'Bellota Text', Arial, sans-serif; 
+    text-align: left; 
+    width: 80%;
+    margin: auto;
+    padding-bottom: 20px;
 }
 
 .project-form div {
@@ -15,11 +23,24 @@
 }
 
 .project-form input {
-    height: 32px;
-    margin-bottom:20px;
+    height: 25px;
+    margin-bottom:8px;
     width: 80%;
     padding-left: 12px;
+    border-color: var(--light-border);
+    border-style: solid;
+    border-width: 1px;
 }
+
+.project-form textarea {
+    margin-bottom:8px;
+    width: 80%;
+    padding-left: 12px;
+    border-color: var(--light-border);
+    border-style: solid;
+    border-width: 1px;
+}
+
 
 .project-form button {
     width: 68%;

@@ -45,6 +45,7 @@ const CreateProjectForm = () => {
         <form className='project-form' onSubmit={handleSubmit}>
             <div>
                 <h3 className='project-text'>CREATE PROJECT</h3>
+                <p>Got an idea? Start a new project for your idea for crowdfunding</p>  
                 {/* <label htmlFor='username'>Username:</label> */}
                 <input 
                     type='text' 
@@ -55,12 +56,15 @@ const CreateProjectForm = () => {
                 />
             </div>
             <div>
-                <input 
+                {/* <input  */}
+                <textarea
                     type='text' 
                     id='description' 
                     placeholder='Description' 
                     onChange = {handleChange}
                     required
+                    rows='10'
+                    cols='35'                    
                 />
             </div>
             <div>

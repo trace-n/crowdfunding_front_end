@@ -14,6 +14,7 @@
     --main-divider: lightblue;
     --background-color-offset: white;
     --main-text-dark: #82BEE6;
+    --light-border: #9fcae6;
 }
 
 
@@ -71,3 +72,20 @@ h3 {
     }
 }
 
+#project-list {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    column-gap: 16px;
+    row-gap: 16px;
+    width: 100%;
+    margin: auto;
+    /* border-style: solid; */
+    /* border-color: red; */
+    /* text-align: center; */
+}
+
+.home-box {
+    margin: auto;
+    width: 70%;
+    /* border-style: solid; */
+}

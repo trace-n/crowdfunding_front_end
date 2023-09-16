@@ -14,9 +14,10 @@ const EditUserForm = () => {
     const {auth, setAuth} = useAuth();
     // const userId = props.userId;
     const { id } = useParams();
-    const { user, isLoading: isLoadingUser, error: errorUser } = useUser(id);
+    const { user, isLoading: isLoadingUser, error: errorUser, setUser } = useUser(id);
     // set initial userForm state to get user hook 
-    const[userForm, setUserForm] = useState(user);
+    // const[userForm, setUserForm] = useState(user);
+
 
     if (isLoadingUser) {
         return (<p>LOADING...</p>);
@@ -32,8 +33,8 @@ const EditUserForm = () => {
     
     const handleChange = (event) => {
         const { id, value } = event.target;
-        setUserForm((prevUserForm) => ({
-            ...prevUserForm,
+        setUser((prevUser) => ({
+            ...prevUser,
             [id]: value,
         }));
         
@@ -48,10 +49,10 @@ const EditUserForm = () => {
             // if (pledge) {
                 putUser(
                     id,
-                    userForm.first_name,
-                    userForm.last_name,
-                    userForm.email,
-                    userForm.image,
+                    user.first_name,
+                    user.last_name,
+                    user.email,
+                    user.image,
                 ).then((response) => {
                     // navigate(`project/${projectId}`);
                     console.log("user details updated");
@@ -69,78 +70,80 @@ const EditUserForm = () => {
                 <div className='user-page'>
                     <>
                         
-                        <img src={user.image} alt='avatar' className='avatar' />                          
-                            <h3>'Edit User'</h3>
-                            <h3 className='login-text'>Welcome {user.username}</h3> 
-                <form className='user-form' onSubmit={handleSubmit}>
-        
-                    <li className='label'>
-                        <label htmlFor='first_name'>First Name</label>
-                        </li><li className='label'>
-                        <input 
-                            type='text' 
-                            required
-                            id='first_name' 
-                            // name='first_name'
-                            defaultValue={user.first_name}
-                            onChange = {handleChange}
-                        />
-                        </li>
-        
+                    <img 
+                        src={user.image} 
+                        alt='avatar' 
+                        className='avatar' 
+                    />                          
+                    <h3>EDIT USER PROFILE</h3>
+                    <h3 className='login-text'>Welcome {user.username}</h3> 
+                    <form className='user-form' onSubmit={handleSubmit}>
+            
                         <li className='label'>
-                        <label htmlFor='last_name'>Last Name</label>
-                        </li><li className='label'>
-                        <input 
-                            type='text' 
-                            id='last_name' 
-                            required
-                            defaultValue={user.last_name}
-                            onChange = {handleChange}
-                            // className='anon-button'
-                        />
-                        </li>
-                                
-                                <li className='label'>
-                                    <label htmlFor='email'>Email</label>
-                                </li><li>
-                                    <input 
-                                        type='email' 
-                                        id='email' 
-                                        placeholder='Email' 
-                                        onChange = {handleChange}
-                                        required
-                                        // disabled
-                                        defaultValue={user.email}    
-                                        size='30'                            
-                                    />
-                                </li> 
-                                <li className='label'>
-                                <label htmlFor='image'>Image</label>
-                                </li><li>
-                                    <input 
-                                        type='url' 
-                                        id='image' 
-                                        placeholder='Image URL' 
-                                        onChange = {handleChange}
-                                        required
-                                        // disabled
-                                        defaultValue={user.image}
-                                        size='30'
-                                    />
-                                </li>     
-                    <button type='submit'>SAVE</button>
-                </form>
-
-                        </>
-                        </div>
-                        );
+                            <label htmlFor='first_name'>First Name</label>
+                            </li><li className='label'>
+                            <input 
+                                type='text' 
+                                required
+                                id='first_name' 
+                                // name='first_name'
+                                defaultValue={user.first_name}
+                                onChange = {handleChange}
+                                size='30'
+                            />
+                            </li>
+            
+                            <li className='label'>
+                            <label htmlFor='last_name'>Last Name</label>
+                            </li><li className='label'>
+                            <input 
+                                type='text' 
+                                id='last_name' 
+                                required
+                                defaultValue={user.last_name}
+                                onChange = {handleChange}
+                                size='30'
+                                // className='anon-button'
+                            />
+                            </li>
+                                    
+                            <li className='label'>
+                                <label htmlFor='email'>Email</label>
+                            </li><li>
+                                <input 
+                                    type='email' 
+                                    id='email' 
+                                    placeholder='Email' 
+                                    onChange = {handleChange}
+                                    required
+                                    // disabled
+                                    defaultValue={user.email}    
+                                    size='30'                            
+                                />
+                            </li> 
+                            <li className='label'>
+                            <label htmlFor='image'>Image</label>
+                            </li><li>
+                                <input 
+                                    type='url' 
+                                    id='image' 
+                                    placeholder='Image URL' 
+                                    onChange = {handleChange}
+                                    required
+                                    defaultValue={user.image}
+                                    size='30'
+                                />
+                            </li>     
+                        <button type='submit'>SAVE</button>
+                    </form>
+                    </>
+                </div>
+            );
         } else {
             return (
                 <p>Not authorised</p>
             );
         }
-
-
     } else {
         return (
             <div>

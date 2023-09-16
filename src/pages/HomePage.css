@@ -1,14 +1,11 @@
-#project-list {
+/* #project-list {
     display: grid;
     grid-template-columns: auto auto auto;
     column-gap: 16px;
     row-gap: 16px;
     width: 100%;
     margin: auto;
-    /* border-style: solid; */
-    /* border-color: red; */
-    /* text-align: center; */
-}
+} */
 
 .statistics-card {
     display: grid;
@@ -30,15 +27,9 @@
     margin-bottom: 10px;
 }
 
-.home-box {
-    margin: auto;
-    width: 70%;
-    /* border-style: solid; */
-}
-
 .headline-image {
     margin-top: 40px;
-    width: 40%;
+    width: 30%;
     object-fit: contain;
     vertical-align: middle;
 }

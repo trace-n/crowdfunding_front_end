@@ -18,6 +18,7 @@
 .project-card a {
     text-decoration: none;
     color: var(--offset-text);
+    padding: 0px;
 }
 
 .project-card img {
@@ -29,9 +30,15 @@
 .project-card h3 {
     padding: 8px 8px;
     margin: 8px 8px;
+    /* border-style: solid; */
+    
 }
 
 .small-icons {
-    height: 30px;
+    height: 20px;
     vertical-align: middle;
+    padding-left: 8px;
+    /* text-align-last: right; */
+    /* text-align: justify;
+    justify-content: right; */
 }

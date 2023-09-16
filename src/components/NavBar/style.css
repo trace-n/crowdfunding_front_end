@@ -11,14 +11,16 @@
 .nav-bar ul {
     display: flex;   
     flex-direction: row; 
-    justify-content: space-between;
+    /* justify-content: center; */
     align-items: center;
+    /* border-style: solid; */
 }
 
 .nav-bar li {
     vertical-align: middle;
-    padding: 0px 56px;
+    /* padding: 0px 10px; */
     list-style-type: none;
+    /* border-style: solid; */
 }
 
 .nav-bar a {
@@ -26,11 +28,13 @@
     text-wrap: nowrap;
     font-weight: bold;
     padding: 4px 20px;
+    /* width: 10px; */
     cursor: url(../../assets/fundling-website-favicon-black.png) 40 40, move, auto;
 }
 
 .nav-bar a:hover {
     background-color: var(--main-button-hover);
+    border-radius: 2px;
 }
 
 .image-nav:hover {
@@ -53,12 +57,13 @@
     border-radius: 3px;
     border-width: 2px;
     border-color: var(--main-button);
-    padding: 4px 20px;
+    /* padding: 4px 20px; */
     text-wrap: nowrap;
 }
 
 .login-button:hover {
     background-color: var(--main-button-hover);
+    padding: 0px 20px;
 }
 
 .left-nav {
@@ -82,4 +87,10 @@
     flex-direction: row; 
     /* border-style: solid; */
     align-items: center;
+}
+
+.user-svg {
+    height: 30px;
+    vertical-align: middle;
+    padding-right: 5px;
 }

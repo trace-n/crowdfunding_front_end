@@ -1,4 +1,4 @@
-// import './HomePage.css'
+import './HomePage.css'
 // import MyProjects from "../components/MyProjects";
 import ProjectCard from "../components/ProjectCard";
 import { useAuth } from "../hooks/use-auth";
@@ -23,7 +23,7 @@ const MyProjectsPage = () => {
     const filteredProjects = projects.filter((project) => project.owner == userId );
 
         return (
-            <div>
+            <div className='home-box'>
             { auth.token ? (
                 <>            
                     <div id='project-list'>            

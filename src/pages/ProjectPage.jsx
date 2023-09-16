@@ -195,7 +195,7 @@ const ProjectPage = () => {
                         // console.log("currentUser",currentUser);
                         return (
                             <li key={key}>
-                                ${pledgeData.amount.toLocaleString()} from {pledgeData.supporter}
+                                {/* ${pledgeData.amount.toLocaleString()} from {pledgeData.supporter} */}
                                 {currentUser.username}
                                 {/* {users.filter(user => user.id === pledgeData.supporter)[0].username} */}
                                 {/* function to loop through users hook to find the support name for users get api */}

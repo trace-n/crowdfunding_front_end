@@ -6,7 +6,7 @@ import fundlingLogoCol from '../../assets/fundling-website-favicon-color.png';
 const Footer = () => {
     return (
         <div> 
-            <nav className='footer'>
+            <footer className='footer'>
                 <ul>
 
                     <li>
@@ -14,12 +14,20 @@ const Footer = () => {
                     </li>      
                     <li>
                         <Link to='/' className='logo-text'>© FUNDLING 2023<img src={fundlingLogoCol} alt='fundling icon' className='image-footer' /></Link>
-                    </li>                    
+                    </li>     
+                    <li>
+                        <p>
+                            SITE CREATED WITH REACT AND DRF+
+                        </p>
+                    </li>   
                 </ul>
-            </nav>
+                <ul>
+
+                </ul> 
+            </footer>
             {/* <Outlet /> */}
         </div>
     );
 }
 
-export default Footer;
+export default Footer;0
