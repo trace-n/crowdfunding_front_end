@@ -4,7 +4,8 @@ import { useAuth } from '../../hooks/use-auth';
 
 const ProjectCard = (props) => {
     const { projectData } = props;
-    const projectLink = `/project/${projectData.id}`;
+    const projectLink = `/editProject/${projectData.id}`;
+    // const projectLink = `/project/${projectData.id}`;
 
     // let mode = 'create';
 

@@ -7,14 +7,12 @@ by Tracey Nguyen
 
 ## Submission Documentation
 
-Deployed Frontend React Project: [https://fundling.netlify.app/] (https://fundling.netlify.app/)
+### Deployed Frontend React Project
+* [https://fundling.netlify.app/] (https://fundling.netlify.app/)
 
 ## Features
 
-### Release 1  
-* Deployed Backend DRF Project: Refer to github [https://github.com/trace-n/crowdfunding_back_end] (https://github.com/trace-n/crowdfunding_back_end)
-
-### Release 2 - front end features include:
+### React JS - front end features include:
 
 * [X] Be separated into two distinct projects: an API built using the Django RestFramework and a website built using React.
 * [X] Have a  name, bonus points if it includes a pun and/or missing vowels. See https://namelix.com/ for inspiration.  
@@ -70,21 +68,29 @@ Deployed Frontend React Project: [https://fundling.netlify.app/] (https://fundli
 * [] Change currency/language
 * [] Remind me
 * [] Like / Dislike
-* [] Percentage funded - display as graph
+* [X] Percentage funded - display as graph
 * [X] Days to go/ left for deadline
 * [] Last donation
 
-# Release 2 - Front End Website
 
 ## Wireframes
+
 {{ Insert your wireframes }}
 
-image info goes here
+![Wireframe of website](./src/assets/React_JS_Crowdfunding_Wireframe.png "Wireframe")
 
-## Colour Scheme
+## Styling
+
+### Colour Scheme
 {{ Insert your colour scheme }}
 
-image info goes here
+![image info goes here](./docs/image.png)
 
-## Fonts
+### Fonts
 {{ outline your heading & body font(s) }}
+
+
+## Reference
+
+### Deployed Backend  
+* Deployed Backend DRF Project: Refer to github [https://github.com/trace-n/crowdfunding_back_end] (https://github.com/trace-n/crowdfunding_back_end)

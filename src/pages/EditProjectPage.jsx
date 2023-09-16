@@ -5,7 +5,7 @@ import LoginForm from '../components/LoginForm';
 import EditProjectForm from '../components/EditProjectForm';
 import { useParams } from 'react-router-dom';
 
-const EditProject = () => {
+const EditProjectPage = () => {
 
     const {auth, setAuth} = useAuth();
     const { id } = useParams();
@@ -28,4 +28,4 @@ const EditProject = () => {
     ) 
 }
 
-export default EditProject;
+export default EditProjectPage;

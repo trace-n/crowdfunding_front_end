@@ -1,5 +1,5 @@
-async function putProject(id, amount, comment, anonymous, project ) {
-    const url = `${import.meta.env.VITE_API_URL}/pledges/${id}/`;
+async function putProject(id, title, description, goal, image, date_end ) {
+    const url = `${import.meta.env.VITE_API_URL}/projects/${id}/`;
     const userToken = window.localStorage.getItem('token');
 
     const response = await fetch(url, { method: 'PUT',
@@ -8,17 +8,18 @@ async function putProject(id, amount, comment, anonymous, project ) {
             'Authorization': 'Token ' + userToken,               
         },
         body: JSON.stringify({
-            'amount': amount,
-            'comment': comment,
-            'anonymous': anonymous,
-            'project': project,
+            title,
+            description,
+            goal,
+            image,
+            date_end,
         }),
     });
 
     if (!response.ok) {
         const fallbackError = `Error trying to update pledge`;
-
         const data = await response.json().catch(() => {
+
             throw new Error(fallbackError);
         });
         const errorMessage = data?.detail ?? fallbackError;
