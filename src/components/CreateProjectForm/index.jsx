@@ -1,14 +1,13 @@
 import './style.css';
 import { useState } from 'react';
-import postProject from '../../api/post-project';
+// import postProject from '../../api/post-project';
+import { postProject } from '../../api/projects';
 import { useNavigate } from 'react-router-dom';
-// import { useAuth } from '../hooks/use-auth';
 
 const CreateProjectForm = () => {
 
     const navigate = useNavigate();
-    // const {auth, setAuth} = useAuth();
-
+    
     const [project, setProject] = useState({
         title: '',
         description: '',
@@ -45,8 +44,6 @@ const CreateProjectForm = () => {
                 <h3>GOT AN IDEA?</h3>
                 <p className='project-text'>Get cracking and start a new project for your crowdfunding idea!</p>              
             <form className='project-form' onSubmit={handleSubmit}>
-
-                {/* <label htmlFor='username'>Username:</label> */}
                 <li className='label'>
                         <label htmlFor='title'>Title</label>
                         </li>
@@ -60,8 +57,6 @@ const CreateProjectForm = () => {
                         required
                     />
                 </li>
-            {/* <div> */}
-                {/* <input  */}
                 <li className='label'>
                         <label htmlFor='description'>Description</label>
                 </li>
@@ -70,7 +65,6 @@ const CreateProjectForm = () => {
                         className='form-textarea'
                         type='text' 
                         id='description' 
-                        // placeholder='Description' 
                         onChange = {handleChange}
                         required
                         rows='10'
@@ -85,7 +79,6 @@ const CreateProjectForm = () => {
                         className='form-input'
                         type='number' 
                         id='goal' 
-                        // placeholder='Goal' 
                         onChange = {handleChange}
                         required
                         min='1'
@@ -104,8 +97,6 @@ const CreateProjectForm = () => {
                         onChange = {handleChange}
                         required
                     />
-                {/* </div>                                         <div> */}
-                    {/* <label htmlFor='password'>Password:</label> */}
                 </li>    
                 <li className='label'>
                     <label htmlFor='date_end'>End Date</label>
@@ -120,7 +111,6 @@ const CreateProjectForm = () => {
                         required
                     />
                 </li>    
-            {/* </div> */}
                 <button type='submit'>CREATE</button>
             </form>
         </div>

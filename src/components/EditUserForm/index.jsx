@@ -1,7 +1,7 @@
 import './style.css';
 import { useState } from 'react';
-import putUser from '../../api/put-user';
-import useUser from '../../hooks/use-user';
+import { putUser } from '../../api/users';
+import { useUser } from '../../hooks/use-users';
 import { useAuth } from '../../hooks/use-auth';
 import LoginForm from '../LoginForm';
 import { useParams } from 'react-router-dom';
@@ -49,7 +49,6 @@ const EditUserForm = () => {
                     user.email,
                     user.image,
                 ).then((response) => {                   
-                    // console.log("user details updated");
                     setMessageBlock(true);
                 });
     };
@@ -67,7 +66,6 @@ const EditUserForm = () => {
                     <h3>EDIT USER PROFILE</h3>
                     <h3 className='login-text'>Welcome {user.username}</h3> 
                     <form className='user-form' onSubmit={handleSubmit}>
-            
                         <li className='label'>
                             <label htmlFor='first_name'>First Name</label>
                             </li>
@@ -82,7 +80,6 @@ const EditUserForm = () => {
                                     size='30'
                                 />
                             </li>
-            
                             <li className='label'>
                             <label htmlFor='last_name'>Last Name</label>
                             </li>
@@ -97,7 +94,6 @@ const EditUserForm = () => {
                                     size='30'
                                 />
                             </li>
-                                    
                             <li className='label'>
                                 <label htmlFor='email'>Email</label>
                             </li>
@@ -109,7 +105,6 @@ const EditUserForm = () => {
                                     placeholder='Email' 
                                     onChange = {handleChange}
                                     required
-                                    // disabled
                                     defaultValue={user.email}    
                                     size='30'                            
                                 />

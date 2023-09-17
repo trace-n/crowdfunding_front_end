@@ -1,13 +1,9 @@
 import './style.css';
-// import { useParams } from 'react-router-dom';
 import { useState } from 'react';
-// import getUser from '../../api/get-user';
-// import useUser from '../../hooks/use-user';
 import { useAuth } from '../../hooks/use-auth';
 import LoginForm from '../LoginForm';
-import putPledge from '../../api/put-pledge';
-// import getPledge from '../../api/get-pledge';
-import usePledge from '../../hooks/use-pledge';
+import { putPledge } from '../../api/pledges';
+import { usePledge } from '../../hooks/use-pledge';
 import { useParams } from 'react-router-dom';
 import Spinner from '../Spinner';
 import MessageCard from '../MessageCard';
@@ -21,12 +17,10 @@ const EditPledgeForm = () => {
     const { pledge, isLoading: isLoadingPledge, error: errorPledge, setPledge } = usePledge(id);
 
     if (isLoadingPledge) {
-        // return (<p>LOADING...</p>);
         return (<Spinner />)
     }
 
     if (errorPledge) {
-        // console.log("errorPledge", errorPledge);
         return (
             <MessageCard 
                 message={`Error with pledge - ${errorPledge.message}`} 
@@ -62,18 +56,14 @@ const EditPledgeForm = () => {
                 pledge.anonymous, 
                 pledge.project,
             ).then((response) => {
-                // console.log("pledge updated");
                 setMessageBlock(true);
             });
         }
-
     };
-
     
     if ( auth.token ) {
         if (auth.id == pledge.supporter) {
             return (
-                // changed the handleSubmit to form onSubmit rather than on button onClick to  use standard HTML user input required validation
                 <div className='user-page'>
                     <>
                             <h3>EDIT PLEDGE</h3>
@@ -89,7 +79,6 @@ const EditPledgeForm = () => {
                             required
                             id='amount' 
                             min='1'
-                            // name='first_name'
                             defaultValue={pledge.amount}
                             onChange = {handleChange}
                         />
@@ -105,7 +94,6 @@ const EditPledgeForm = () => {
                             required
                             defaultValue={pledge.comment}
                             onChange = {handleChange}
-                            // className='anon-button'
                         />
                         </li>
                                 
@@ -115,12 +103,8 @@ const EditPledgeForm = () => {
                             <input 
                                 type='checkbox' 
                                 id='anonymous' 
-                                // placeholder='Email' 
                                 onChange = {handleChange}
-                                // required
-                                // disabled
                                 defaultValue={pledge.anonymous}    
-                                // size='30'      
                                 className='anon-button'                   
                             />
                         </li> 
@@ -139,8 +123,6 @@ const EditPledgeForm = () => {
                 <MessageCard message='Not authorised to edit pledge' messageType='header' />
             );
         }
-
-
     } else {
         return (
             <div>
@@ -149,7 +131,5 @@ const EditPledgeForm = () => {
         );
     }
 }
-
- 
 
 export default EditPledgeForm;

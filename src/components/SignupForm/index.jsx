@@ -1,6 +1,6 @@
 import './style.css';
 import { useState } from 'react';
-import postSignup from '../../api/post-signup';
+import { postSignup } from '../../api/users';
 import { useNavigate } from 'react-router-dom';
 // import { useAuth } from '../hooks/use-auth';
 

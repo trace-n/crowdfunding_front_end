@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import getStatistics from '../api/get-statistics';
+import getStatistics from '../api/projects';
 
 export default function useStatistics() {
     const [statistics, setStatistics] = useState();
@@ -11,7 +11,6 @@ export default function useStatistics() {
             .then((statistics) => {
                 setStatistics(statistics);
                 setIsLoading(false);
-                // console.log(statistics, statistics.project_count)
             })
             .catch((error) => {
                 setError(error);

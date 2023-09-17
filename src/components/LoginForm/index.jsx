@@ -1,9 +1,9 @@
 import './style.css';
 import { useState } from 'react';
-import postLogin from '../../api/post-login';
+import { postLogin } from '../../api/users';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../hooks/use-auth';
-import useUsers from '../../hooks/use-users';
+import { useUsers } from '../../hooks/use-users';
 import Spinner from '../Spinner';
 import MessageCard from '../MessageCard';
 

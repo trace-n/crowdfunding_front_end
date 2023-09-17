@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import getUser from '../api/get-user';
+import getUser from '../api/users';
 
 export default function useUser(userId) {
     const [user, setUser] = useState();

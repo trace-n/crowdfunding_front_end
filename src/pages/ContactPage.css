@@ -1,0 +1,13 @@
+.map {
+    padding-bottom: 50%;
+    position: relative;
+    padding-top: 20px;
+}
+
+.map iframe {
+    height: 80%;
+    width: 80%;
+    left: 0;
+    top: 0;
+    position: absolute;
+}

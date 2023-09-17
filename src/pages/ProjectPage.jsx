@@ -2,14 +2,14 @@
 import './ProjectPage.css';
 import { useParams, Link } from 'react-router-dom';
 import { useAuth } from '../hooks/use-auth';
-import useProject from '../hooks/use-project';
+import { useProject } from '../hooks/use-projects';
+import { useUsers } from '../hooks/use-users';
 import ProgressBar from '../components/ProgressBar';
 import CreatePledgeForm from '../components/CreatePledgeForm';
 import DeletePledgeButton from '../components/DeletePledgeButton';
 import { useState } from 'react';
-import useUsers from '../hooks/use-users';
-import deletePledge from '../api/del-pledge';
-import postPledge from '../api/post-pledge';
+import { postPledge, deletePledge } from '../api/pledges';
+// import postPledge from '../api/pledges';
 import EditPledgeButton from '../components/EditPledgeButton';
 import Spinner from '../components/Spinner';
 import MessageCard from '../components/MessageCard';

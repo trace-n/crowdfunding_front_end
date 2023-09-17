@@ -2,7 +2,7 @@
 import './UserPage.css'
 import { useAuth } from '../hooks/use-auth';
 import LoginForm from '../components/LoginForm';
-import useUser from '../hooks/use-user';
+import useUser from '../hooks/use-users';
 import { useParams, Link } from 'react-router-dom';
 import { useState } from 'react';
 import Spinner from '../components/Spinner';

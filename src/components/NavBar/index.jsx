@@ -8,17 +8,8 @@ import { useAuth } from '../../hooks/use-auth';
 const NavBar = () => {
     
     const {auth, setAuth} = useAuth();
-    
-    // console.log('nav bar auth',auth);
-    // const userId = window.localStorage.getItem('id');
-
     const userId = auth.id;
-    // console.log("nav bar user", userId);
-    // const userLink = `users/${auth.id}`;
     const userLink = `users/${userId}`;
-    // console.log("auth", auth, "USERLINK===",userLink);
-
-
 
     const handleLogout = () => {
         window.localStorage.removeItem('token');
@@ -31,11 +22,9 @@ const NavBar = () => {
         });
     };
 
-
     return (
         <div> 
             <nav className='nav-bar'>
-                {/* <ul> */}
                     <div className='left-nav'>
                         <ul>
                             <li>
@@ -63,7 +52,6 @@ const NavBar = () => {
                         <>
                             <li>                        
                                 <Link to='/projects'> 
-                                 {/* className='login-button'> */}
                                     MY PROJECTS
                                 </Link>                        
                             </li>     

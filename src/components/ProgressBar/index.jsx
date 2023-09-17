@@ -1,32 +1,16 @@
 import React from 'react';
-import fundlingLogoCol from '../../assets/fundling-website-favicon-color.png';
 import './style.css';
 
 const ProgressBar = (props) => {
   const { bgcolor, completed } = props;
 
-// const containerStyles = {
-//   height: 20,
-//   width: '80%',
-//   backgroundColor: '#e0e0de',
-//   // background: 'linear-gradient(to right, #9FCAE6, #82BEE6)',
-//   borderRadius: 50,
-//   margin: '30px auto'
-// }
-
-// const labelStyles = {
-//   padding: 5,
-//   color: 'white',
-//   fontWeight: 'bold'
-// }
-
-const fillerStyles = {
-  height: '100%',
-  width: `${completed}%`,
-  backgroundColor: '#9FCAE6',
-  borderRadius: 'inherit',
-  textAlign: 'center',
-}
+  const fillerStyles = {
+    height: '100%',
+    width: `${completed}%`,
+    backgroundColor: '#9FCAE6',
+    borderRadius: 'inherit',
+    textAlign: 'center',
+  }
 
 
   return (

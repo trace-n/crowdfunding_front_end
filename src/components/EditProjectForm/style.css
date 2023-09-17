@@ -4,7 +4,7 @@
     margin-top: 30px;
 }
 
-.user-page {
+.project-page {
     font-family: 'Bellota Text', Arial, sans-serif;  
     background-color: var(--background-color-offset);
     max-width: 500px;
@@ -72,6 +72,6 @@
     background-color: var(--main-button-hover);
 }
 
-/* .text-input {
-
-} */
+.project-header h3 {
+    font-family: Arial, sans-serif;  
+}

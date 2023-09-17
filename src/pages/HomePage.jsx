@@ -1,8 +1,8 @@
 // import { allProjects } from '../data';
 import './HomePage.css';
-import useProjects from '../hooks/use-projects';
-import useStatistics from '../hooks/use-statistics';
-import useUsers from '../hooks/use-users';
+import { useProjects, useStatistics } from '../hooks/use-projects';
+// import useStatistics from '../hooks/use-projects';
+import { useUsers } from '../hooks/use-users';
 import { useAuth } from '../hooks/use-auth';
 import ProjectCard from '../components/ProjectCard';
 import fundlingLogoHeader from '../assets/logo-no-background-no-icon.png';

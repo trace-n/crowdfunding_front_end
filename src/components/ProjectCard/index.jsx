@@ -5,20 +5,12 @@ import { useAuth } from '../../hooks/use-auth';
 const ProjectCard = (props) => {
     const { projectData } = props;
     const {auth, setAuth} = useAuth();
-    // const status = props.status;
-
-    
+   
     const editProjectLink = `/editProject/${projectData.id}`;
     const projectLink = `/project/${projectData.id}`;
 
-
     const today = Date.parse(new Date());
     const endDate = Date.parse(projectData.date_end);
-    // let mode = 'create';
-
-    // if
-
-    // console.log(typeof(auth.id), typeof(projectData.owner));
 
     return (
         <div className='project-card'>

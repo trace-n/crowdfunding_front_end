@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import getPledge from '../api/get-pledge';
+import { getPledge } from '../api/pledges';
 
-export default function usePledge(pledgeId) {
+export function usePledge(pledgeId) {
     const [pledge, setPledge] = useState();
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState();

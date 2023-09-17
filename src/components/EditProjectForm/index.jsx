@@ -1,11 +1,10 @@
 import './style.css';
 import { useState } from 'react';
-// import useUser from '../../hooks/use-user';
 import { useAuth } from '../../hooks/use-auth';
 import { useParams } from 'react-router-dom';
 import LoginForm from '../LoginForm';
-import useProject from '../../hooks/use-project';
-import putProject from '../../api/put-project';
+import { useProject } from '../../hooks/use-projects';
+import { putProject } from '../../api/projects';
 import Spinner from '../Spinner';
 import MessageCard from '../MessageCard';
 
@@ -20,7 +19,6 @@ const EditProjectForm = () => {
     const { project, pledges, isLoading: isLoadingProject, error: errorProject, setProject, setPledges } = useProject(id);
     
     if (isLoadingProject) {
-        // return (<p>LOADING...</p>);
         return (<Spinner />)
     }
 
@@ -32,7 +30,6 @@ const EditProjectForm = () => {
                 messageType='header' 
             />
         );
-        // <p>{errorProject.message}</p>);
     }
 
     const handleChange = (event) => {
@@ -62,10 +59,10 @@ const EditProjectForm = () => {
     if ( auth.token ) {
         if (auth.id == project.owner) {
             return (
-                <div className='user-page'>
+                <div className='project-page'>
                     <>
-                    <h3>EDIT PROJECT</h3>
-                    <h3 className='login-text'>Welcome {project.owner}</h3> 
+                    <h3 className='project-header'>Need to finetune your project?</h3>
+                    {/* <h3 className='login-text'>Welcome {project.owner}</h3>  */}
                     <form className='user-form' onSubmit={handleSubmit}>
         
                     <li className='label'>

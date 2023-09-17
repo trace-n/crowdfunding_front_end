@@ -1,18 +1,13 @@
 import { useState, useEffect } from 'react';
-import getProjects from '../api/get-projects';
+import { getProjects, getProject, getStatistics } from '../api/projects';
+// import getProject from '../api/projects';
+// import getStatistics from '../api/projects';
 
-export default function useProjects() {
-    // Use useState hook to create state variable called projects and a 
-    // function to update called setProjects.
-    // Initialise state variables wtih empty array
+export function useProjects() {
     const [projects, setProjects] = useState([]);
-    // Create state variable called isLoading and error to keep track
-    // of loading state and errors that may occur
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState();
 
-    // useEffect hook to fetch projects from API and update state vars
-    // useEffect runs only once, when component this hook used in is mounted
     useEffect(() => {
         getProjects()
             .then((projects) => {
@@ -25,7 +20,58 @@ export default function useProjects() {
             });
     }, []);
 
-    // Return state variables and error. As state in hook changes, it will
-    // update these values and component using this hook will re-render.
     return {projects, isLoading, error };
+
+}
+
+// import { useState, useEffect } from 'react';
+
+export function useProject(projectId) {
+    const [project, setProject] = useState();
+    const [isLoading, setIsLoading] = useState(true);
+    const [error, setError] = useState();
+    const [pledges, setPledges] = useState([]);
+
+    useEffect(() => {
+        // Pass projectId to getProject function
+        getProject(projectId)
+            .then((project) => {
+                setProject(project);
+                setPledges(project.pledges);
+                setIsLoading(false);
+               
+            })
+            .catch((error) => {
+                setError(error);
+                setIsLoading(false);
+            });
+            
+            // Pass projectId to dependency array so hook will re-run if projectId changes 
+    }, [projectId]);
+
+    return { project, pledges, isLoading, error, setProject, setPledges };
+}
+
+// import { useState, useEffect } from 'react';
+// import getStatistics from '../api/projects';
+
+export function useStatistics() {
+    const [statistics, setStatistics] = useState();
+    const [isLoading, setIsLoading] = useState(true);
+    const [error, setError] = useState();
+
+    useEffect(() => {
+        getStatistics()
+            .then((statistics) => {
+                setStatistics(statistics);
+                setIsLoading(false);
+            })
+            .catch((error) => {
+                setError(error);
+                setIsLoading(false);
+            });
+    }, [] );
+
+    return { statistics, isLoading, error };
+
 }
