@@ -108,12 +108,14 @@
 
 .pledge-grid-right {
     text-align: right;
-    /* border-style: solid; */
+    vertical-align: middle;
 }
 
 .pledge-edit {
     display: flex;
     justify-content: right;
+    align-items: center;
+    vertical-align: middle;
 }
 
 .project-section {

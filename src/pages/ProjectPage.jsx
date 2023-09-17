@@ -210,7 +210,7 @@ const ProjectPage = () => {
                                     <MessageCard message='Thanks for your donation!' />
                                 </li>
                                 ):(null)
-                            };
+                            }
                         </>
                         
                     ) : ( 

@@ -3,26 +3,21 @@
 }
 
 .map iframe {
-    width: 80%;
+    width: 90%;
     border-style: none;
     border-width: 1px;
 }
 
 .main-section {
-    width: 60%;
+    width: 80%;
     display: flex;
     flex-direction: column;
     /* border-style: solid; */
     margin: auto;
 }
 
-.main-section {
-    width: 60%;
-    margin: auto;
-}
-
 .contact-form {
-    width: 80%;
+    width: 90%;
     /* display: grid;
     grid-template-columns: 1 ; */
     display: flex;
@@ -31,7 +26,39 @@
     margin: auto;
 }
 
+@media (min-width: 768px) {
+    .main-section {
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+        /* border-style: solid; */
+        margin: auto;
+    }
+
+    .contact-form {
+        width: 80%;
+        /* display: grid;
+        grid-template-columns: 1 ; */
+        display: flex;
+        flex-direction: column;
+        /* border-style: solid; */
+        margin: auto;
+    }    
+
+    .map iframe {
+        width: 80%;
+        border-style: none;
+        border-width: 1px;
+    }
+
+    
+}
+
 .contact-form input {
+    width: 100%;
+}
+
+.contact-form textarea {
     width: 100%;
 }
 
