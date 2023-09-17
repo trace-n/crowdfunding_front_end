@@ -24,6 +24,7 @@ const ProjectPage = () => {
     const { project, pledges, isLoading: isLoadingProject, error: errorProject, setPledges } = useProject(id);
 
     const [messageBlock, setMessageBlock] = useState(false);
+    const [messageBlockDelete, setMessageBlockDelete] = useState(false);
 
     const [pledge, setPledge] = useState({
         id: '',
@@ -153,6 +154,7 @@ const ProjectPage = () => {
             ).then((response) => {
                 const filteredPledges = pledges.filter((pledge) => pledge.id !== pledgeId);
                 setPledges(filteredPledges);
+                setMessageBlockDelete(true);
             }); 
         }
     }; //end deleteSinglePledge
@@ -251,6 +253,15 @@ const ProjectPage = () => {
                 <h4 className='recent-pledges'>
                     RECENT PLEDGES
                 </h4>
+                { messageBlockDelete ? (
+                    <div className='delete-pledge'>
+                        <MessageCard 
+                            message='Pledge deleted successfully'
+                            // messageType='header' 
+                        />
+                    </div> 
+                    ):(null)
+                }              
                 <div>
                     {/* {JSON.stringify(pledges)} */}
                 </div>

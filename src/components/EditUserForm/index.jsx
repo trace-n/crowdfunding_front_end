@@ -140,7 +140,10 @@ const EditUserForm = () => {
             );
         } else {
             return (
-                <p>Not authorised</p>
+                // <p>Not authorised</p>
+                    <MessageCard 
+                        message='Not authorised to perform this action' messageType='header' 
+                    />
             );
         }
     } else {

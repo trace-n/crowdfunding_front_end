@@ -62,7 +62,7 @@ const EditPledgeForm = () => {
                 pledge.anonymous, 
                 pledge.project,
             ).then((response) => {
-                console.log("pledge updated");
+                // console.log("pledge updated");
                 setMessageBlock(true);
             });
         }
@@ -136,7 +136,7 @@ const EditPledgeForm = () => {
                         );
         } else {
             return (
-                <MessageCard message='Not authorised to edit project' messageType='header' />
+                <MessageCard message='Not authorised to edit pledge' messageType='header' />
             );
         }
 

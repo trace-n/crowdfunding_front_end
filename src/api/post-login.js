@@ -16,8 +16,16 @@ async function postLogin(username, password) {
         const data = await response.json().catch(() => {
             throw new Error(fallbackError);
         });
-        const errorMessage = data?.detail ?? fallbackError;
-        console.log("data", data, "non field",data.non_field_errors);
+
+        let errorMessage = data?.non_field_errors ?? fallbackError;
+
+        errorMessage = Object.values(data)[0].toString();
+        // console.log('first key', Object.entries(data)[0]) ; //.key, 'first value', Object.entries(data)[0].value )
+        // console.log(' value', Object.values(data)[0].toString() ) ; //.key, 'first value', Object.entries(data)[0].value )
+        // errorMessage = `${response.status} - ${errorMessage}`; 
+
+        // console.log('resp:', response.json(), data);
+        // console.log("data", data, "non field",data.non_field_errors);
         throw new Error(errorMessage);
     }
 

@@ -156,3 +156,7 @@
     color: var(--main-text-dark);
     font-size: 1.5rem;
 }
+
+.delete-pledge p {
+    text-align: center;
+}

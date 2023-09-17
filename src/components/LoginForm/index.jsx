@@ -5,11 +5,14 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../hooks/use-auth';
 import useUsers from '../../hooks/use-users';
 import Spinner from '../Spinner';
+import MessageCard from '../MessageCard';
 
 const LoginForm = () => {
 
     const navigate = useNavigate();
     const {auth, setAuth} = useAuth();
+    const [messageBlock, setMessageBlock] = useState(false);
+    const [errorLogin, setErrorLogin] = useState('');
 
     const { users, isLoading: isLoadingUsers, error: errorUsers } = useUsers();
 
@@ -19,6 +22,7 @@ const LoginForm = () => {
     });
     
     let userId = '';
+    // let errorMessage = '';
 
     if (isLoadingUsers) {
         // return (<p>LOADING...</p>);
@@ -26,7 +30,13 @@ const LoginForm = () => {
     }
 
     if (errorUsers) {
-        return (<p>{errorUsers.message}</p>);
+        // console.log("errorUsers reached", errorUsers)
+        return (
+            <MessageCard 
+                message={`Error with login - ${errorUsers.message}`} 
+                messageType='header' 
+            />
+            );
     }
 
 
@@ -64,7 +74,10 @@ const LoginForm = () => {
                 navigate('/');
 
             }).catch((error) => {
-                console.log("error",error);
+                // console.log("error at catch", error.message);
+                setMessageBlock(true);
+                setErrorLogin(error.message);
+                // console.log('mesg and error', messageBlock, errorLogin);
             });
         }
     };
@@ -95,6 +108,14 @@ const LoginForm = () => {
                 </div>
                 {/* <button type='submit' onClick={handleSubmit}>LOG IN</button> */}
                 <button type='submit'>LOG IN</button>
+                
+                { messageBlock ? ( 
+                    
+                        <div className='message'>
+                            {/* {errorLogin} hello */}
+                            <MessageCard message={errorLogin}  />
+                        </div>
+                    ) :( null ) }  
             </form>
             <p className='signup-text'>Don't have an account?</p>
                 <Link to='/signup'>SIGN UP</Link>
