@@ -141,6 +141,7 @@ h3 {
     color: var(--offset-text);
     margin: auto;
     list-style-type: none;
+    padding-top: 10px;
 }
 
 .anon-button {

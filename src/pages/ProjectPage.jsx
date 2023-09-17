@@ -23,6 +23,8 @@ const ProjectPage = () => {
     const { users, isLoading: isLoadingUsers, error: errorUsers } = useUsers();
     const { project, pledges, isLoading: isLoadingProject, error: errorProject, setPledges } = useProject(id);
 
+    const [messageBlock, setMessageBlock] = useState(false);
+
     const [pledge, setPledge] = useState({
         id: '',
         supporter: auth.id,
@@ -137,6 +139,7 @@ const ProjectPage = () => {
                     pledge.id = response.id;
                     const newPledges = [pledge, ...pledges];
                     setPledges(newPledges);
+                    setMessageBlock(true);
                 });
             }
         } 
@@ -175,24 +178,43 @@ const ProjectPage = () => {
                 <h2 className='project-h2'>{numberPledges.toLocaleString()}</h2>
                 <h3>Pledges</h3>           
                 </div>   
-                <div className='project-stat-item'>
-                <h2 className='project-h2'>{`${ !projectEnded ? daysToGo : 'Project Ended'}`}</h2>
-                <h3>{`${ today < endDate ? 'Days to Go': ''}`}</h3>    
-                </div>  
+
+                { !projectEnded ? (
+                    <div className='project-stat-item'>
+                        <h2 className='project-h2'>{daysToGo}</h2>
+                        {/* <h3>{`${ today < endDate ? 'Days to Go': ''}`}</h3>     */}
+                        <h3>Days to Go</h3>
+                    </div> 
+                ):(
+                    <h3>
+                        Project Ended
+                    </h3>
+                ) }
+
                 </div>
 
                 { (auth.token) ? ( 
                     <>
-                { (!projectEnded && parseInt(auth.id) !== project.owner) ? (
-                    
-                    <CreatePledgeForm 
-                        projectId={id} 
-                        onClick={handleSubmit}
-                        onChange={handleChange}
-                    />   
-                ) : ( 
-                    null
-                )}   </>
+                    { (!projectEnded && parseInt(auth.id) !== project.owner) ? (
+                        <>
+                        <CreatePledgeForm 
+                            projectId={id} 
+                            onClick={handleSubmit}
+                            onChange={handleChange}
+                        /> 
+                         
+                          { messageBlock ? (
+                                <li className='message'>
+                                    <MessageCard message='Thanks for your donation!' />
+                                </li>
+                                ):(null)
+                            };
+                        </>
+                        
+                    ) : ( 
+                        null
+                    )}   
+                    </>
                 ) :  ( 
                 <Link to='/login' 
                 className='login-button'>DONATE</Link>
@@ -224,6 +246,8 @@ const ProjectPage = () => {
                     End Date: {endDateFormatted}
                 </h4>
                 <p>{project.description}</p>
+                { (pledges.length > 0) ? (
+                    <>
                 <h4 className='recent-pledges'>
                     RECENT PLEDGES
                 </h4>
@@ -241,6 +265,7 @@ const ProjectPage = () => {
 
 {/* new pledges map based on sorted desc top 5 pledges */}
 
+
                     {pledgeSortedRecent.map((pledgeData, key) => {
                         // console.log("pledgeData.date_created",pledgeData);
                         currentUser = users.find(user => user.id === parseInt(pledgeData.supporter));
@@ -248,26 +273,31 @@ const ProjectPage = () => {
                             <>
 
                             <li key={key} className='pledge-items'>
-                                <div className='pledge-grid-right'>${pledgeData.amount.toLocaleString()}</div>
-                                <div className='pledge-grid'>{ pledgeData.anonymous ? ( 'Anonymous' ) : ( currentUser.username.toUpperCase()) }</div>
+                                <div className='pledge-grid-right'>
+                                    ${pledgeData.amount.toLocaleString()}
+                                </div>
+                                <div className='pledge-grid'>
+                                    { pledgeData.anonymous ? ( 'Anonymous' ) : ( currentUser.username.toUpperCase()) }
+                                </div>
                                 <div className='pledge-edit'>
-                                { (auth.token && auth.id == pledgeData.supporter) ? (
-                                    <>
-                                        <EditPledgeButton 
-                                            pledgeId={pledgeData.id} 
-                                        />
-                                        <DeletePledgeButton 
-                                            pledgeId={pledgeData.id} 
-                                            onClick={deleteSinglePledge} 
-                                        />
-                                    </>
+                                    { (auth.token && auth.id == pledgeData.supporter) ? (
+                                        <>
+                                            <EditPledgeButton 
+                                                pledgeId={pledgeData.id} 
+                                            />
+                                            <DeletePledgeButton 
+                                                pledgeId={pledgeData.id} 
+                                                onClick={deleteSinglePledge} 
+                                            />
+                                        </>
 
-                                ) : null }
+                                    ) : null }
                                 </div>
                             </li>
                             </>
-                        );
+                        ); // return
                     })}
+                    
 
 {/* // begin of pledges .map original */}
                     {/* {pledges.map((pledgeData, key) => {
@@ -302,6 +332,7 @@ const ProjectPage = () => {
 
 
                 </ul>
+                </> ) : ( null) }   
                 </section>
             </div>
         </div>

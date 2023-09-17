@@ -76,8 +76,6 @@ const EditPledgeForm = () => {
                 // changed the handleSubmit to form onSubmit rather than on button onClick to  use standard HTML user input required validation
                 <div className='user-page'>
                     <>
-                        
-                        {/* <img src={user.image} alt='avatar' className='avatar' />                           */}
                             <h3>EDIT PLEDGE</h3>
                             <h3 className='login-text'>Welcome {auth.username}</h3> 
                 <form className='user-form' onSubmit={handleSubmit}>
@@ -139,7 +137,6 @@ const EditPledgeForm = () => {
         } else {
             return (
                 <MessageCard message='Not authorised to edit project' messageType='header' />
-                // <p>Not authorised</p>
             );
         }
 

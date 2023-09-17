@@ -54,7 +54,14 @@ const HomePage = () => {
     //     username: auth.username,
     //     id: userId,
     // });
-}
+    }
+
+    const today = Date.parse(new Date());
+    let endDate = '';
+
+    const projectsSortedDesc = [...projects].sort((a,b) => b.id - a.id);
+    const projectsSortedFiltered = projectsSortedDesc.filter((project) => Date.parse(project.date_end) > today);
+    const projectsSortedRecent = projectsSortedFiltered.slice(0, 6);
 
     return (
         <div className='home-box'>
@@ -73,10 +80,25 @@ const HomePage = () => {
             </div>
             {/* {allProjects.map((projectData, key) => { */}
             <>
-                <div id='project-list'>            
-                    {projects.map((projectData, key) => {
+
+                <h2>Recent Projects</h2>   
+                <div id='project-list'> 
+                    { projectsSortedRecent.map((projectData, key) => {
+                            return <ProjectCard key={key} projectData={projectData} />
+                    })}
+                </div>
+
+                <h2>All Projects</h2>    
+                <div id='project-list'> 
+       
+                    { projects.map((projectData, key) => {
+                        endDate = Date.parse(projectData.date_end);
+                        if (today < endDate) {
+                        // only return open projects
                         // return <div key={key}>{projectData.title}</div>;
-                        return <ProjectCard key={key} projectData={projectData} />
+                            return <ProjectCard key={key} projectData={projectData} />
+
+                        }
                     })}
 
                 </div>

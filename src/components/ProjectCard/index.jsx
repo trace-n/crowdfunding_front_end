@@ -5,6 +5,7 @@ import { useAuth } from '../../hooks/use-auth';
 const ProjectCard = (props) => {
     const { projectData } = props;
     const {auth, setAuth} = useAuth();
+    // const status = props.status;
 
     
     const editProjectLink = `/editProject/${projectData.id}`;
@@ -21,6 +22,7 @@ const ProjectCard = (props) => {
 
     return (
         <div className='project-card'>
+            
             {/* <Link to='/project'> */}
             <Link to={projectLink}>
                 <img src={projectData.image} />
