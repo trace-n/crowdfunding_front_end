@@ -10,6 +10,9 @@ const ProjectCard = (props) => {
     const editProjectLink = `/editProject/${projectData.id}`;
     const projectLink = `/project/${projectData.id}`;
 
+
+    const today = Date.parse(new Date());
+    const endDate = Date.parse(projectData.date_end);
     // let mode = 'create';
 
     // if
@@ -21,8 +24,18 @@ const ProjectCard = (props) => {
             {/* <Link to='/project'> */}
             <Link to={projectLink}>
                 <img src={projectData.image} />
+            </Link>    
                 <h3>
+                <Link to={projectLink}>
                     {projectData.title}
+                    { ( today > endDate ) ? (
+                        ` (ended)`
+                    ):(
+                        null
+                    ) }
+                </Link>    
+                
+            
                     { parseInt(auth.id) === projectData.owner ? (
                     <Link to={editProjectLink}>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="small-icons">
@@ -31,9 +44,7 @@ const ProjectCard = (props) => {
                         </svg>
                     </Link>
                     ) : null }
-                
                 </h3>
-            </Link>
         </div>
     );
 }

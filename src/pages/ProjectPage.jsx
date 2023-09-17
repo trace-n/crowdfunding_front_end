@@ -68,6 +68,19 @@ const ProjectPage = () => {
         progress = 100;
     } 
 
+    let currentUser = users.find(user => user.id === project.owner); 
+
+    const pledgeSortedDesc = [...pledges].sort((a,b) => b.id - a.id);
+    // console.log('sort desc', pledgeSortedDesc);
+
+    const pledgeSortedRecent = pledgeSortedDesc.slice(0, 5);
+    // console.log('sort desc top 5', pledgeSortedRecent);
+
+    // console.log('orig',pledges);
+
+    // setPledges(pledgeSortedRecent);
+    
+
     const handleChange = (event) => {
         // console.log("evt",event.target);
         // debugger
@@ -102,7 +115,7 @@ const ProjectPage = () => {
                     pledge.project,
                 ).then((response) => {
                     pledge.id = response.id;
-                    const newPledges = [...pledges, pledge];
+                    const newPledges = [pledge, ...pledges];
                     setPledges(newPledges);
                 });
             }
@@ -120,8 +133,6 @@ const ProjectPage = () => {
             }); 
         }
     }; //end deleteSinglePledge
-
-    let currentUser = users.find(user => user.id === project.owner); 
 
     // console.log('type of auth id', typeof(auth.id), 'type of proj owner', typeof(project.owner));
     //  users.find(user => user.id === pledgeData.supporter);
@@ -179,41 +190,85 @@ const ProjectPage = () => {
                 </div>    
             <div className='project-detail'>
             <section>
-                <h3>Created By: {project.owner} {currentUser.username}
+                <h3>Project Created By: {currentUser.username.toUpperCase()}
                 {/* {users.filter(user => user.id === project.owner)[0].username} */}
                 </h3>
             <p>{project.description}</p>
-                <h3>Pledges:</h3>
+                <h4 className='recent-pledges'>RECENT PLEDGES</h4>
                 <div>
                     {/* {JSON.stringify(pledges)} */}
                 </div>
                 <ul>
-                    {pledges.map((pledgeData, key) => {
-                        // console.log("users",users);
-                        console.log("pledgeData.supporter",pledgeData.supporter);
+                    <li className='pledge-items'>
+                        <div className='pledge-grid-right'><h4>Amount</h4></div>
+                        <div className='pledge-grid'><h4>Pledger</h4></div>
+                        {/* <div className='pledge-grid'>Date Pledged</div>        */}
+                        <div className='pledge-edit'>
+                        </div>                         
+                    </li>
+
+{/* new pledges map based on sorted desc top 5 pledges */}
+
+                    {pledgeSortedRecent.map((pledgeData, key) => {
+                        // console.log("pledgeData.date_created",pledgeData);
                         currentUser = users.find(user => user.id === parseInt(pledgeData.supporter));
-                        // console.log("currentUser",currentUser);
                         return (
-                            <li key={key}>
-                                {/* ${pledgeData.amount.toLocaleString()} from {pledgeData.supporter} */}
-                                {currentUser.username}
-                                {/* {users.filter(user => user.id === pledgeData.supporter)[0].username} */}
-                                {/* function to loop through users hook to find the support name for users get api */}
-                                {/* {pledgeData.amount} from {users.filter(user => user.id === pledgeData.supporter)[0].name}  */}
+                            <>
+
+                            <li key={key} className='pledge-items'>
+                                <div className='pledge-grid-right'>${pledgeData.amount.toLocaleString()}</div>
+                                <div className='pledge-grid'>{currentUser.username.toUpperCase()}</div>
+                                <div className='pledge-edit'>
                                 { (auth.token && auth.id == pledgeData.supporter) ? (
                                     <>
-                                    <EditPledgeButton 
-                                        pledgeId={pledgeData.id} 
-                                    />
-                                    <DeletePledgeButton 
-                                        pledgeId={pledgeData.id} 
-                                        onClick={deleteSinglePledge} />
+                                        <EditPledgeButton 
+                                            pledgeId={pledgeData.id} 
+                                        />
+                                        <DeletePledgeButton 
+                                            pledgeId={pledgeData.id} 
+                                            onClick={deleteSinglePledge} 
+                                        />
                                     </>
 
                                 ) : null }
+                                </div>
                             </li>
+                            </>
                         );
                     })}
+
+{/* // begin of pledges .map original */}
+                    {/* {pledges.map((pledgeData, key) => {
+                        // console.log("pledgeData.date_created",pledgeData);
+                        currentUser = users.find(user => user.id === parseInt(pledgeData.supporter));
+                        return (
+                            <>
+
+                            <li key={key} className='pledge-items'>
+                                <div className='pledge-grid-right'>${pledgeData.amount.toLocaleString()}</div>
+                                <div className='pledge-grid'>{currentUser.username.toUpperCase()}</div>
+                                <div className='pledge-edit'>
+                                { (auth.token && auth.id == pledgeData.supporter) ? (
+                                    <>
+                                        <EditPledgeButton 
+                                            pledgeId={pledgeData.id} 
+                                        />
+                                        <DeletePledgeButton 
+                                            pledgeId={pledgeData.id} 
+                                            onClick={deleteSinglePledge} 
+                                        />
+                                    </>
+
+                                ) : null }
+                                </div>
+                            </li>
+                            </>
+                        );
+                    })} */}
+
+                    {/* // end of pledges map original */}
+
+
                 </ul>
                 </section>
             </div>

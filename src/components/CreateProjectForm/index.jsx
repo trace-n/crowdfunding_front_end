@@ -41,62 +41,86 @@ const CreateProjectForm = () => {
     };
 
     return (
+        <div className='project-page'>
+                <h3>GOT AN IDEA?</h3>
+                <p className='project-text'>Get cracking and start a new project for your crowdfunding idea!</p>              
+            <form className='project-form' onSubmit={handleSubmit}>
 
-        <form className='project-form' onSubmit={handleSubmit}>
-            <div>
-                <h3 className='project-text'>CREATE PROJECT</h3>
-                <p>Got an idea? Start a new project for your idea for crowdfunding</p>  
                 {/* <label htmlFor='username'>Username:</label> */}
-                <input 
-                    type='text' 
-                    id='title' 
-                    placeholder='Title' 
-                    onChange = {handleChange}
-                    required
-                />
-            </div>
-            <div>
+                <li className='label'>
+                        <label htmlFor='title'>Title</label>
+                        </li>
+                <li className='label'>
+                    <input 
+                        type='text' 
+                        id='title' 
+                        // placeholder='Title' 
+                        onChange = {handleChange}
+                        required
+                    />
+                </li>
+            {/* <div> */}
                 {/* <input  */}
-                <textarea
-                    type='text' 
-                    id='description' 
-                    placeholder='Description' 
-                    onChange = {handleChange}
-                    required
-                    rows='10'
-                    cols='35'                    
-                />
-            </div>
-            <div>
-                <input 
-                    type='number' 
-                    id='goal' 
-                    placeholder='Goal' 
-                    onChange = {handleChange}
-                    required
-                />
-            </div> 
-            <div>
-                <input 
-                    type='url' 
-                    id='image' 
-                    placeholder='Image URL' 
-                    onChange = {handleChange}
-                    required
-                />
-            </div>                                                
-            <div>
-                {/* <label htmlFor='password'>Password:</label> */}
-                <input 
-                    type='date' 
-                    id='date_end' 
-                    placeholder='End Date' 
-                    onChange = {handleChange}
-                    required
-                />
-            </div>
-            <button type='submit'>CREATE</button>
-        </form>
+                <li className='label'>
+                        <label htmlFor='description'>Description</label>
+                </li>
+                <li className='label'>                
+                    <textarea
+                        type='text' 
+                        id='description' 
+                        // placeholder='Description' 
+                        onChange = {handleChange}
+                        required
+                        rows='10'
+                        cols='35'                    
+                    />
+                </li>
+                <li className='label'>
+                    <label htmlFor='goal'>Goal</label>
+                </li>
+                <li>               
+            {/* </div> */}
+            {/* <div> */}
+                    <input 
+                        type='number' 
+                        id='goal' 
+                        // placeholder='Goal' 
+                        onChange = {handleChange}
+                        required
+                    />
+                </li> 
+                <li className='label'>
+                    <label htmlFor='image'>Image</label>
+                </li>
+                <li>           
+                {/* </div> 
+                <div> */}
+                    <input 
+                        type='url' 
+                        id='image' 
+                        placeholder='Image URL' 
+                        onChange = {handleChange}
+                        required
+                    />
+                {/* </div>                                         <div> */}
+                    {/* <label htmlFor='password'>Password:</label> */}
+                </li>    
+                <li className='label'>
+                    <label htmlFor='date_end'>End Date</label>
+                </li>
+                <li>                
+                    <input 
+                        type='date' 
+                        id='date_end' 
+                        placeholder='End Date' 
+                        onChange = {handleChange}
+                        required
+                    />
+                </li>    
+            {/* </div> */}
+                <button type='submit'>CREATE</button>
+            </form>
+        </div>
     );
 }
 

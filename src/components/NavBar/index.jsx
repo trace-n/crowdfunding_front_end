@@ -64,7 +64,7 @@ const NavBar = () => {
                             <li>                        
                                 <Link to='/projects'> 
                                  {/* className='login-button'> */}
-                                    PROJECTS
+                                    MY PROJECTS
                                 </Link>                        
                             </li>     
                             <li>

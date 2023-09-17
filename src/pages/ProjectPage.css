@@ -79,6 +79,37 @@
     padding-bottom: 20px;
 }
 
-.project-detail h3 {
+.project-detail section h3{
     margin: 0px;
+    padding-bottom: 20px;
+}
+
+.recent-pledges {
+    padding-top: 30px;
+}
+
+.pledge-items {
+    list-style-type: none;
+    border-bottom: 1px;
+    border-color: var(--main-background);
+    border-bottom-style: solid;
+    width: 70%;
+    display: grid;
+    grid-template-columns: 25% 50% 25%; 
+    /* display: flex;
+    justify-content: space-between; */
+    margin: auto;
+    height: 30px;
+    vertical-align: middle;
+
+}
+
+.pledge-grid-right {
+    text-align: right;
+    /* border-style: solid; */
+}
+
+.pledge-edit {
+    display: flex;
+    justify-content: right;
 }

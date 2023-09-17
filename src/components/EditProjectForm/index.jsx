@@ -113,9 +113,24 @@ const EditProjectForm = () => {
                             // className='anon-button'
                         />
                         </li>
-
                         <li className='label'>
-                        <label htmlFor='image'>Image</label>
+                            <label htmlFor='goal'>Goal $</label>
+                        </li>
+                        <li>
+                            <input 
+                                type='number' 
+                                id='goal' 
+                                // placeholder='Email' 
+                                onChange = {handleChange}
+                                required
+                                // disabled
+                                defaultValue={project.goal}    
+                                min='1'
+                                // size='30'                            
+                            />
+                        </li>                                   
+                        <li className='label'>
+                            <label htmlFor='image'>Image</label>
                         </li>
                         <li>
                             <input 
@@ -130,23 +145,9 @@ const EditProjectForm = () => {
                             />
                         </li> 
                         <li className='label'>
-                            <label htmlFor='goal'>Goal $</label>
-                        </li><li>
-                            <input 
-                                type='number' 
-                                id='goal' 
-                                // placeholder='Email' 
-                                onChange = {handleChange}
-                                required
-                                // disabled
-                                defaultValue={project.goal}    
-                                min='1'
-                                // size='30'                            
-                            />
-                        </li>                                 
-                        <li className='label'>
-                        <label htmlFor='date_end'>End Date</label>
-                        </li><li>
+                            <label htmlFor='date_end'>End Date</label>
+                        </li>
+                        <li>
                             <input 
                                 type='date' 
                                 id='date_end' 
