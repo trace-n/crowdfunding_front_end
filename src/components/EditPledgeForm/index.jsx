@@ -67,7 +67,7 @@ const EditPledgeForm = () => {
                     <>
                         
                         {/* <img src={user.image} alt='avatar' className='avatar' />                           */}
-                            <h3>'Edit Pledge'</h3>
+                            <h3>EDIT PLEDGE</h3>
                             <h3 className='login-text'>Welcome {auth.username}</h3> 
                 <form className='user-form' onSubmit={handleSubmit}>
         

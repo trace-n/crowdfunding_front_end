@@ -8,7 +8,10 @@ by Tracey Nguyen
 ## Submission Documentation
 
 ### Deployed Frontend React Project
-* [https://fundling.netlify.app/] (https://fundling.netlify.app/)
+* [https://fundling.netlify.app/](https://fundling.netlify.app/)
+
+### Github Repository
+* [https://github.com/trace-n/crowdfunding_front_end](https://github.com/trace-n/crowdfunding_front_end "Github repo")
 
 ## Features
 
@@ -36,7 +39,8 @@ by Tracey Nguyen
     - [X] When the project was created (auto filled on initial creation)
     - [X] When the project was changed (auto filled on create/update)
     - [X] When the project ends (user defined)
-    - [X] User can edit project if they are the owner of the project    
+    - [X] User can edit project if they are the owner of the project   
+    - [X] User can view list of their own project 
 
 * [X] User can make a Pledge
     - [X] An amount
@@ -50,47 +54,73 @@ by Tracey Nguyen
     - [X] User can delete pledge if the project is open and they are the supporter       
  
  * [X] Implement suitable permissions, e.g. who is allowed to delete a pledge?
- * [X] Return the relevant status codes for both successful and unsuccessful requeststo the API.
- * [X] Handle failed requests gracefully (e.g. you should have a custom 404 pagerather than the default error page).
+ * [X] Return the relevant status codes for both successful and unsuccessful requests to the API.
+ * [X] Handle failed requests gracefully (e.g. you should have a custom 404 page rather than the default error page).
 * [X] Use Token Authentication.
 * [X] Implement responsive design
 
 ### Stretch Goals
 
 * [X] Display statistics on the home page # projects, pledges, $, unique supporters
-* [] Users:
-    - [] Bio
 * [] Add additional fields for projects
     - [] School Name
     - [] Website
     - [] Categories
 * [] Search project based on categories or title/description
-* [] Change currency/language
-* [] Remind me
-* [] Like / Dislike
 * [X] Percentage funded - display as graph
 * [X] Days to go/ left for deadline
-* [] Last donation
+* [X] Last 5 donations displayed on detailed project page
 
 
 ## Wireframes
-
-{{ Insert your wireframes }}
 
 ![Wireframe of website](./src/assets/React_JS_Crowdfunding_Wireframe.png "Wireframe")
 
 ## Styling
 
 ### Colour Scheme
-{{ Insert your colour scheme }}
+ 
 
-![image info goes here](./docs/image.png)
+![CSS Styling Colour Scheme](./src/assets/ColourScheme.png "Colour Scheme")
 
 ### Fonts
-{{ outline your heading & body font(s) }}
+
+* Header fonts - Bellota Regular
+* Body Fonts - Bellota Text
+* Arial
+
+![CSS Fonts ](./src/assets/Fonts.png "Fonts")
+
+
+## How To Run Locally
+
+| Commands | Description |  
+| :---: | :---: |  
+| npm run dev | Run local instance for development |
+| git   | Any changes will need to be made and pushed to git to update on netlify frontend site |
+
+## Summary of project files
+| Folder | File | Description |  
+| :---: | :---: | :---: |  
+| public | _redirects |  Helps with issue for page refresh on sub-routes not working correctly after deployment   | 
+| src/ | * | Main working directory |
+| src/api | * | This contains backend URL API endpoint  for GET/PUT/DEL/POST|
+| src/assets | * | Images for project |
+| src/components | * | React Components - Each component has a folder of the same name and an index.jsx and style.css file |
+| src/hooks | * | Hooks for api calls |
+| src/pages | * | Website pages for routes |
+| src/ | main | Contains jsx and css file for routing paths to pages|
+| base | index.html | Points to main.jsx file |
+| base | README.md | Readme file for this repository |
+
+
+
 
 
 ## Reference
 
-### Deployed Backend  
-* Deployed Backend DRF Project: Refer to github [https://github.com/trace-n/crowdfunding_back_end] (https://github.com/trace-n/crowdfunding_back_end)
+### Deployed Backend DRF+ Project
+* [https://unicorn-rainbow-1618.fly.dev/projects/](https://unicorn-rainbow-1618.fly.dev/projects/ "Deployed backend")
+
+### Github Repository for DRF+ Backend Crowdfunding project
+* [https://github.com/trace-n/crowdfunding_back_end](https://github.com/trace-n/crowdfunding_back_end "Github crowdfunding back end")
