@@ -10,7 +10,9 @@ async function getPledge(id) {
             throw new Error(fallbackError);
         });
 
-        const errorMessage = data?.detail ?? fallbackError;
+        let errorMessage = data?.detail ?? fallbackError;
+        errorMessage = `${response.status} - ${errorMessage}`; 
+        // return errorMessage;
         throw new Error(errorMessage);
     }
 

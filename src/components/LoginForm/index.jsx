@@ -4,6 +4,7 @@ import postLogin from '../../api/post-login';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../hooks/use-auth';
 import useUsers from '../../hooks/use-users';
+import Spinner from '../Spinner';
 
 const LoginForm = () => {
 
@@ -20,7 +21,8 @@ const LoginForm = () => {
     let userId = '';
 
     if (isLoadingUsers) {
-        return (<p>LOADING...</p>);
+        // return (<p>LOADING...</p>);
+        return (<Spinner />)
     }
 
     if (errorUsers) {
@@ -46,28 +48,21 @@ const LoginForm = () => {
                 credentials.username,
                 credentials.password
             ).then((response) => {
-                // console.log('credentials uname', credentials.username);
                 if (credentials.username) {
-
-                    // if (auth.username){
-                        userId = users.find(user => user.username === credentials.username).id;
-                        // console.log("userid", userId);
-                    // }
+                    userId = users.find(user => user.username === credentials.username).id;
                 }
-                //  Set the username on then on the main landing page, can check the name of user and id from get all users for using in the nav bar
+                //  Set the username on then on the main landing page, can check the name of user and id from get all users for use in the nav bar
                 window.localStorage.setItem('username', credentials.username);
                 window.localStorage.setItem('token', response.token);
 
-                // console.log('resp token', response.token);
-                // console.log('credentials uname', credentials.username);
                 setAuth({
                     token: response.token,
                     username: credentials.username,
                     id: userId,
                 });
-                // console.log("auth",auth);
-                // Navigate back to home page
+
                 navigate('/');
+
             }).catch((error) => {
                 console.log("error",error);
             });

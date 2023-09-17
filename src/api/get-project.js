@@ -11,8 +11,10 @@ async function getProject(projectId) {
             throw new Error(fallbackError);
         });
 
-        const errorMessage = data?.detail ?? fallbackError;
-        console.log("error message put project response.json", response, data, response.status, response.statusText);
+        let errorMessage = data?.detail ?? fallbackError;
+        // console.log("error message put project response.json", response, data, response.status, response.statusText);
+        errorMessage = `${response.status} - ${errorMessage}`; 
+        // return (errorMessage, response.status);
         throw new Error(errorMessage);
     }
 

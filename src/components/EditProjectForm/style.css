@@ -24,7 +24,7 @@
     margin: auto;
 }
 
-.user-form li input {
+/* .user-form li input {
     border-style: solid;
     border-width: 1px;
     border-color: var(--light-border);
@@ -32,21 +32,21 @@
     margin-bottom: 8px;
     height: 25px;
     width: 90%;
-}
+} */
 
-.user-form li textarea {
+/* .user-form li textarea {
     border-style: solid;
     border-width: 1px;
     border-color: var(--light-border);
     background-color: var(--background-color);
     margin-bottom: 2px;
-}
+} */
 
-.user-form li {
+/* .user-form li {
     padding-left: 20px;
     list-style-type: none;
     text-align: left;
-}
+} */
 
 .user-form button {
     /* width: 50%; */

@@ -5,6 +5,7 @@ import LoginForm from '../components/LoginForm';
 import useUser from '../hooks/use-user';
 import { useParams, Link } from 'react-router-dom';
 import { useState } from 'react';
+import Spinner from '../components/Spinner';
 // import EditUserForm from '../components/EditUserForm';
 
 const UserPage = () => {
@@ -37,7 +38,8 @@ const UserPage = () => {
     // rename the parameters for unique reference 
     const { user, isLoading: isLoadingUser, error: errorUser } = useUser(id);
     if (isLoadingUser) {
-        return (<p>LOADING...</p>);
+        // return (<p>LOADING...</p>);
+        return (<Spinner />)
     }
 
     if (errorUser) {

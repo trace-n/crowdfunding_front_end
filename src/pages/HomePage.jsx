@@ -7,6 +7,7 @@ import { useAuth } from '../hooks/use-auth';
 import ProjectCard from '../components/ProjectCard';
 import fundlingLogoHeader from '../assets/logo-no-background-no-icon.png';
 import fundlingLogoCol from '../assets/fundling-website-favicon-color.png';
+import Spinner from '../components/Spinner';
 
 // import StatisticsCard from '../components/StatisticsCard';
 
@@ -20,7 +21,8 @@ const HomePage = () => {
 
     // console.log("looking for stats",isLoading,"error message", error);
     if (isLoadingStats || isLoadingProjects || isLoadingUsers) {
-        return (<p>Loading ...</p>);
+        // return (<p>Loading ...</p>);
+        return (<Spinner />)
     }
 
     if (errorStats) {

@@ -8,6 +8,7 @@ export default function useUser(userId) {
 
     useEffect(() => {
         // Pass projectId to getProject function
+        
         getUser(userId)
             .then((user) => {
                 setUser(user);
@@ -16,6 +17,7 @@ export default function useUser(userId) {
             .catch((error) => {
                 setError(error);
                 setIsLoading(false);
+                // console.log('use-user error', error);
             });
             
             // Pass userId to dependency array so hook will re-run if userId changes 

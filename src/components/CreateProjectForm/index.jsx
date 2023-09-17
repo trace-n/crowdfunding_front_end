@@ -12,7 +12,7 @@ const CreateProjectForm = () => {
     const [project, setProject] = useState({
         title: '',
         description: '',
-        goal: '',
+        goal: '10',
         image: '',
         date_end: '',
     });
@@ -52,6 +52,7 @@ const CreateProjectForm = () => {
                         </li>
                 <li className='label'>
                     <input 
+                        className='form-input'
                         type='text' 
                         id='title' 
                         // placeholder='Title' 
@@ -66,6 +67,7 @@ const CreateProjectForm = () => {
                 </li>
                 <li className='label'>                
                     <textarea
+                        className='form-textarea'
                         type='text' 
                         id='description' 
                         // placeholder='Description' 
@@ -78,24 +80,24 @@ const CreateProjectForm = () => {
                 <li className='label'>
                     <label htmlFor='goal'>Goal</label>
                 </li>
-                <li>               
-            {/* </div> */}
-            {/* <div> */}
+                <li className='label'>               
                     <input 
+                        className='form-input'
                         type='number' 
                         id='goal' 
                         // placeholder='Goal' 
                         onChange = {handleChange}
                         required
+                        min='1'
+                        defaultValue='10'
                     />
                 </li> 
                 <li className='label'>
                     <label htmlFor='image'>Image</label>
                 </li>
-                <li>           
-                {/* </div> 
-                <div> */}
+                <li className='label'>           
                     <input 
+                        className='form-input'
                         type='url' 
                         id='image' 
                         placeholder='Image URL' 
@@ -108,8 +110,9 @@ const CreateProjectForm = () => {
                 <li className='label'>
                     <label htmlFor='date_end'>End Date</label>
                 </li>
-                <li>                
+                <li className='label'>                
                     <input 
+                        className='form-input'
                         type='date' 
                         id='date_end' 
                         placeholder='End Date' 

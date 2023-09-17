@@ -9,6 +9,8 @@ import LoginForm from '../LoginForm';
 import { useParams } from 'react-router-dom';
 import useProject from '../../hooks/use-project';
 import putProject from '../../api/put-project';
+import Spinner from '../Spinner';
+import MessageCard from '../MessageCard';
 
 
 const EditProjectForm = () => {
@@ -17,19 +19,28 @@ const EditProjectForm = () => {
     // const userId = props.userId;
     const { id } = useParams();
 
+    const [messageBlock, setMessageBlock] = useState(false);
+
     const { project, pledges, isLoading: isLoadingProject, error: errorProject, setProject, setPledges } = useProject(id);
     // const { user, isLoading: isLoadingUser, error: errorUser } = useUser(id);
     // set initial userForm state to get user hook 
     // const[projectForm, setProjectForm] = useState(project);
     // const[userForm, setUserForm] = useState(user);
-
+    
     if (isLoadingProject) {
-        return (<p>LOADING...</p>);
+        // return (<p>LOADING...</p>);
+        return (<Spinner />)
     }
 
     if (errorProject) {
         console.log("errorProject", errorProject);
-        return (<p>{errorProject.message}</p>);
+        return (
+            <MessageCard 
+                message={`Error with project - ${errorProject.message}`} 
+                messageType='header' 
+            />
+        );
+        // <p>{errorProject.message}</p>);
     }
 
 
@@ -42,12 +53,12 @@ const EditProjectForm = () => {
             [id]: value,
         }));
         
-        console.log("user after setUser", project);
+        // console.log("user after setUser", project);
 
     };
 
     const handleSubmit = (event) => {
-        console.log("got to handleSubmit",project);
+        // console.log("got to handleSubmit",project);
         event.preventDefault();
         // if (pledge.amount && pledge.comment) {
             // if (pledge) {
@@ -61,6 +72,9 @@ const EditProjectForm = () => {
                 ).then((response) => {
                     // navigate(`project/${projectId}`);
                     console.log("project details updated");
+                    // debugger
+                    setMessageBlock(true);
+                                     
                 });
             // }
         // } 
@@ -88,7 +102,7 @@ const EditProjectForm = () => {
                     <li className='label'>
                         <label htmlFor='title'>Title</label>
                         </li><li className='label'>
-                        <input 
+                        <input className='form-input'
                             type='text' 
                             required
                             id='title' 
@@ -103,6 +117,7 @@ const EditProjectForm = () => {
                         </li><li className='label'>
                         {/* <input  */}
                         <textarea
+                            className='form-textarea'
                             type='text' 
                             id='description' 
                             required
@@ -116,8 +131,9 @@ const EditProjectForm = () => {
                         <li className='label'>
                             <label htmlFor='goal'>Goal $</label>
                         </li>
-                        <li>
+                        <li className='label'>
                             <input 
+                                className='form-input'
                                 type='number' 
                                 id='goal' 
                                 // placeholder='Email' 
@@ -132,8 +148,9 @@ const EditProjectForm = () => {
                         <li className='label'>
                             <label htmlFor='image'>Image</label>
                         </li>
-                        <li>
+                        <li className='label'>
                             <input 
+                                className='form-input'
                                 type='url' 
                                 id='image' 
                                 // placeholder='Image URL' 
@@ -147,8 +164,9 @@ const EditProjectForm = () => {
                         <li className='label'>
                             <label htmlFor='date_end'>End Date</label>
                         </li>
-                        <li>
+                        <li className='label'>
                             <input 
+                                className='form-input'
                                 type='date' 
                                 id='date_end' 
                                 onChange = {handleChange}
@@ -158,8 +176,12 @@ const EditProjectForm = () => {
                                 // size='30'
                             />
                         </li> 
-                                                                      
+                                                  
                     <button type='submit'>SAVE</button>
+                    { messageBlock ? (
+                        <li className='message'><MessageCard message='Project updated  successfully' />
+                        </li>
+                    ) :( null ) }     
                 </form>
 
                         </>
@@ -167,7 +189,8 @@ const EditProjectForm = () => {
                         );
         } else {
             return (
-                <p>Not authorised</p>
+                <MessageCard message='Not authorised to edit project' messageType='header' />
+                // <p>Not authorised</p>
             );
         }
 

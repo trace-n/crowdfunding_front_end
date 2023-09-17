@@ -91,6 +91,9 @@ by Tracey Nguyen
 
 ![CSS Fonts ](./src/assets/Fonts.png "Fonts")
 
+### Logos
+
+![Site logo ](./src/assets/site_logo.png "logo")
 
 ## How To Run Locally
 

@@ -11,6 +11,8 @@ import useUsers from '../hooks/use-users';
 import deletePledge from '../api/del-pledge';
 import postPledge from '../api/post-pledge';
 import EditPledgeButton from '../components/EditPledgeButton';
+import Spinner from '../components/Spinner';
+import MessageCard from '../components/MessageCard';
 
 const ProjectPage = () => {
 
@@ -31,15 +33,29 @@ const ProjectPage = () => {
     });
 
     if (isLoadingProject || isLoadingUsers) {
-        return (<p>LOADING...</p>);
+        // return (<p>LOADING...</p>);
+        return (<Spinner />)
     }
 
     if (errorProject) {
-        return (<p>{errorProject.message}</p>);
+        return (
+            <MessageCard 
+                message={`Error with project - ${errorProject.message}`} 
+                messageType='header' 
+            />
+            );            
+        // <p>{errorProject.message}</p>);
+
     }
 
     if (errorUsers) {
-        return (<p>{errorUsers.message}</p>);
+        return (
+            <MessageCard 
+                message={`Error with users - ${errorUsers.message}`} 
+                messageType='header' 
+            />
+            );            
+            // <p>{errorUsers.message}</p>);
     }
 
     // information for total value of pledges and progress
@@ -48,7 +64,11 @@ const ProjectPage = () => {
     const valuePledges = pledges.reduce((total, pledge) => total + parseInt(pledge.amount), 0);    
     const today = Date.parse(new Date());
     const endDate = Date.parse(project.date_end);
-    
+    const dateStrip = project.date_end.substr(0, 10);
+    const endDateFormatted = dateStrip.substr(8,2)+'/'+dateStrip.substr(5,2)+'/'+dateStrip.substr(0,4);
+    // console.log(endDateFormatted);
+
+
     let projectEnded = false;
     let daysToGo;
     
@@ -150,10 +170,16 @@ const ProjectPage = () => {
                  <div className='progress-bar'>
                     <ProgressBar bgcolor={'#6a1b9a'} completed={progress} />
                 </div>
+                <div className='project-stat-card'>
+                <div className='project-stat-item'>
                 <h2 className='project-h2'>{numberPledges.toLocaleString()}</h2>
-                <h3>Pledges</h3>                
+                <h3>Pledges</h3>           
+                </div>   
+                <div className='project-stat-item'>
                 <h2 className='project-h2'>{`${ !projectEnded ? daysToGo : 'Project Ended'}`}</h2>
                 <h3>{`${ today < endDate ? 'Days to Go': ''}`}</h3>    
+                </div>  
+                </div>
 
                 { (auth.token) ? ( 
                     <>
@@ -189,12 +215,18 @@ const ProjectPage = () => {
                 </section>
                 </div>    
             <div className='project-detail'>
-            <section>
-                <h3>Project Created By: {currentUser.username.toUpperCase()}
+            <section className='project-section'>
+                <h3 className='project-title'>{project.title}</h3>
+                <h4>Project Created By: {currentUser.username.toUpperCase()}
                 {/* {users.filter(user => user.id === project.owner)[0].username} */}
-                </h3>
-            <p>{project.description}</p>
-                <h4 className='recent-pledges'>RECENT PLEDGES</h4>
+                </h4>
+                <h4>
+                    End Date: {endDateFormatted}
+                </h4>
+                <p>{project.description}</p>
+                <h4 className='recent-pledges'>
+                    RECENT PLEDGES
+                </h4>
                 <div>
                     {/* {JSON.stringify(pledges)} */}
                 </div>
@@ -217,7 +249,7 @@ const ProjectPage = () => {
 
                             <li key={key} className='pledge-items'>
                                 <div className='pledge-grid-right'>${pledgeData.amount.toLocaleString()}</div>
-                                <div className='pledge-grid'>{currentUser.username.toUpperCase()}</div>
+                                <div className='pledge-grid'>{ pledgeData.anonymous ? ( 'Anonymous' ) : ( currentUser.username.toUpperCase()) }</div>
                                 <div className='pledge-edit'>
                                 { (auth.token && auth.id == pledgeData.supporter) ? (
                                     <>

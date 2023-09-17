@@ -9,20 +9,30 @@ import putPledge from '../../api/put-pledge';
 // import getPledge from '../../api/get-pledge';
 import usePledge from '../../hooks/use-pledge';
 import { useParams } from 'react-router-dom';
+import Spinner from '../Spinner';
+import MessageCard from '../MessageCard';
 
 const EditPledgeForm = () => {
 
     const {auth, setAuth} = useAuth();
     const { id } = useParams();
+    const [messageBlock, setMessageBlock] = useState(false);
+
     const { pledge, isLoading: isLoadingPledge, error: errorPledge, setPledge } = usePledge(id);
 
     if (isLoadingPledge) {
-        return (<p>LOADING...</p>);
+        // return (<p>LOADING...</p>);
+        return (<Spinner />)
     }
 
     if (errorPledge) {
-        console.log("errorPledge", errorPledge);
-        return (<p>{errorPledge.message}</p>);
+        // console.log("errorPledge", errorPledge);
+        return (
+            <MessageCard 
+                message={`Error with pledge - ${errorPledge.message}`} 
+                messageType='header' 
+            />
+        );
     }
     
     const handleChange = (event) => {
@@ -53,6 +63,7 @@ const EditPledgeForm = () => {
                 pledge.project,
             ).then((response) => {
                 console.log("pledge updated");
+                setMessageBlock(true);
             });
         }
 
@@ -75,6 +86,7 @@ const EditPledgeForm = () => {
                         <label htmlFor='amount'>Amount</label>
                         </li><li className='label'>
                         <input 
+                            className='form-input'
                             type='number' 
                             required
                             id='amount' 
@@ -89,6 +101,7 @@ const EditPledgeForm = () => {
                         <label htmlFor='comment'>Comment</label>
                         </li><li className='label'>
                         <input 
+                            className='form-input'
                             type='text' 
                             id='comment' 
                             required
@@ -98,21 +111,26 @@ const EditPledgeForm = () => {
                         />
                         </li>
                                 
-                                <li className='label'>
-                                    <label htmlFor='anonymous'>Anonymous</label>
-                                </li><li>
-                                    <input 
-                                        type='checkbox' 
-                                        id='anonymous' 
-                                        // placeholder='Email' 
-                                        onChange = {handleChange}
-                                        // required
-                                        // disabled
-                                        defaultValue={pledge.anonymous}    
-                                        size='30'                            
-                                    />
-                                </li> 
+                        <li className='label'>
+                            <label htmlFor='anonymous'>Anonymous</label>
+                        </li><li className='label'>
+                            <input 
+                                type='checkbox' 
+                                id='anonymous' 
+                                // placeholder='Email' 
+                                onChange = {handleChange}
+                                // required
+                                // disabled
+                                defaultValue={pledge.anonymous}    
+                                // size='30'      
+                                className='anon-button'                   
+                            />
+                        </li> 
                     <button type='submit'>SAVE</button>
+                    { messageBlock ? (
+                        <li className='message'><MessageCard message='Project updated  successfully' />
+                        </li>
+                    ) :( null ) }                       
                 </form>
 
                         </>
@@ -120,7 +138,8 @@ const EditPledgeForm = () => {
                         );
         } else {
             return (
-                <p>Not authorised</p>
+                <MessageCard message='Not authorised to edit project' messageType='header' />
+                // <p>Not authorised</p>
             );
         }
 

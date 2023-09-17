@@ -4,6 +4,7 @@ import ProjectCard from "../components/ProjectCard";
 import { useAuth } from "../hooks/use-auth";
 import LoginForm from "../components/LoginForm";
 import useProjects from "../hooks/use-projects";
+import Spinner from '../components/Spinner';
 
 
 const MyProjectsPage = () => {
@@ -13,7 +14,8 @@ const MyProjectsPage = () => {
     const userId = auth.id;
 
     if (isLoadingProjects) {
-        return (<p>Loading ...</p>);
+        // return (<p>Loading ...</p>);
+        return (<Spinner />)
     }
 
     if (errorProjects) {
