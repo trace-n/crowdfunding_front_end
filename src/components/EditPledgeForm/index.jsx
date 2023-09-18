@@ -68,7 +68,7 @@ const EditPledgeForm = () => {
                     <>
                             <h3>EDIT PLEDGE</h3>
                             <h3 className='login-text'>Welcome {auth.username}</h3> 
-                <form className='user-form' onSubmit={handleSubmit}>
+                <form className='project-form' onSubmit={handleSubmit}>
         
                     <li className='label'>
                         <label htmlFor='amount'>Amount</label>
@@ -108,9 +108,9 @@ const EditPledgeForm = () => {
                                 className='anon-button'                   
                             />
                         </li> 
-                    <button type='submit'>SAVE</button>
+                    <button type='submit' className='btn-wide'>SAVE</button>
                     { messageBlock ? (
-                        <li className='message'><MessageCard message='Project updated  successfully' />
+                        <li className='message'><MessageCard message='Pledge updated  successfully' />
                         </li>
                     ) :( null ) }                       
                 </form>

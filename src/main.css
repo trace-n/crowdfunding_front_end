@@ -15,6 +15,7 @@
     --background-color-offset: white;
     --main-text-dark: #82BEE6;
     --light-border: #9fcae6;
+    --main-border-nav: #ffffffe9;
 }
 
 
@@ -73,10 +74,10 @@ h3 {
 }
 
 #project-list {
-    display: grid;
-    grid-template-columns: auto auto auto;
+    display: block;
+    /* grid-template-columns: auto auto auto;
     column-gap: 16px;
-    row-gap: 16px;
+    row-gap: 16px; */
     width: 100%;
     margin: auto;
     /* border-style: solid; */
@@ -168,10 +169,47 @@ h3 {
     border-color: var(--light-border);
     background-color: var(--background-color);
     margin-bottom: 2px;
+    width: 90%;
 }
 
 .label {
     padding-left: 20px;
     list-style-type: none;
     text-align: left;
+}
+
+.btn-wide {
+    width: 90%;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.project-form {
+    display: block;
+    width: 90%;
+    margin: auto;    
+}
+
+@media (min-width: 768px) {
+
+    .project-form {
+        display: grid;
+        grid-template-columns: auto auto;
+        width: 90%;
+        /* border-style: solid; */
+        margin: auto;    
+    }
+
+    #project-list {
+        display: grid;
+        grid-template-columns: auto auto auto;
+        column-gap: 16px;
+        row-gap: 16px;
+        width: 100%;
+        margin: auto;
+        /* border-style: solid; */
+        /* border-color: red; */
+        /* text-align: center; */
+    }
 }

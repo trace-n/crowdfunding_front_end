@@ -10,20 +10,11 @@
     text-align: center; 
 }
 
-.project-form {
-    /* font-family: 'Bellota', Arial, sans-serif;  
-    background-color: var(--background-color-offset);
-    max-width: 500px;
-    /* height: 470px; */
-    /* margin: 20px auto; */
-    /* color: var(--offset-text); */
-    /* padding-top: 4px;  */
-    display: grid;
-    grid-template-columns: auto auto;
+/* .project-form {
+    display: block;
     width: 90%;
-    /* border-style: solid; */
     margin: auto;    
-}
+} */
 
 .project-form p {
     font-family: 'Bellota Text', Arial, sans-serif; 
@@ -114,4 +105,18 @@
     padding-top: 20px;
     text-align: center;
      margin-bottom: 40px; 
+} */
+
+/* .project-form li label {
+    display: none;
+} */
+/* 
+@media (min-width: 768px) {
+
+    .project-form {
+        display: grid;
+        grid-template-columns: auto auto;
+        width: 90%;
+        margin: auto;    
+    }
 } */

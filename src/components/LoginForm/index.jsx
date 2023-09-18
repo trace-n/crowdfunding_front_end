@@ -39,8 +39,6 @@ const LoginForm = () => {
             );
     }
 
-
-
     window.localStorage.setItem('id', userId);
 
     const handleChange = (event) => {
@@ -64,6 +62,7 @@ const LoginForm = () => {
                 //  Set the username on then on the main landing page, can check the name of user and id from get all users for use in the nav bar
                 window.localStorage.setItem('username', credentials.username);
                 window.localStorage.setItem('token', response.token);
+                window.localStorage.setItem('id', userId);
 
                 setAuth({
                     token: response.token,

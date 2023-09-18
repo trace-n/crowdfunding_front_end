@@ -155,3 +155,28 @@ export async function putProject(id, title, description, goal, image, date_end )
 }
 
 // export default putProject;
+
+export async function deleteProject(id) {
+    const userToken = window.localStorage.getItem('token');
+    const url = `${import.meta.env.VITE_API_URL}/projects/${id}/`;
+
+    const response = await fetch(url, { method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Token ' + userToken,               
+        }, 
+    });
+    
+    if (!response.ok) {
+        const fallbackError = `Error deleting project with id ${id}`;
+
+        const data = await response.json().catch(() => {
+            throw new Error(fallbackError);
+        });
+
+        const errorMessage = data?.detail ?? fallbackError;
+        throw new Error(errorMessage);
+    }
+
+    return await response.status;
+}

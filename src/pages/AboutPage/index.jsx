@@ -1,6 +1,6 @@
-import './AboutPage.css';
-import fundingIdea1 from '../assets/unsplash_ian_dooley1.jpg';
-import fundlingLogoCol from '../assets/fundling-website-favicon-black.png';
+import './style.css';
+import fundingIdea1 from '../../assets/unsplash_ian_dooley1.jpg';
+import fundlingLogoCol from '../../assets/fundling-website-favicon-black.png';
 
 const AboutPage = () => {
     

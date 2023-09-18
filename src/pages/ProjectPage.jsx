@@ -1,4 +1,3 @@
-// import { oneProject } from '../data';
 import './ProjectPage.css';
 import { useParams, Link } from 'react-router-dom';
 import { useAuth } from '../hooks/use-auth';
@@ -9,7 +8,6 @@ import CreatePledgeForm from '../components/CreatePledgeForm';
 import DeletePledgeButton from '../components/DeletePledgeButton';
 import { useState } from 'react';
 import { postPledge, deletePledge } from '../api/pledges';
-// import postPledge from '../api/pledges';
 import EditPledgeButton from '../components/EditPledgeButton';
 import Spinner from '../components/Spinner';
 import MessageCard from '../components/MessageCard';
@@ -47,8 +45,6 @@ const ProjectPage = () => {
                 messageType='header' 
             />
             );            
-        // <p>{errorProject.message}</p>);
-
     }
 
     if (errorUsers) {
@@ -58,7 +54,6 @@ const ProjectPage = () => {
                 messageType='header' 
             />
             );            
-            // <p>{errorUsers.message}</p>);
     }
 
     // information for total value of pledges and progress
@@ -69,8 +64,6 @@ const ProjectPage = () => {
     const endDate = Date.parse(project.date_end);
     const dateStrip = project.date_end.substr(0, 10);
     const endDateFormatted = dateStrip.substr(8,2)+'/'+dateStrip.substr(5,2)+'/'+dateStrip.substr(0,4);
-    // console.log(endDateFormatted);
-
 
     let projectEnded = false;
     let daysToGo;
@@ -81,9 +74,7 @@ const ProjectPage = () => {
     } else {
         projectEnded = true;
     }
-
-    // console.log(auth.token, auth.username);
-    
+   
     // total value of pledges compared to the total goal for progress bar display
     let progress = parseInt(valuePledges) / parseInt(project.goal);
     progress = Math.round(progress * 100);
@@ -93,35 +84,16 @@ const ProjectPage = () => {
 
     let currentUser = users.find(user => user.id === project.owner); 
 
+    // get last 5 pledges
     const pledgeSortedDesc = [...pledges].sort((a,b) => b.id - a.id);
-    // console.log('sort desc', pledgeSortedDesc);
-
     const pledgeSortedRecent = pledgeSortedDesc.slice(0, 5);
-    // console.log('sort desc top 5', pledgeSortedRecent);
-
-    // console.log('orig',pledges);
-
-    // setPledges(pledgeSortedRecent);
-    
+   
 
     const handleChange = (event) => {
-        // console.log("evt",event.target);
-        // debugger
-
-        if ( event.target.id == 'anonymous') {
             setPledge((prevPledge) => ({
                 ...prevPledge,
-                [event.target.id]: event.target.checked,
+                [event.target.id]: event.target.checked ?? event.target.value,
             }));
-
-        } else {
-            setPledge((prevPledge) => ({
-                ...prevPledge,
-                [event.target.id]: event.target.value,
-            }));
-        }
-
-        
     };
 
     const handleSubmit = (id, event) => {
@@ -253,14 +225,13 @@ const ProjectPage = () => {
                 <h4 className='recent-pledges'>
                     RECENT PLEDGES
                 </h4>
-                { messageBlockDelete ? (
+                { messageBlockDelete && 
                     <div className='delete-pledge'>
                         <MessageCard 
                             message='Pledge deleted successfully'
                             // messageType='header' 
                         />
                     </div> 
-                    ):(null)
                 }              
                 <div>
                     {/* {JSON.stringify(pledges)} */}

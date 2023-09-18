@@ -14,6 +14,7 @@
     /* justify-content: center; */
     align-items: center;
     /* border-style: solid; */
+    padding-left: 0px;
 }
 
 .nav-bar li {
@@ -25,11 +26,12 @@
 
 .nav-bar a {
     /* text-decoration: none; */
+    /* border-style: solid; */
     text-wrap: nowrap;
     font-weight: bold;
     padding: 4px 20px;
     /* width: 10px; */
-    cursor: url(../../assets/fundling-website-favicon-black.png) 40 40, move, auto;
+    /* cursor: url(../../assets/fundling-website-favicon-black.png) 40 40, move, auto; */
 }
 
 .nav-bar a:hover {
@@ -43,13 +45,16 @@
 }
 
 .nav-logo-text {
-    font-size: 1.5rem;
+    /* font-size: 1rem; */
     font-family: 'Bellota', Arial, sans-serif;  
-    font-weight: bold;
+    font-weight: normal;
+    list-style-type: none;
+    padding-left: 0px;
+    margin-left: 0px;
 }
 
 .nav-logo-text img {
-    height: 50px;
+    height: 35px;
     vertical-align: middle;
 }
 
@@ -59,6 +64,7 @@
     border-width: 2px;
     border-color: var(--main-button);
     /* padding: 4px 20px; */
+    margin-left: 8px;
     text-wrap: nowrap;
 }
 
@@ -80,6 +86,7 @@
     flex-direction: row; 
     /* border-style: solid; */
     align-items: center;
+    padding-right: 30px;
 }
 
 .centre-nav {
@@ -94,4 +101,107 @@
     height: 30px;
     vertical-align: middle;
     padding-right: 5px;
+}
+
+.display-none {
+    display: none;
+}
+
+.menu-icon {
+    height: 30px;
+    margin-left: 32px;
+    align-self: center;
+    transition: all 2s ease;
+    background-color: var(--body-bg-color);
+}
+
+.menu-close {
+    height: 30px;
+    margin-left: 32px;
+    align-self: center;
+    transition: all 2s ease;    
+    /* display: none; */
+}
+
+.desktop-nav {
+    display: none;
+    margin-left: 32px;
+}
+
+.mobile-nav a {
+    font-family: 'Montserrat', Arial, sans-serif; 
+    font-weight: normal;
+    display: block;
+    color: var(--body-bg-color);
+    background-color: var(--text-color);
+    /* padding: 4px 16px; */
+    text-align: center;
+    border-bottom: 1px solid var(--main-border-nav);
+    padding: 8px;
+    transition: all 1s ease;
+    width: 100%;
+}
+
+.mobile-nav a:hover {
+    background-color: var(--main-button-hover);
+}
+
+.mobile-nav ul {
+    padding: 0px;
+    margin-left: 0px;
+    width: auto;
+}
+
+.mobile-nav li {
+    list-style-type: none;
+
+}
+
+.mobile-header {
+    /* padding: 16px; */
+    margin: auto;
+    width: 95%;
+    padding-top: 0px;
+    /* display: flex; */
+    /* align-items: left; */
+    /* justify-content: space-between; */
+    border-bottom: 1px solid var(--body-bg-color);
+    /* border-style: solid;
+    border-color: red; */
+}
+
+.menu-button, .menu-close-button {
+    all: unset;
+    cursor: pointer;
+}
+
+.nav-icons  {
+    height: 30px;
+    align-self: right;
+    display: flex;
+    justify-content: right;
+}
+
+
+@media (min-width: 768px) {
+    .mobile-header {
+        /* align-items: center; */
+        /* justify-content: space-right; */
+        width: 100%;
+        margin: auto;
+        /* padding: 16px 56px; */
+    }    
+
+    .mobile-nav {
+        display:none;
+    }
+
+    .menu-icon, .menu-close {
+        display: none;
+    }    
+
+    .nav-bar {
+        display: flex;
+
+    }
 }

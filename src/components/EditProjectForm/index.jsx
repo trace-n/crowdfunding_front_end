@@ -63,7 +63,7 @@ const EditProjectForm = () => {
                     <>
                     <h3 className='project-header'>Need to finetune your project?</h3>
                     {/* <h3 className='login-text'>Welcome {project.owner}</h3>  */}
-                    <form className='user-form' onSubmit={handleSubmit}>
+                    <form className='project-form' onSubmit={handleSubmit}>
         
                     <li className='label'>
                         <label htmlFor='title'>Title</label>
@@ -132,7 +132,7 @@ const EditProjectForm = () => {
                             />
                         </li> 
                                                   
-                    <button type='submit'>SAVE</button>
+                    <button type='submit' className='btn-wide'>SAVE</button>
                     { messageBlock ? (
                         <li className='message'><MessageCard message='Project updated  successfully' />
                         </li>

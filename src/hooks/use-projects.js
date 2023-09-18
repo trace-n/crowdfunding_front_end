@@ -20,7 +20,7 @@ export function useProjects() {
             });
     }, []);
 
-    return {projects, isLoading, error };
+    return {projects, isLoading, error, setProjects };
 
 }
 

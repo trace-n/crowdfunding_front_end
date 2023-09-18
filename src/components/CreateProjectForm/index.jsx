@@ -93,7 +93,7 @@ const CreateProjectForm = () => {
                         className='form-input'
                         type='url' 
                         id='image' 
-                        placeholder='Image URL' 
+                        // placeholder='Image URL' 
                         onChange = {handleChange}
                         required
                     />
@@ -111,7 +111,7 @@ const CreateProjectForm = () => {
                         required
                     />
                 </li>    
-                <button type='submit'>CREATE</button>
+                <button className='btn-wide' type='submit'>CREATE</button>
             </form>
         </div>
     );

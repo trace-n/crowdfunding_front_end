@@ -1,11 +1,9 @@
 .main-section {
     width: 70%;
-    /* border-style: solid; */
     font-family: 'Montserrat', Arial, sans-serif;  
     background-color: var(--main-background-offset); 
     color: var(--offset-text);
     margin: auto;
-    /* margin-bottom: 30px; */
     padding: 48px;
     
 }
@@ -40,6 +38,7 @@
 .main-section img {
     object-fit: contain;  
     width: 70%;  
+    margin: auto;
 }
 
 

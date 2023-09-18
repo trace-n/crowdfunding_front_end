@@ -39,7 +39,7 @@ by Tracey Nguyen
     - [X] When the project was created (auto filled on initial creation)
     - [X] When the project was changed (auto filled on create/update)
     - [X] When the project ends (user defined)
-    - [X] User can edit project if they are the owner of the project   
+    - [X] User can edit/delete project if they are the owner of the project   
     - [X] User can view list of their own project 
 
 * [X] User can make a Pledge
@@ -79,7 +79,6 @@ by Tracey Nguyen
 ## Styling
 
 ### Colour Scheme
- 
 
 ![CSS Styling Colour Scheme](./src/assets/ColourScheme.png "Colour Scheme")
 
@@ -115,9 +114,6 @@ by Tracey Nguyen
 | src/ | main | Contains jsx and css file for routing paths to pages|
 | base | index.html | Points to main.jsx file |
 | base | README.md | Readme file for this repository |
-
-
-
 
 
 ## Reference
