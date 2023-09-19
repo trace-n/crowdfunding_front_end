@@ -36,7 +36,7 @@ body a {
 
 h1 {
     font-family: 'Bellota', Arial, sans-serif;  
-    font-size: 4rem;
+    font-size: 3rem;
 }
 
 h2, h3 {
@@ -44,7 +44,7 @@ h2, h3 {
 }
 
 h2 {
-    font-size: 3rem;
+    font-size: 2rem;
 }
 
 h3 {
@@ -109,8 +109,6 @@ h3 {
     color: var(--main-button-hover);
 
 }
-
-
 
 .button-icons {
     /* 
@@ -216,4 +214,21 @@ h3 {
         /* border-color: red; */
         /* text-align: center; */
     }
+
+    h1 {
+        font-family: 'Bellota', Arial, sans-serif;  
+        font-size: 4rem;
+    }
+    
+    h2, h3 {
+        font-family: 'Bellota Text', Arial, sans-serif;  
+    }
+    
+    h2 {
+        font-size: 3rem;
+    }
+    
+    h3 {
+        font-size: 1.2rem;
+    } 
 }

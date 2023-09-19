@@ -64,7 +64,7 @@ const EditPledgeForm = () => {
     if ( auth.token ) {
         if (auth.id == pledge.supporter) {
             return (
-                <div className='user-page'>
+                <div className='project-page'>
                     <>
                             <h3 className='login-text'>Welcome {auth.username}</h3> 
                 <form className='project-form' onSubmit={handleSubmit}>

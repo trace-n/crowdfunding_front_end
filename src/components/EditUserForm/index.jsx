@@ -124,7 +124,7 @@ const EditUserForm = () => {
                                     size='30'
                                 />
                             </li>     
-                        <button type='submit'>SAVE</button>
+                        <button type='submit' className='btn-wide'>SAVE</button>
                         { messageBlock ? (
                         <li className='message'><MessageCard message='Details updated successfully' />
                         </li>

@@ -17,8 +17,9 @@
 }
 
 .user-form {
-    display: grid;
-    grid-template-columns: auto auto;
+    display: block;
+    /* display: grid;
+    grid-template-columns: auto auto; */
     width: 90%;
     /* border-style: solid; */
     margin: auto;
@@ -63,10 +64,19 @@
     margin: auto;
 } */
 
-.user-form button:hover {
+/* .user-form button:hover {
     background-color: var(--main-button-hover);
-}
+} */
 
 /* .text-input {
 
 } */
+@media (min-width: 768px) {
+    .user-form {
+        display: grid;
+        grid-template-columns: auto auto;
+        /* width: 90%; */
+        /* border-style: solid; */
+        /* margin: auto; */
+    }
+}
