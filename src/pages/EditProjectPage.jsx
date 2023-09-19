@@ -17,7 +17,7 @@ const EditProjectPage = () => {
         <div>
             { auth.token ? (
                 <>
-                    <h3 className='login-text'>EDIT PROJECT</h3>    
+                    <h2 className='login-text'>EDIT PROJECT</h2>    
                         {/* <EditUserForm userId={auth.id}/> */}
                         <EditProjectForm id={id}/>
                 </>

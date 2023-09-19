@@ -42,8 +42,8 @@ const NavBar = () => {
 <header>
             <div className="mobile-header">
                 <div className="nav-icons">                    
-                    <nav className="nav-bar display-none">
-                    <div className='left-nav'>
+                    <nav className="nav-bar">
+                    <div className='left-nav display-none'>
                     <ul>
                         <li>
                             <Link to='/about'>ABOUT</Link>
@@ -58,7 +58,7 @@ const NavBar = () => {
                          <Link to='/' className='nav-logo-text'>FUNDLING<img src={fundlingLogoCol} alt='fundling small logo' className='image-nav' /></Link>
                      </li>    
                  </div>
-                 <div className='right-nav'>     
+                 <div className='right-nav display-none'>     
                      <ul> 
                         {auth.token ? (
                              //  needs a react fragment eg. <React Fragment> but this can be short hand as <> to infer a fragment as there is more than one element 
@@ -89,7 +89,8 @@ const NavBar = () => {
                          )}
                          </ul>            
                     </div> 
-                    </nav>                  
+                    </nav>   
+          
                     <button 
                         className={`menu-button ${displayButton}`}
                         onClick={handleClick}
@@ -111,11 +112,11 @@ const NavBar = () => {
                 <nav className={`mobile-nav ${displayCloseButton}`}> 
                 <ul>
                     {/* <li className='nav-logo-text'> */}
-                    <li>
+                    {/* <li>
                          <Link to='/' className='nav-logo-text'>FUNDLING<img src={fundlingLogoCol} alt='fundling small logo' className='image-nav' /></Link>
-                     </li>                      
+                     </li>                       */}
                     <li>
-                        <Link to='/about' onClick={handleClick}>ABOUT</Link>
+                        <Link to='/about' onClick={handleClick}className='mobile-about'>ABOUT</Link>
                     </li>
                     <li>
                         <Link to='/project' onClick={handleClick}>START PROJECT</Link>

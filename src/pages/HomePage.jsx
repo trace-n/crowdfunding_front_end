@@ -76,13 +76,19 @@ const HomePage = () => {
                 <img src={fundlingLogoCol} alt='Fundling Logo Icon' className='headline-image-icon'></img>
             </section>
             <div className='statistics-card'>
+                <section>
                 <h2>{statistics.project_count.toLocaleString()}</h2>
-                <h2>$ {statistics.pledge_amount.toLocaleString()}</h2>
-                <h2>{statistics.pledge_count.toLocaleString()}</h2>
                 <h3>PROJECTS</h3>
+                </section>
+                <section>
+                <h2>$ {statistics.pledge_amount.toLocaleString()}</h2>
                 <h3>AMOUNT RAISED</h3>
-                <h3>PLEDGES</h3>      
-                    
+                </section>
+                <section>
+                <h2>{statistics.pledge_count.toLocaleString()}</h2>
+                <h3>PLEDGES</h3> 
+                </section>
+                
             </div>
             <>
 

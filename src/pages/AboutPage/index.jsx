@@ -6,7 +6,7 @@ const AboutPage = () => {
     
     return (
         <div>
-            <h1>About</h1>
+            <h2>ABOUT</h2>
             <section className='main-section'>
                 <h2 className='headline'>Welcome to FUNDLING <img src={fundlingLogoCol} className='image-headline' alt='fundling image' /></h2>
                 <p>A crowdfunding platform helping you hatch your ideas into reality with community support. Make your dreams hatch 🐣 into reality and take flight 🐥 </p>

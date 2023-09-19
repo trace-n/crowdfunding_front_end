@@ -95,6 +95,7 @@
     flex-direction: row; 
     /* border-style: solid; */
     align-items: center;
+    width: 100%;
 }
 
 .user-svg {
@@ -170,6 +171,10 @@
     border-color: red; */
 }
 
+.mobile-about {
+    border-top: 1px solid var(--main-border-nav);
+}
+
 .menu-button, .menu-close-button {
     all: unset;
     cursor: pointer;
@@ -202,6 +207,10 @@
 
     .nav-bar {
         display: flex;
-
     }
+
+    .left-nav, .right-nav {
+        display: block;
+    }
+
 }

@@ -44,6 +44,7 @@ const MyProjectsPage = () => {
 
         return (
             <div className='home-box'>
+                <h2>My Projects</h2>
             { auth.token ? (
                 <>  { filteredProjects.length > 0 ? (      
                     <div id='project-list'>            

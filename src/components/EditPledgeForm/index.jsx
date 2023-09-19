@@ -66,7 +66,6 @@ const EditPledgeForm = () => {
             return (
                 <div className='user-page'>
                     <>
-                            <h3>EDIT PLEDGE</h3>
                             <h3 className='login-text'>Welcome {auth.username}</h3> 
                 <form className='project-form' onSubmit={handleSubmit}>
         

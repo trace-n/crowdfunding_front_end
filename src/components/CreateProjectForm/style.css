@@ -73,9 +73,11 @@
 }
 
 .project-text {
-    padding-top: 10px;
+    padding: 16px 32px 25px 42px;
+    /* padding-top: 10px;
+    padding-left: 16px; */
     /* text-align: center; */
-    padding-bottom: 20px;
+    /* padding-bottom: 20px; */
     font-family: 'Bellota Text', Arial, sans-serif; 
     text-align: left; 
     width: 85%;

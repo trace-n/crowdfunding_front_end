@@ -8,7 +8,7 @@ const CreateProjectPage = () => {
 
     return (
         <div>
-            <h3 className='login-text'>START PROJECT</h3>          
+            <h2 className='login-text'>START PROJECT</h2>          
             { auth.token ? ( 
                 <CreateProjectForm />
             ) : (

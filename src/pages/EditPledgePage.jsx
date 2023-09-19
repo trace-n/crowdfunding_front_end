@@ -7,9 +7,9 @@ const EditPledgePage = () => {
     return (
 
         <div>
-            <h3 className='login-text'>
+            <h2 className='login-text'>
                 Edit Pledge
-            </h3>    
+            </h2>    
             <EditPledgeForm/>
         </div>
     ) 
