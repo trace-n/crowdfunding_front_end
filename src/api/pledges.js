@@ -17,7 +17,8 @@ export async function deletePledge(pledgeId) {
             throw new Error(fallbackError);
         });
 
-        const errorMessage = data?.detail ?? fallbackError;
+        let errorMessage = data?.detail ?? fallbackError;
+        errorMessage = `${response.status} - ${errorMessage}`; 
         throw new Error(errorMessage);
     }
 
@@ -71,7 +72,8 @@ export async function postPledge(amount, comment, anonymous, project ) {
         const data = await response.json().catch(() => {
             throw new Error(fallbackError);
         });
-        const errorMessage = data?.detail ?? fallbackError;
+        let errorMessage = data?.detail ?? fallbackError;
+        errorMessage = `${response.status} - ${Object.keys(data)[0].toString()} ${Object.values(data)[0].toString()}`; 
         throw new Error(errorMessage);
     }
 

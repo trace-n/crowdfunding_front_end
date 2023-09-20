@@ -22,6 +22,7 @@ async function postPledge(amount, comment, anonymous, project ) {
             throw new Error(fallbackError);
         });
         const errorMessage = data?.detail ?? fallbackError;
+
         throw new Error(errorMessage);
     }
 

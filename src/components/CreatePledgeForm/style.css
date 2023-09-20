@@ -7,6 +7,7 @@
     /* border-style: solid; */
     /* padding: 16px; */
     text-wrap: nowrap;
+    margin-top: 16px;
 }
 
 .donate-form input {
@@ -33,6 +34,7 @@
     border-style: none;
     padding: 4px;
     margin: auto;
+    margin-top: 16px;
 }
 
 .donate-button:hover {

@@ -15,13 +15,15 @@ import MessageCard from '../components/MessageCard';
 const ProjectPage = () => {
 
     const {auth, setAuth} = useAuth();
-    // use hook in react router called `useParams` to get id from URL to pass to useProject hook
+
     const { id } = useParams();
+
     // rename the parameters for unique reference 
     const { users, isLoading: isLoadingUsers, error: errorUsers } = useUsers();
     const { project, pledges, isLoading: isLoadingProject, error: errorProject, setPledges } = useProject(id);
 
     const [messageBlock, setMessageBlock] = useState(false);
+    const [messageBlockError, setMessageBlockError] = useState(false);
     const [messageBlockDelete, setMessageBlockDelete] = useState(false);
 
     const [pledge, setPledge] = useState({
@@ -34,7 +36,6 @@ const ProjectPage = () => {
     });
 
     if (isLoadingProject || isLoadingUsers) {
-        // return (<p>LOADING...</p>);
         return (<Spinner />)
     }
 
@@ -84,21 +85,35 @@ const ProjectPage = () => {
 
     let currentUser = users.find(user => user.id === project.owner); 
 
-    // get last 5 pledges
+    // get last 6 pledges
     const pledgeSortedDesc = [...pledges].sort((a,b) => b.id - a.id);
     const pledgeSortedRecent = pledgeSortedDesc.slice(0, 5);
    
 
     const handleChange = (event) => {
+        const { id, value } = event.target;
+        // cannot do a ?? conditional as event.target.value will always have a value, even for checkbox and submit will faile with value on
+
+        if (id == 'anonymous'){
             setPledge((prevPledge) => ({
                 ...prevPledge,
-                [event.target.id]: event.target.checked ?? event.target.value,
+                [id]: event.target.checked,
             }));
+
+        } else { setPledge((prevPledge) => ({
+            ...prevPledge,
+            [id]: value,  
+            }));
+
+        }
+            
     };
 
     const handleSubmit = (id, event) => {
         event.preventDefault(); 
+        
         if (pledge.amount && pledge.comment) {
+            
             if (pledge) {
 
                 pledge.project = id; 
@@ -119,7 +134,7 @@ const ProjectPage = () => {
     };
 
     const deleteSinglePledge = (pledgeId) => {
-        // event.preventDefault();
+        
         if (pledgeId) {
             deletePledge(
                 pledgeId
@@ -130,9 +145,6 @@ const ProjectPage = () => {
             }); 
         }
     }; //end deleteSinglePledge
-
-    // console.log('type of auth id', typeof(auth.id), 'type of proj owner', typeof(project.owner));
-    //  users.find(user => user.id === pledgeData.supporter);
 
     return (
         <div>
@@ -156,7 +168,6 @@ const ProjectPage = () => {
                 { !projectEnded ? (
                     <div className='project-stat-item'>
                         <h2 className='project-h2'>{daysToGo}</h2>
-                        {/* <h3>{`${ today < endDate ? 'Days to Go': ''}`}</h3>     */}
                         <h3>Days to Go</h3>
                     </div> 
                 ):(
@@ -164,7 +175,6 @@ const ProjectPage = () => {
                         Project Ended
                     </h3>
                 ) }
-
                 </div>
 
                 { (auth.token) ? ( 
@@ -177,12 +187,11 @@ const ProjectPage = () => {
                             onChange={handleChange}
                         /> 
                          
-                          { messageBlock ? (
-                                <li className='message'>
-                                    <MessageCard message='Thanks for your donation!' />
-                                </li>
-                                ):(null)
-                            }
+                        { messageBlock && 
+                            <li className='message'>
+                                <MessageCard message='Thanks for your donation!' />
+                            </li>
+                        }
                         </>
                         
                     ) : ( 
@@ -193,34 +202,18 @@ const ProjectPage = () => {
                 <Link to='/login' 
                 className='login-button'>DONATE</Link>
                  ) }
-                        
-                {/* { (!projectEnded) ? ( 
-                    <>
-                { (auth.token && parseInt(auth.id) !== project.owner) ? (
-
-                    <CreatePledgeForm 
-                        projectId={id} 
-                        onClick={handleSubmit}
-                        onChange={handleChange}
-                    />   
-                ) : ( 
-                    <Link to='/login' 
-                    className='login-button'>DONATE</Link>
-                )}   </>
-                ) : null }   */}
                 </section>
-                </div>    
+            </div>    
             <div className='project-detail'>
             <section className='project-section'>
                 <h3 className='project-title'>{project.title}</h3>
-                <h4>Project Created By: {currentUser.username.toUpperCase()}
-                {/* {users.filter(user => user.id === project.owner)[0].username} */}
+                <h4>Project Created By: {`${currentUser.first_name} ${currentUser.last_name}`}
                 </h4>
                 <h4>
                     End Date: {endDateFormatted}
                 </h4>
                 <p>{project.description}</p>
-                { (pledges.length > 0) ? (
+                { (pledges.length > 0) &&
                     <>
                 <h4 className='recent-pledges'>
                     RECENT PLEDGES
@@ -229,27 +222,21 @@ const ProjectPage = () => {
                     <div className='delete-pledge'>
                         <MessageCard 
                             message='Pledge deleted successfully'
-                            // messageType='header' 
                         />
                     </div> 
                 }              
-                <div>
-                    {/* {JSON.stringify(pledges)} */}
-                </div>
-                <ul>
+
+                <ul className='pledge-group'>
                     <li className='pledge-items'>
                         <div className='pledge-grid-right'><h4>Amount</h4></div>
                         <div className='pledge-grid'><h4>Pledger</h4></div>
-                        {/* <div className='pledge-grid'>Date Pledged</div>        */}
                         <div className='pledge-edit'>
                         </div>                         
                     </li>
 
-{/* new pledges map based on sorted desc top 5 pledges */}
-
+{/* new pledges map based on sorted desc top pledges */}
 
                     {pledgeSortedRecent.map((pledgeData, key) => {
-                        // console.log("pledgeData.date_created",pledgeData);
                         currentUser = users.find(user => user.id === parseInt(pledgeData.supporter));
                         return (
                             <>
@@ -259,10 +246,11 @@ const ProjectPage = () => {
                                     ${pledgeData.amount.toLocaleString()}
                                 </div>
                                 <div className='pledge-grid'>
-                                    { pledgeData.anonymous ? ( 'Anonymous' ) : ( currentUser.username.toUpperCase()) }
+                                    { pledgeData.anonymous ? ( 'Anonymous' ) : ( `${currentUser.first_name} ${currentUser.last_name}`) }
                                 </div>
                                 <div className='pledge-edit'>
-                                    { (auth.token && auth.id == pledgeData.supporter) ? (
+                                    { (auth.token && auth.id == pledgeData.supporter) &&
+                                    // ? (
                                         <>
                                             <EditPledgeButton 
                                                 pledgeId={pledgeData.id} 
@@ -273,55 +261,20 @@ const ProjectPage = () => {
                                             />
                                         </>
 
-                                    ) : null }
+                                    // ) : null 
+                                    }
                                 </div>
                             </li>
                             </>
-                        ); // return
+                        );  
                     })}
-                    
-
-{/* // begin of pledges .map original */}
-                    {/* {pledges.map((pledgeData, key) => {
-                        // console.log("pledgeData.date_created",pledgeData);
-                        currentUser = users.find(user => user.id === parseInt(pledgeData.supporter));
-                        return (
-                            <>
-
-                            <li key={key} className='pledge-items'>
-                                <div className='pledge-grid-right'>${pledgeData.amount.toLocaleString()}</div>
-                                <div className='pledge-grid'>{currentUser.username.toUpperCase()}</div>
-                                <div className='pledge-edit'>
-                                { (auth.token && auth.id == pledgeData.supporter) ? (
-                                    <>
-                                        <EditPledgeButton 
-                                            pledgeId={pledgeData.id} 
-                                        />
-                                        <DeletePledgeButton 
-                                            pledgeId={pledgeData.id} 
-                                            onClick={deleteSinglePledge} 
-                                        />
-                                    </>
-
-                                ) : null }
-                                </div>
-                            </li>
-                            </>
-                        );
-                    })} */}
-
-                    {/* // end of pledges map original */}
-
-
                 </ul>
-                </> ) : ( null) }   
+                </> }   
                 </section>
             </div>
         </div>
         
     );
-
-    // }
 }
 
 export default ProjectPage;

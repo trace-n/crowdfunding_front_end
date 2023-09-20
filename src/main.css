@@ -185,6 +185,14 @@ h3 {
     margin: auto;
     margin-top: 20px;
     margin-bottom: 20px;
+    background-color: var(--main-background);
+    font-weight: bold;
+    color: var(--main-text);
+    box-shadow: 5px 4px 6px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);    
+    border-style: none;
+    grid-column-start: 1;
+    grid-column-end: -1    ;
+    height: 40px;
 }
 
 .project-form {

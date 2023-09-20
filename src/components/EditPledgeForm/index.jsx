@@ -32,7 +32,7 @@ const EditPledgeForm = () => {
     const handleChange = (event) => {
         const { id, value } = event.target;
 
-        if ( event.target.id == 'anonymous') {
+        if ( id == 'anonymous') {
             setPledge((prevPledge) => ({
                 ...prevPledge,
                 [id]: event.target.checked,
@@ -40,7 +40,7 @@ const EditPledgeForm = () => {
         } else {
             setPledge((prevPledge) => ({
                 ...prevPledge,
-                [event.target.id]: event.target.value,
+                [id]: value,
             }));
         }
         
@@ -103,7 +103,8 @@ const EditPledgeForm = () => {
                                 type='checkbox' 
                                 id='anonymous' 
                                 onChange = {handleChange}
-                                defaultValue={pledge.anonymous}    
+                                checked = {pledge.anonymous}
+                                // defaultValue={pledge.anonymous && 'checked'}    
                                 className='anon-button'                   
                             />
                         </li> 

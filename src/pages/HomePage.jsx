@@ -71,7 +71,7 @@ const HomePage = () => {
 
     return (
         <div className='home-box'>
-            <section className='headline'>    
+            <section className='headline display-none'>    
                 <img src={fundlingLogoHeader} alt='Fundling Logo header' className='headline-image'></img>
                 <img src={fundlingLogoCol} alt='Fundling Logo Icon' className='headline-image-icon'></img>
             </section>
