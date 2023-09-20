@@ -10,7 +10,7 @@
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     font-family: 'Montserrat', Arial, sans-serif; 
     background-color: var(--background-color-offset);
-    border-radius: 2px;
+    border-radius: 4px;
 
     /* padding: 4px; */
 }
@@ -34,10 +34,13 @@
 }
 
 .project-card img {
-    width: 100%;
+    width: 95%;
     height: 200px;
     object-fit: cover;
     padding-bottom: 0px;
+    margin: auto;
+    padding-top: 6px;
+    border-radius: 4px;
 }
 
 .project-card h3 {
