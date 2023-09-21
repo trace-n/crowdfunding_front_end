@@ -12,6 +12,7 @@ import LoginPage from './pages/LoginPage.jsx';
 import SignupPage from './pages/SignupPage.jsx';
 import EditUserPage from './pages/EditUserPage.jsx';
 import MyProjectsPage from './pages/MyProjectsPage';
+import MyPledgesPage from  './pages/MyPledgesPage';
 import EditPledgePage from './pages/EditPledgePage';
 import EditProjectPage from './pages/EditProjectPage';
 // import UserPage from './pages/UserPage';
@@ -23,23 +24,20 @@ import { AuthProvider } from './components/AuthProvider/index.jsx';
 const router = createBrowserRouter([
   {
     path: '/',
-    // element: <NavBar />,
     element: <LandingPage />,
     children: [
       { path: '/', element: <Homepage /> },
       { path: '/project/:id', element: <ProjectPage /> },
       { path: '/project', element: <CreateProjectPage /> },  
-      // { path: '/pledge/:projectId', element: <CreatePledgePage /> },            
       { path: '/about', element: <AboutPage /> },
       { path: '/contact', element: <ContactPage /> },
       { path: '/login', element: <LoginPage /> },
       { path: '/signup', element: <SignupPage /> },
       { path: '/users/:id', element: <EditUserPage /> },
       { path: '/projects', element: <MyProjectsPage /> },
+      { path: '/pledges', element: <MyPledgesPage /> },
       { path: '/pledges/:id', element: <EditPledgePage /> },
       { path: '/editProject/:id', element: <EditProjectPage /> },  
-
-      // { path: '/users/:id', element: <UserPage /> },
     ],
   },
 ]);

@@ -1,0 +1,61 @@
+/* :root {
+    --background-color-offset: white;
+
+} */
+
+.project-card {
+    width: 100%;
+    /* border: 1px solid gray; */
+    /* box-shadow: 0px 0px 5px gray; */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    font-family: 'Montserrat', Arial, sans-serif; 
+    background-color: var(--background-color-offset);
+    border-radius: 4px;
+
+    /* padding: 4px; */
+}
+
+.project-card a {
+    text-decoration: none;
+    color: var(--offset-text);
+    /* padding-bottom: 0px;
+    margin-bottom: 0px; */
+    display: inline;
+}
+
+.project-card a:hover {
+    text-decoration: none;
+    background-color: var(--background-color-offset);
+    /* color: var(--offset-text); */
+    color: var(--main-button-hover);
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+    
+}
+
+.project-card img {
+    width: 95%;
+    height: 200px;
+    object-fit: cover;
+    padding-bottom: 0px;
+    margin: auto;
+    padding-top: 6px;
+    border-radius: 4px;
+}
+
+.project-card h3 {
+    padding: 0px 8px 12px 8px;
+    margin: 8px 0px;
+    font-size: 0.9rem;
+    /* border-style: solid; */
+    
+}
+
+@media (min-width: 768px) {
+    .project-card h3 {
+        padding: 8px 8px;
+        margin: 8px 8px;
+        /* border-style: solid; */
+        
+    }
+}
