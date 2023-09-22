@@ -137,24 +137,20 @@ const NavBar = () => {
                 </div>
             </div>  
                 <nav className={`mobile-nav ${displayCloseButton}`}> 
+                
                 <ul>
                     {/* <li className='nav-logo-text'> */}
                     {/* <li>
                          <Link to='/' className='nav-logo-text'>FUNDLING<img src={fundlingLogoCol} alt='fundling small logo' className='image-nav' /></Link>
                      </li>                       */}
                     <li>
-                        <Link to='/about' onClick={handleClick}className='mobile-about'>ABOUT</Link>
+                        <Link to='/about' onClick={handleClick}className='mobile-about'>About</Link>
                     </li>
                     <li>
-                        <Link to='/project' onClick={handleClick}>START PROJECT</Link>
+                        <Link to='/project' onClick={handleClick}>Start Project</Link>
                     </li>   
                     { auth.token ? (
                         <>
-                        <li>                        
-                                <Link to='/projects' onClick={handleClick}> 
-                                    MY PROJECTS
-                                </Link>                        
-                            </li>                                
                         <li>
                             <Link to={userLink} onClick={handleClick}><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="user-svg">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -162,16 +158,29 @@ const NavBar = () => {
                             {auth.username}
                             </Link>
                         </li>     
+                                                <li>                        
+                                                <Link to='/projects' onClick={handleClick}> 
+                                                    My Projects
+                                                </Link>                        
+                                            </li>  
+                                            <li> 
+                                            <Link to='/pledges'
+                                               onClick={handleClick} 
+                                            >   
+                                                My Pledges
+                                            </Link>
+                                            </li>                              
+                                        
                         <li>
                             <Link to='/' onClick={handleLogout}>
-                                LOG OUT
+                                Log out
                             </Link>
                         </li>
                         </>
                     ) : (
                         <li>
                             <Link to='/login' onClick={handleClick}> 
-                                LOG IN
+                                Log in
                             </Link>
                         </li>
                     )}

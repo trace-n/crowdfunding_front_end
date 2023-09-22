@@ -3,37 +3,61 @@
 
 } */
 
-.project-card {
+.project-card section {
+    color: var(--main-button-hover);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 10px;
+    margin: 8px;
+}
+
+.project-card section h3 {
+    margin: 0px;
+    padding: 0px;
+    padding-right: 20px;
+}
+
+/* .pledge-card {
     width: 100%;
-    /* border: 1px solid gray; */
-    /* box-shadow: 0px 0px 5px gray; */
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     font-family: 'Montserrat', Arial, sans-serif; 
     background-color: var(--background-color-offset);
     border-radius: 4px;
-
-    /* padding: 4px; */
+    margin: 8px;
 }
 
-.project-card a {
+.pledge-project {
+    padding-top: 8px;
+    margin: 0px;
+}
+
+.pledge-project h3 {
+    padding: 0px;
+    margin: 0px;
+}
+
+.pledge-project a {
     text-decoration: none;
-    color: var(--offset-text);
+    color: var(--main-button-hover);
+    padding: 0px;
+    margin: 0px;
     /* padding-bottom: 0px;
     margin-bottom: 0px; */
     display: inline;
 }
 
-.project-card a:hover {
+.pledge-project a:hover {
     text-decoration: none;
     background-color: var(--background-color-offset);
     /* color: var(--offset-text); */
-    color: var(--main-button-hover);
+    color: var(--offset-text);
     padding-bottom: 0px;
     margin-bottom: 0px;
     
 }
 
-.project-card img {
+.pledge-card img {
     width: 95%;
     height: 200px;
     object-fit: cover;
@@ -43,19 +67,58 @@
     border-radius: 4px;
 }
 
-.project-card h3 {
-    padding: 0px 8px 12px 8px;
-    margin: 8px 0px;
-    font-size: 0.9rem;
-    /* border-style: solid; */
-    
+.pledge-detail h3 {
+    color: var(--offset-text);
 }
 
+.pledge-detail a {
+    text-decoration: none;
+    /* color: var(--offset-text); */
+    /* padding-bottom: 0px;
+    margin-bottom: 0px; */
+    display: inline;
+}
+
+.pledge-detail a:hover {
+    text-decoration: none;
+    background-color: var(--background-color-offset);
+    /* color: var(--offset-text); */
+    color: var(--main-button-hover);
+    padding-bottom: 0px;
+    margin-bottom: 0px;  
+}
+
+.pledge-detail article {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 70%;
+    margin: auto;   
+    padding-bottom: 4px;
+}
+
+.pledge-amount {
+    justify-content: left;
+    /* border-style: solid; */
+}
+
+.pledge-amount h3 {
+    margin: 0px;
+}
+
+.pledge-icons {
+    display: flex;
+    justify-content: right;
+    /* border-style: solid; */
+}
+
+
 @media (min-width: 768px) {
-    .project-card h3 {
-        padding: 8px 8px;
-        margin: 8px 8px;
+    .pledge-card h3 {
+        /* padding: 8px 8px;
+        margin: 8px 8px; */
         /* border-style: solid; */
         
     }
-}
+} */

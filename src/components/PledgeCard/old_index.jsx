@@ -5,43 +5,64 @@ import DeletePledgeButton from '../DeletePledgeButton';
 // import { useState } from 'react';
 
 const PledgeCard = (props) => {
+    
     const { pledgeData, projectData } = props;
+    // const { projectData } = props.projectData;
+
     const {auth, setAuth} = useAuth();
+
+    // console.log('project:',projectData);
     // const [myProject, setMyProject ] = useState( projectData ) ;
    
+    // const editPledgeLink = `/pledges/${pledgeData.id}`;
     const pledgeLink = `/pledges/${pledgeData.id}`;
     const projectLink = `/project/${pledgeData.project}`;
-
+        
     return (
-        <div className='project-card'>
+        <div className='pledge-card'>
             
-            {/* <Link to='/project'> */}
-            <Link to={projectLink}>
-                <img src={projectData.image} />
-            </Link>    
+            {/* <Link to={pledgeLink}> */}
+            <section className='pledge-project'>
                 <h3>
-                <Link to={projectLink}>
-                    {projectData.title}
-                </Link>
+                <Link to={projectLink} >
+                    {projectData.title} 
+                </Link> 
                 </h3>
-                <section>
-                <h3>$ {pledgeData.amount}</h3>
+            </section>
+            {/* </Link>     */}
+            <section className='pledge-detail'>
+                <article>
+                    <div className='pledge-amount'>
+                    <h3>$ {pledgeData.amount}</h3> 
+                    </div>
                     { parseInt(auth.id) === pledgeData.supporter && 
-                    <>
+                    <div className='pledge-icons'>
                         <Link to={pledgeLink}>
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="small-icons">
                                 <path d="M5.433 13.917l1.262-3.155A4 4 0 017.58 9.42l6.92-6.918a2.121 2.121 0 013 3l-6.92 6.918c-.383.383-.84.685-1.343.886l-3.154 1.262a.5.5 0 01-.65-.65z" />
                                 <path d="M3.5 5.75c0-.69.56-1.25 1.25-1.25H10A.75.75 0 0010 3H4.75A2.75 2.75 0 002 5.75v9.5A2.75 2.75 0 004.75 18h9.5A2.75 2.75 0 0017 15.25V10a.75.75 0 00-1.5 0v5.25c0 .69-.56 1.25-1.25 1.25h-9.5c-.69 0-1.25-.56-1.25-1.25v-9.5z" />
                             </svg>
-                            </Link>
+                        </Link>
                         <DeletePledgeButton 
                                 id={pledgeData.id}
                                 onClick={() => props.onClick(pledgeData.id)}
-                        />                             
-                    </>
-                      }
-                      </section>    
-                
+                        />                              
+                    </div>
+                                          }
+                      </article>
+                      {/* <article>
+                    <label htmlFor='anonymous'>Anonymous</label>
+                    <input 
+                        id='anonymous'
+                        type='checkbox' 
+                        checked = {pledgeData.anonymous} 
+                    />
+                    </article>
+                    <article>
+                    {pledgeData.comment}
+                    </article> */}
+                    
+                </section>
         </div>
     );
 }

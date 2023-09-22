@@ -30,6 +30,7 @@
     text-wrap: nowrap;
     font-weight: bold;
     padding: 4px 20px;
+    
     /* width: 10px; */
     /* cursor: url(../../assets/fundling-website-favicon-black.png) 40 40, move, auto; */
 }
@@ -112,7 +113,8 @@
     height: 30px;
     margin-left: 32px;
     align-self: center;
-    transition: all 2s ease;
+    transition: all 2s ease-out;
+    transform: rotate(180deg);
     background-color: var(--body-bg-color);
 }
 
@@ -120,7 +122,8 @@
     height: 30px;
     margin-left: 32px;
     align-self: center;
-    transition: all 2s ease;    
+    transition: all 2s ease-out;   
+    transform: rotate(180deg); 
     /* display: none; */
 }
 
@@ -129,18 +132,33 @@
     margin-left: 32px;
 }
 
+.mobile-nav {
+    position: absolute;
+    right: 0px;
+    /* top: 0px; */
+    /* background-color: var(--body-bg-color); */
+    background-color: var(--main-background); 
+    min-width: 180px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;    
+}
+
+.mobile-nav svg {
+    height: 22px;
+}
+
 .mobile-nav a {
     font-family: 'Montserrat', Arial, sans-serif; 
     font-weight: normal;
     display: block;
-    color: var(--body-bg-color);
-    background-color: var(--text-color);
+    /* color: var(--body-bg-color); */
+    /* background-color: var(--body-bg-color); */
     /* padding: 4px 16px; */
     text-align: center;
     border-bottom: 1px solid var(--main-border-nav);
     padding: 8px;
     transition: all 1s ease;
-    width: 100%;
+    width: 91%;
 }
 
 .mobile-nav a:hover {
@@ -237,11 +255,12 @@
   .dropdown {
     float: left;
     overflow: hidden;
+    font-family: 'Montserrat', Arial, sans-serif; 
   }
   
   /* Dropdown button */
   .dropdown .dropbtn {
-    font-size: 16px;
+    font-size: 14px;
     border: none;
     outline: none;
     color: var(--main-text);
@@ -266,6 +285,7 @@
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
+    font-weight: normal;
   }
   
   /* Links inside the dropdown */
@@ -276,6 +296,7 @@
     text-decoration: none;
     display: block;
     text-align: left;
+    font-weight: normal;
   }
   
   /* Add a grey background color to dropdown links on hover */

@@ -71,6 +71,16 @@ by Tracey Nguyen
 * [X] Days to go/ left for deadline
 * [X] Last 5 donations displayed on detailed project page
 
+## Screenshots
+| Description | Image |  
+| :--- | :---: |  
+| Homepage | |
+| Project creation page | |
+| Project creation form | |
+| Project with pledges | |
+| Resulting page when an unauthorized user attempts to edit a project/pledge (logged in) - Not authorised displayed | |
+| Resulting page when an unauthorized user attempts to edit a project/pledge (not logged in) - Login page displayed | |  
+
 
 ## Wireframes
 

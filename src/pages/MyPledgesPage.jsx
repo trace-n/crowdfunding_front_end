@@ -11,6 +11,8 @@ import MessageCard from '../components/MessageCard';
 import { deletePledge } from '../api/pledges';
 import { useProjects } from '../hooks/use-projects';
 
+import DeleteConfirmPopup from '../components/DeleteConfirmPopup/DeleteConfirmPopup';
+
 
 const MyPledgesPage = () => {
 
