@@ -2,13 +2,10 @@ import './style.css';
 import { useState } from 'react';
 import { postSignup } from '../../api/users';
 import { useNavigate } from 'react-router-dom';
-// import { useAuth } from '../hooks/use-auth';
 
 const SignupForm = () => {
 
     const navigate = useNavigate();
-    // const {auth, setAuth} = useAuth();
-
     const [credentials, setCredentials] = useState({
         username: '',
         password: '',
@@ -37,7 +34,6 @@ const SignupForm = () => {
                 credentials.email,
                 credentials.image,
             ).then((response) => {
-                // Navigate to signup page on successful login
                 navigate('/login');
             });
         }
@@ -48,7 +44,6 @@ const SignupForm = () => {
         <form className='signup-form' onSubmit={handleSubmit}>
             <div>
                 <h3>SIGN UP</h3>
-                {/* <label htmlFor='username'>Username:</label> */}
                 <input 
                     type='text' 
                     id='username' 
@@ -98,7 +93,6 @@ const SignupForm = () => {
                 />
             </div>                                                
             <div>
-                {/* <label htmlFor='password'>Password:</label> */}
                 <input 
                     type='password' 
                     id='password' 

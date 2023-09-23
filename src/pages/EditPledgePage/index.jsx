@@ -1,6 +1,5 @@
 
-import EditPledgeForm from '../components/EditPledgeForm';
-import { useParams } from 'react-router-dom';
+import EditPledgeForm from '../../components/EditPledgeForm';
 
 const EditPledgePage = () => {
   

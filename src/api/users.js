@@ -14,15 +14,13 @@ export async function getUser(userId) {
         let errorMessage = data?.detail ?? fallbackError;
 
         errorMessage = `${response.status} - ${errorMessage}`; 
-        // console.log(errorMessage);
-        // return (errorMessage)        
+        
         throw new Error(errorMessage);
     }
 
     return await response.json();
 }
 
-// export default getUser;
 
 export async function getUsers() {
     const url = `${import.meta.env.VITE_API_URL}/users/`;
@@ -34,7 +32,7 @@ export async function getUsers() {
         const data = await response.json().catch(() => {
             throw new Error(fallbackError);
         });
-        // console.log("json data",data);
+        
         const errorMessage = data?.detail ?? fallbackError;
 
         throw new Error(errorMessage);
@@ -43,7 +41,6 @@ export async function getUsers() {
     return await response.json();
 }
 
-// export default getUsers;
 
 export async function postLogin(username, password) {
     const url = `${import.meta.env.VITE_API_URL}/api-token-auth/`;
@@ -73,7 +70,6 @@ export async function postLogin(username, password) {
     return await response.json();
 }
 
-// export default postLogin;
 
 export async function postSignup(username, password, first_name, last_name, email, image ) {
     const url = `${import.meta.env.VITE_API_URL}/users/`;
@@ -104,8 +100,6 @@ export async function postSignup(username, password, first_name, last_name, emai
     return await response.json();
 }
 
-// export default postSignup;
-
 export async function putUser(userId, firstName, lastName, email, image ) {
     const url = `${import.meta.env.VITE_API_URL}/users/${userId}/`;
     const userToken = window.localStorage.getItem('token');
@@ -135,6 +129,4 @@ export async function putUser(userId, firstName, lastName, email, image ) {
 
     return await response.json();
 }
-
-// export default putUser;
 

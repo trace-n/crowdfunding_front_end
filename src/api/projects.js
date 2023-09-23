@@ -12,17 +12,15 @@ export async function getProject(projectId) {
         });
 
         let errorMessage = data?.detail ?? fallbackError;
-        // console.log("error message put project response.json", response, data, response.status, response.statusText);
+        
         errorMessage = `${response.status} - ${errorMessage}`; 
-        // return (errorMessage, response.status);
+        
         throw new Error(errorMessage);
     }
 
     return await response.json();
 }
 
-
-// export default getProject;
 
 export async function getProjects() {
     // create URL for request Vite environment variable and API endpoint
@@ -56,12 +54,10 @@ export async function getProjects() {
     }
 
     // if request successful, return data from response
-    // Turn response to JSON takes time, use `awai` keyword
+    // Turn response to JSON takes time, use `await` keyword
     return await response.json(); 
 
 }
-
-// export default getProjects;
 
 export async function getStatistics() {
     const url = `${import.meta.env.VITE_API_URL}/projects/statistics/`;
@@ -80,9 +76,6 @@ export async function getStatistics() {
     return await response.json();
 }
 
-// export default getStatistics;
-
-// import { useAuth } from '../hooks/use-auth';
 
 export async function postProject(title, description, goal, image, date_end ) {
     const url = `${import.meta.env.VITE_API_URL}/projects/`;
@@ -90,12 +83,10 @@ export async function postProject(title, description, goal, image, date_end ) {
     
     const response = await fetch(url, { method: 'POST',
         headers: {
-            // 'Accept': 'application/json',
+            
             'Content-Type': 'application/json',
-            'Authorization': 'Token ' + userToken,            
-            // 'Authentication': 'Token ' + userToken,   
-            // 'mode': 'cors',
-            // 'Access-Control-Allow-Origin':'*',         
+            'Authorization': 'Token ' + userToken,  
+            //note - issues with CROS error if using Authentication, Authorization resolved this
         },
         body: JSON.stringify({
             'title': title,
@@ -120,8 +111,6 @@ export async function postProject(title, description, goal, image, date_end ) {
 
     return await response.json();
 }
-
-// export default postProject;
 
 export async function putProject(id, title, description, goal, image, date_end ) {
     const url = `${import.meta.env.VITE_API_URL}/projects/${id}/`;
@@ -154,7 +143,6 @@ export async function putProject(id, title, description, goal, image, date_end )
     return await response.json();
 }
 
-// export default putProject;
 
 export async function deleteProject(id) {
     const userToken = window.localStorage.getItem('token');

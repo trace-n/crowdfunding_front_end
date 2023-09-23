@@ -1,6 +1,5 @@
 .footer {
     width: 100%;
-    /* border-style: solid; */
     font-family: 'Montserrat', Arial, sans-serif;  
     margin-top: 30px;
     margin-bottom: 30px;
@@ -12,16 +11,13 @@
 }
 
 .footer li {
-    /* display: inline-block; */
     vertical-align: middle;
     padding: 0px 56px;
     list-style-type: none;
 }
 
 .footer a {
-    /* text-decoration: none;    */
     padding: 4px 20px;
-    cursor: url(../assets/fundling-website-favicon-black.png) 40 40, pointer, auto;
 }
 
 .footer a:hover {
@@ -49,11 +45,11 @@
 }
 
 @media (min-width: 768px) {
-.footer ul {
-    display: flex;
-    flex-direction: row; 
-    justify-content: center;
-    align-items: center;
-}
+    .footer ul {
+        display: flex;
+        flex-direction: row; 
+        justify-content: center;
+        align-items: center;
+    }
 }
 

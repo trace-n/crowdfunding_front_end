@@ -1,16 +1,6 @@
-/* #project-list {
-    display: grid;
-    grid-template-columns: auto auto auto;
-    column-gap: 16px;
-    row-gap: 16px;
-    width: 100%;
-    margin: auto;
-} */
 
 .statistics-card {
     display: block;
-    /* display: grid;
-    grid-template-columns: auto auto auto; */
     width: 100%;
     margin: 50px auto;
     background-color: white;
@@ -18,26 +8,18 @@
     padding-bottom: 8px;
     border-radius: 2px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    /* border-style: solid; */
-    /* margin-bottom: 50px;
-    margin-top: 50px; */
 }
 
 .statistics-card h2 {
     padding-top: 8px;
-    /* margin-top: 16px; */
-    /* margin-bottom: 10px; */
     margin: 0px;
     font-size: 1.2rem;
 }
 
 .statistics-card h3 {
-    /* margin-top: 16px; */
-    /* margin-bottom: 10px; */
     font-size: 0.7rem;
     margin: 0px;
     padding-bottom: 6px;
-    /* color: var(--offset-text); */
 }
 
 .headline-image {
@@ -73,8 +55,6 @@
     }
     
     .statistics-card h3 {
-        /* margin-top: 16px;
-        margin-bottom: 10px; */
         font-size: 0.8rem;
     }    
 

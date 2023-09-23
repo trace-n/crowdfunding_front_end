@@ -4,12 +4,10 @@
     background-color: #e0e0de;
     border-radius: 50px;
     margin: 20px auto;
-    /* margin: 50px; */
 }
 
 .bar-filler {
     height: 100%;
-    /* width: ''; */
     background-color: var(--main-background);
     border-radius: inherit;
     text-align: right;

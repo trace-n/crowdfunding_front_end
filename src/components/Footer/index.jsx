@@ -25,7 +25,6 @@ const Footer = () => {
 
                 </ul> 
             </footer>
-            {/* <Outlet /> */}
         </div>
     );
 }

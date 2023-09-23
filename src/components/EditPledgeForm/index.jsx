@@ -22,10 +22,12 @@ const EditPledgeForm = () => {
 
     if (errorPledge) {
         return (
-            <MessageCard 
-                message={`Error with pledge - ${errorPledge.message}`} 
-                messageType='header' 
-            />
+            <div className='pledge-error'>
+                <MessageCard 
+                    message={`Error with pledge - ${errorPledge.message}`} 
+                    messageType='header' 
+                />
+            </div>
         );
     }
     
@@ -104,7 +106,6 @@ const EditPledgeForm = () => {
                                 id='anonymous' 
                                 onChange = {handleChange}
                                 checked = {pledge.anonymous}
-                                // defaultValue={pledge.anonymous && 'checked'}    
                                 className='anon-button'                   
                             />
                         </li> 
@@ -120,7 +121,9 @@ const EditPledgeForm = () => {
                         );
         } else {
             return (
-                <MessageCard message='Not authorised to edit pledge' messageType='header' />
+                <div className='pledge-error'>
+                    <MessageCard message='Not authorised to edit pledge' messageType='header' />
+                </div>
             );
         }
     } else {

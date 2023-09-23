@@ -7,12 +7,11 @@ export function usePledge(pledgeId) {
     const [error, setError] = useState();
 
     useEffect(() => {
-        // Pass pledgeId to getPledge function
+
         getPledge(pledgeId)
             .then((pledge) => {
                 setPledge(pledge);
                 setIsLoading(false);
-               
             })
             .catch((error) => {
                 setError(error);
@@ -31,7 +30,6 @@ export function usePledges() {
     const [error, setError] = useState();
 
     useEffect(() => {
-        // Pass  to getPledge function
         getPledges()
             .then((pledges) => {
                 setPledges(pledges);
@@ -42,8 +40,6 @@ export function usePledges() {
                 setError(error);
                 setIsLoading(false);
             });
-            
-            // Pass  to dependency array so hook will re-run if  changes 
     }, []);
 
     return { pledges, isLoading, error, setPledges };

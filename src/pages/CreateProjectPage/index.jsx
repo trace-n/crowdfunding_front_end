@@ -1,6 +1,6 @@
-import CreateProjectForm from '../components/CreateProjectForm';
-import { useAuth } from '../hooks/use-auth';
-import LoginForm from '../components/LoginForm';
+import CreateProjectForm from '../../components/CreateProjectForm';
+import { useAuth } from '../../hooks/use-auth';
+import LoginForm from '../../components/LoginForm';
 
 const CreateProjectPage = () => {
 

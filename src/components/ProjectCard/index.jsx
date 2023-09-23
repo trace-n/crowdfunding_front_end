@@ -8,32 +8,15 @@ import { useState } from 'react';
 const ProjectCard = (props) => {
     const { projectData } = props;
     const {auth, setAuth} = useAuth();
-    // const [myProject, setMyProject ] = useState( projectData ) ;
-   
+       
     const editProjectLink = `/editProject/${projectData.id}`;
     const projectLink = `/project/${projectData.id}`;
 
     const today = Date.parse(new Date());
     const endDate = Date.parse(projectData.date_end);
 
-    // const deleteSingleProject= (id) => {
-    //     // event.preventDefault();
-    //     if (id) {
-    //         deleteProject(
-    //             id
-    //         ).then((response) => {
-    //             // const filteredPledges = pledges.filter((projectData) => pledge.id !== pledgeId);
-    //             setMyProject([]);
-    //             console.log('after set my proj', myProject);
-    //             // setMessageBlockDelete(true);
-    //         }); 
-    //     }
-    // }; //end deleteSinglePledge
-
     return (
         <div className='project-card'>
-            
-            {/* <Link to='/project'> */}
             <Link to={projectLink}>
                 <img src={projectData.image} />
             </Link>    
@@ -44,10 +27,8 @@ const ProjectCard = (props) => {
                         ` (ended)`
                     )}
                 </Link>    
-                
-            
                     { parseInt(auth.id) === projectData.owner && 
-                    <>
+                    <div className='project-icons'>
                         <Link to={editProjectLink}>
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="small-icons">
                                 <path d="M5.433 13.917l1.262-3.155A4 4 0 017.58 9.42l6.92-6.918a2.121 2.121 0 013 3l-6.92 6.918c-.383.383-.84.685-1.343.886l-3.154 1.262a.5.5 0 01-.65-.65z" />
@@ -58,7 +39,7 @@ const ProjectCard = (props) => {
                                 id={projectData.id}
                                 onClick={() => props.onClick(projectData.id)}
                         />                              
-                    </>
+                    </div>
                       }
                 </h3>
         </div>

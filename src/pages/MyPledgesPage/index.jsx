@@ -1,18 +1,15 @@
-import './HomePage.css'
+import './style.css'
 import { Link } from 'react-router-dom';
 // import MyPledges from "../components/MyProjects";
-import PledgeCard from '../components/PledgeCard';
-import { useAuth } from "../hooks/use-auth";
-import LoginForm from "../components/LoginForm";
-import { usePledges } from "../hooks/use-pledge";
-import Spinner from '../components/Spinner';
-import MessageCard from '../components/MessageCard';
+import PledgeCard from '../../components/PledgeCard';
+import { useAuth } from "../../hooks/use-auth";
+import LoginForm from "../../components/LoginForm";
+import { usePledges } from "../../hooks/use-pledge";
+import Spinner from '../../components/Spinner';
+import MessageCard from '../../components/MessageCard';
 // import { useState } from 'react';
-import { deletePledge } from '../api/pledges';
-import { useProjects } from '../hooks/use-projects';
-
-import DeleteConfirmPopup from '../components/DeleteConfirmPopup/DeleteConfirmPopup';
-
+import { deletePledge } from '../../api/pledges';
+import { useProjects } from '../../hooks/use-projects';
 
 const MyPledgesPage = () => {
 
@@ -73,12 +70,12 @@ const MyPledgesPage = () => {
                         })}
                     </div>    
                     ) : (
-                        <> 
+                        <div className='project-start'> 
                         <MessageCard 
                             message='You have no Pledges' messageType='header' 
                             />
                          <Link to='/'>Donate today</Link>  
-                         </>
+                         </div>
                     ) }                    
                 </>
             ) : (

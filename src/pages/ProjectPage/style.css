@@ -6,7 +6,6 @@
     row-gap: 16px;
     width: 90%;
     margin: auto;
-    /* border-style: solid; */
     vertical-align: middle;
     background-color: var(--background-color-offset);
     color: var(--offset-text);
@@ -16,20 +15,23 @@
     text-align: center;
     margin-top: 10px;
     padding-bottom: 20px;
-    /* margin-left: 30px; */
 }
 
 .project-summary a {
     text-decoration: none;
-    /* color: var(--offset-text); */
     color: var(--main-text);
     width: 100%;
-    border-style: solid;
-    border-color: var(--main-background);
     background-color: var(--main-background);;
     padding: 4px 32px;
     text-align: center;
 }
+
+
+.project-summary a:hover {
+    background-color: var(--main-button-hover);
+    transition: 0.5s ease-in-out;
+}
+
 
 .project-summary img {
     width: 60%;
@@ -65,10 +67,6 @@
 
 .project-detail {
     font-family: 'Bellota Text', Arial, sans-serif; 
-    /* display: grid;
-    grid-template-columns: auto auto;
-    column-gap: 16px;
-    row-gap: 16px; */
     width: 90%;
     margin: auto;
     vertical-align: middle;
@@ -76,7 +74,6 @@
     color: var(--offset-text);
     padding-top: 10px;
     padding-bottom: 30px;
-    /* border-top: solid; */
 }
 
 .project-section {
@@ -119,17 +116,14 @@
 
 .pledge-group {
     padding-left: 0px;
-    /* border-style: solid; */
 }
 
 .project-section p {
     padding-top: 10px;
     text-align: left;
-    /* border-bottom: solid; */
 }
 
 .project-stat-card {
-    /* border-style: solid; */
     display: flex;
     flex-direction: row;
     justify-content:  space-evenly;
@@ -137,8 +131,9 @@
     align-items: center;
     width: 70%;
     margin: auto;
-    /* height: 100%; */
+    margin-bottom: 10px;
 }
+
 .project-stat-item {
     border-style: solid;
     border-width: 2px;
@@ -146,10 +141,7 @@
     display: flex;
     flex-direction: column;
     width: 90px;
-    /* height: 100%; */
-    /* padding: 8px; */
-
-    /* justify-content:  ; */
+    text-wrap: nowrap;
 }
 
 .project-title {

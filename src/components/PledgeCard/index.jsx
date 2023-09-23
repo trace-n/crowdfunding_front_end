@@ -2,20 +2,15 @@ import { Link } from 'react-router-dom';
 import './style.css';
 import { useAuth } from '../../hooks/use-auth';
 import DeletePledgeButton from '../DeletePledgeButton';
-// import { useState } from 'react';
 
 const PledgeCard = (props) => {
     const { pledgeData, projectData } = props;
-    const {auth, setAuth} = useAuth();
-    // const [myProject, setMyProject ] = useState( projectData ) ;
-   
+    const {auth, setAuth} = useAuth();   
     const pledgeLink = `/pledges/${pledgeData.id}`;
     const projectLink = `/project/${pledgeData.project}`;
 
     return (
         <div className='project-card'>
-            
-            {/* <Link to='/project'> */}
             <Link to={projectLink}>
                 <img src={projectData.image} />
             </Link>    
@@ -24,10 +19,12 @@ const PledgeCard = (props) => {
                     {projectData.title}
                 </Link>
                 </h3>
-                <section>
-                <h3>$ {pledgeData.amount}</h3>
+                <section className='pledge-detail'>
+                    <div className='pledge-amount'>
+                <h3>$ {pledgeData.amount.toLocaleString()}</h3>
+                </div>
                     { parseInt(auth.id) === pledgeData.supporter && 
-                    <>
+                    <div className='pledge-icons'>
                         <Link to={pledgeLink}>
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="small-icons">
                                 <path d="M5.433 13.917l1.262-3.155A4 4 0 017.58 9.42l6.92-6.918a2.121 2.121 0 013 3l-6.92 6.918c-.383.383-.84.685-1.343.886l-3.154 1.262a.5.5 0 01-.65-.65z" />
@@ -38,7 +35,7 @@ const PledgeCard = (props) => {
                                 id={pledgeData.id}
                                 onClick={() => props.onClick(pledgeData.id)}
                         />                             
-                    </>
+                    </div>
                       }
                       </section>    
                 

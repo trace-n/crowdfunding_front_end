@@ -1,16 +1,16 @@
-import './ProjectPage.css';
+import './style.css';
 import { useParams, Link } from 'react-router-dom';
-import { useAuth } from '../hooks/use-auth';
-import { useProject } from '../hooks/use-projects';
-import { useUsers } from '../hooks/use-users';
-import ProgressBar from '../components/ProgressBar';
-import CreatePledgeForm from '../components/CreatePledgeForm';
-import DeletePledgeButton from '../components/DeletePledgeButton';
+import { useAuth } from '../../hooks/use-auth';
+import { useProject } from '../../hooks/use-projects';
+import { useUsers } from '../../hooks/use-users';
+import ProgressBar from '../../components/ProgressBar';
+import CreatePledgeForm from '../../components/CreatePledgeForm';
+import DeletePledgeButton from '../../components/DeletePledgeButton';
 import { useState } from 'react';
-import { postPledge, deletePledge } from '../api/pledges';
-import EditPledgeButton from '../components/EditPledgeButton';
-import Spinner from '../components/Spinner';
-import MessageCard from '../components/MessageCard';
+import { postPledge, deletePledge } from '../../api/pledges';
+import EditPledgeButton from '../../components/EditPledgeButton';
+import Spinner from '../../components/Spinner';
+import MessageCard from '../../components/MessageCard';
 
 const ProjectPage = () => {
 
@@ -18,7 +18,6 @@ const ProjectPage = () => {
 
     const { id } = useParams();
 
-    // rename the parameters for unique reference 
     const { users, isLoading: isLoadingUsers, error: errorUsers } = useUsers();
     const { project, pledges, isLoading: isLoadingProject, error: errorProject, setPledges } = useProject(id);
 
@@ -57,8 +56,6 @@ const ProjectPage = () => {
             );            
     }
 
-    // information for total value of pledges and progress
-    // if the project has ended, otherwise how many days are left til project ends
     const numberPledges = (pledges).length;
     const valuePledges = pledges.reduce((total, pledge) => total + parseInt(pledge.amount), 0);    
     const today = Date.parse(new Date());
@@ -92,7 +89,7 @@ const ProjectPage = () => {
 
     const handleChange = (event) => {
         const { id, value } = event.target;
-        // cannot do a ?? conditional as event.target.value will always have a value, even for checkbox and submit will faile with value on
+        // cannot do a ?? conditional as event.target.value will always have a value, even for checkbox and submit will fail with value on
 
         if (id == 'anonymous'){
             setPledge((prevPledge) => ({
@@ -200,7 +197,7 @@ const ProjectPage = () => {
                     </>
                 ) :  ( 
                 <Link to='/login' 
-                className='login-button'>DONATE</Link>
+                className='donate-button'>DONATE</Link>
                  ) }
                 </section>
             </div>    

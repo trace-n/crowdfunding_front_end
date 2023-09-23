@@ -23,12 +23,13 @@ const EditProjectForm = () => {
     }
 
     if (errorProject) {
-        console.log("errorProject", errorProject);
         return (
-            <MessageCard 
-                message={`Error with project - ${errorProject.message}`} 
-                messageType='header' 
-            />
+            <div className='project-error'>
+                <MessageCard 
+                    message={`Error with project - ${errorProject.message}`} 
+                    messageType='header' 
+                />
+            </div>                
         );
     }
 
@@ -144,7 +145,9 @@ const EditProjectForm = () => {
             );
         } else {
             return (
-                <MessageCard message='Not authorised to edit project' messageType='header' />
+                <div className='project-error'>
+                    <MessageCard message='Not authorised to edit project' messageType='header' />
+                </div>
             );
         }
 
@@ -157,8 +160,5 @@ const EditProjectForm = () => {
         );
     }
 }
-
-
-
 
 export default EditProjectForm;

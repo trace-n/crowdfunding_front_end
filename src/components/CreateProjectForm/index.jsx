@@ -1,6 +1,5 @@
 import './style.css';
 import { useState } from 'react';
-// import postProject from '../../api/post-project';
 import { postProject } from '../../api/projects';
 import { useNavigate } from 'react-router-dom';
 
@@ -52,7 +51,6 @@ const CreateProjectForm = () => {
                         className='form-input'
                         type='text' 
                         id='title' 
-                        // placeholder='Title' 
                         onChange = {handleChange}
                         required
                     />
@@ -93,7 +91,6 @@ const CreateProjectForm = () => {
                         className='form-input'
                         type='url' 
                         id='image' 
-                        // placeholder='Image URL' 
                         onChange = {handleChange}
                         required
                     />

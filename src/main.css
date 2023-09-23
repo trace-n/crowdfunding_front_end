@@ -16,22 +16,24 @@
     --main-text-dark: #82BEE6;
     --light-border: #9fcae6;
     --main-border-nav: #ffffffe9;
+    --cancel-button: #8a8989;
 }
 
 
 body {
     background-color: var(--main-background);
-    /* font-family: 'Inter', Arial, sans-serif;  */
     color: var(--main-text);
     text-decoration: none;  
     text-align: center;  
-    /* cursor: url(../assets/fundling-website-favicon-black.png) 40 40, auto; */
 }
 
 body a {
     color: var(--main-text);
     font-weight: bold;
     text-decoration: none;
+}
+
+body a:hover {
     transition: all 0.7s ease;
 }
 
@@ -76,20 +78,13 @@ h3 {
 
 #project-list {
     display: block;
-    /* grid-template-columns: auto auto auto;
-    column-gap: 16px;
-    row-gap: 16px; */
     width: 100%;
     margin: auto;
-    /* border-style: solid; */
-    /* border-color: red; */
-    /* text-align: center; */
 }
 
 .home-box {
     margin: auto;
     width: 70%;
-    /* border-style: solid; */
 }
 
 .small-icons {
@@ -98,40 +93,25 @@ h3 {
     padding-left: 8px;
     padding-top: 4px;
     padding-bottom: 4px;
-    /* background-color: var(--background-color-offset); */
     color: var(--offset-text);
-    /* text-align-last: right; */
-    /* text-align: justify;
-    justify-content: right; */
 }
 
 .small-icons:hover {
-    /* background-color: white; */
     color: var(--main-button-hover);
-
+    transition: 0.5s ease-in-out;
 }
 
 .button-icons {
-    /* 
-    color: var(--main-button-hover); */
     background-color: var(--background-color-offset);
     border-style: none;
-    /* border-width: 1px; */
     border-color: var(--main-button-hover);
     height: 100%;
-    /* text-align-last: right; */
-    /* text-align: justify;
-    justify-content: right; */
 }
 
 .button-icons:hover { 
-    /* background-color: var(--background-color-offset); */
+    background-color: var(--background-color-offset);
     color: var(--main-button-hover);
-    /* border-style: none;
-    height: 100%; */
-    /* text-align-last: right; */
-    /* text-align: justify;
-    justify-content: right; */
+    transition: 0.5s ease-in-out;
  }
 
  .message {
@@ -196,6 +176,11 @@ h3 {
     height: 40px;
 }
 
+.btn-wide:hover {
+    background-color: var(--main-button-hover);
+    transition: 0.5s ease-in-out;
+}
+
 .project-form {
     display: block;
     width: 90%;
@@ -208,7 +193,6 @@ h3 {
         display: grid;
         grid-template-columns: auto auto;
         width: 90%;
-        /* border-style: solid; */
         margin: auto;    
     }
 
@@ -219,9 +203,6 @@ h3 {
         row-gap: 16px;
         width: 100%;
         margin: auto;
-        /* border-style: solid; */
-        /* border-color: red; */
-        /* text-align: center; */
     }
 
     h1 {
@@ -240,4 +221,5 @@ h3 {
     h3 {
         font-size: 1.2rem;
     } 
+
 }

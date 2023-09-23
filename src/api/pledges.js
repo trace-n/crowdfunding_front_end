@@ -25,8 +25,6 @@ export async function deletePledge(pledgeId) {
     return await response.status;
 }
 
-// export default deletePledge;
-
 export async function getPledge(id) {
     // GET single project id
     const url = `${import.meta.env.VITE_API_URL}/pledges/${id}/`;
@@ -97,8 +95,6 @@ export async function postPledge(amount, comment, anonymous, project ) {
     return await response.json();
 }
 
-// export default postPledge;
-
 export async function putPledge(id, amount, comment, anonymous, project ) {
     const url = `${import.meta.env.VITE_API_URL}/pledges/${id}/`;
     const userToken = window.localStorage.getItem('token');
@@ -128,5 +124,3 @@ export async function putPledge(id, amount, comment, anonymous, project ) {
 
     return await response.json();
 }
-
-// export default putPledge;

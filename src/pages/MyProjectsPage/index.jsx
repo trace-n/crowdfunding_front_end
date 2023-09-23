@@ -1,14 +1,12 @@
-import './HomePage.css'
+import './style.css'
 import { Link } from 'react-router-dom';
-// import MyProjects from "../components/MyProjects";
-import ProjectCard from "../components/ProjectCard";
-import { useAuth } from "../hooks/use-auth";
-import LoginForm from "../components/LoginForm";
-import { useProjects } from "../hooks/use-projects";
-import Spinner from '../components/Spinner';
-import MessageCard from '../components/MessageCard';
-// import { useState } from 'react';
-import { deleteProject } from '../api/projects';
+import ProjectCard from "../../components/ProjectCard";
+import { useAuth } from "../../hooks/use-auth";
+import LoginForm from "../../components/LoginForm";
+import { useProjects } from "../../hooks/use-projects";
+import Spinner from '../../components/Spinner';
+import MessageCard from '../../components/MessageCard';
+import { deleteProject } from '../../api/projects';
 
 
 const MyProjectsPage = () => {
@@ -16,10 +14,8 @@ const MyProjectsPage = () => {
     const {auth, setAuth} = useAuth();
     const { projects, isLoading: isLoadingProjects, error: errorProjects, setProjects } = useProjects();
     const userId = auth.id;
-    // const [ myProjects, setMyProjects ] = useState('');
 
     if (isLoadingProjects) {
-        // return (<p>Loading ...</p>);
         return (<Spinner />)
     }
 
@@ -36,7 +32,6 @@ const MyProjectsPage = () => {
             ).then((response) => {
                 const myProjects = filteredProjects.filter((projectData) => projectData.id !== id);
                 setProjects(myProjects);
-                // console.log('after set my proj', projects);
             }); 
         }
     }; 
@@ -57,12 +52,12 @@ const MyProjectsPage = () => {
                         })}
                     </div>    
                     ) : (
-                        <> 
+                        <div className='project-start'> 
                         <MessageCard 
                             message='You have no projects' messageType='header' 
                             />
                          <Link to='/project'>Start a project today</Link>  
-                         </>
+                         </div>
                     ) }                    
                 </>
             ) : (

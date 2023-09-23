@@ -22,15 +22,14 @@ const LoginForm = () => {
     });
     
     let userId = '';
-    // let errorMessage = '';
-
+    
     if (isLoadingUsers) {
-        // return (<p>LOADING...</p>);
+        
         return (<Spinner />)
     }
 
     if (errorUsers) {
-        // console.log("errorUsers reached", errorUsers)
+        
         return (
             <MessageCard 
                 message={`Error with login - ${errorUsers.message}`} 
@@ -59,7 +58,7 @@ const LoginForm = () => {
                 if (credentials.username) {
                     userId = users.find(user => user.username === credentials.username).id;
                 }
-                //  Set the username on then on the main landing page, can check the name of user and id from get all users for use in the nav bar
+                
                 window.localStorage.setItem('username', credentials.username);
                 window.localStorage.setItem('token', response.token);
                 window.localStorage.setItem('id', userId);
@@ -73,10 +72,10 @@ const LoginForm = () => {
                 navigate('/');
 
             }).catch((error) => {
-                // console.log("error at catch", error.message);
+                
                 setMessageBlock(true);
                 setErrorLogin(error.message);
-                // console.log('mesg and error', messageBlock, errorLogin);
+                
             });
         }
     };
@@ -86,7 +85,7 @@ const LoginForm = () => {
             <form className='login-form' onSubmit={handleSubmit}>
                 <div>
                     <h3 className='login-text'>LOGIN</h3>
-                    {/* <label htmlFor='username'>Username:</label> */}
+                    
                     <input 
                         type='text' 
                         id='username' 
@@ -96,7 +95,7 @@ const LoginForm = () => {
                     />
                 </div>
                 <div>
-                    {/* <label htmlFor='password'>Password:</label> */}
+                    
                     <input 
                         type='password' 
                         id='password' 
@@ -105,13 +104,13 @@ const LoginForm = () => {
                         required
                     />
                 </div>
-                {/* <button type='submit' onClick={handleSubmit}>LOG IN</button> */}
+                
                 <button type='submit'>LOG IN</button>
                 
                 { messageBlock ? ( 
                     
                         <div className='message'>
-                            {/* {errorLogin} hello */}
+                            
                             <MessageCard message={errorLogin}  />
                         </div>
                     ) :( null ) }  

@@ -1,28 +1,21 @@
-// import { allProjects } from '../data';
-import './HomePage.css';
-import { useProjects, useStatistics } from '../hooks/use-projects';
-// import useStatistics from '../hooks/use-projects';
-import { useUsers } from '../hooks/use-users';
-import { useAuth } from '../hooks/use-auth';
-import ProjectCard from '../components/ProjectCard';
-import fundlingLogoHeader from '../assets/logo-no-background-no-icon.png';
-import fundlingLogoCol from '../assets/fundling-website-favicon-color.png';
-import Spinner from '../components/Spinner';
-import { deleteProject } from '../api/projects';
-
-// import StatisticsCard from '../components/StatisticsCard';
+import './style.css';
+import { useProjects, useStatistics } from '../../hooks/use-projects';
+import { useUsers } from '../../hooks/use-users';
+import { useAuth } from '../../hooks/use-auth';
+import ProjectCard from '../../components/ProjectCard';
+import fundlingLogoHeader from '../../assets/logo-no-background-no-icon.png';
+import fundlingLogoCol from '../../assets/fundling-website-favicon-color.png';
+import Spinner from '../../components/Spinner';
+import { deleteProject } from '../../api/projects';
 
 const HomePage = () => {
     
-    // make sure to declare the calls to hooks first before checking the isloading and errors
     const {auth, setAuth} = useAuth();
     const { users, isLoading: isLoadingUsers, error: errorUsers } = useUsers();
     const { statistics, isLoading: isLoadingStats, error: errorStats } = useStatistics();
     const { projects, isLoading: isLoadingProjects, error: errorProjects, setProjects } = useProjects();
 
-    // console.log("looking for stats",isLoading,"error message", error);
     if (isLoadingStats || isLoadingProjects || isLoadingUsers) {
-        // return (<p>Loading ...</p>);
         return (<Spinner />)
     }
 
@@ -37,19 +30,6 @@ const HomePage = () => {
     if (errorUsers) {
         return (<p>{errorUsers.message}</p>);
     }    
-    
-    // const pledge_amount_formatted = parseInt(statistics.pledge_amount).toLocaleString();
-    // after login, reroute to home, take username and store the user Id so that it can be used
-    // if (auth.token) {
-    //     let userId = '';
-    //     if (auth.username){
-    //         userId = users.filter(user => user.username === auth.username)[0].id;
-    //         // console.log("userid", userId);
-    //     }
-
-    // window.localStorage.setItem('id', userId);
-
-    // }
 
     const today = Date.parse(new Date());
     let endDate = '';
@@ -110,7 +90,6 @@ const HomePage = () => {
                         endDate = Date.parse(projectData.date_end);
                         if (today < endDate) {
                         // only return open projects
-                        // return <div key={key}>{projectData.title}</div>;
                             return <ProjectCard 
                                         key={key} 
                                         projectData={projectData} 

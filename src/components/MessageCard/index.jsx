@@ -1,4 +1,3 @@
-// import spinner from '../../assets/spinner.gif';
 import './style.css';
 
 const MessageCard = (props) => {

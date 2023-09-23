@@ -1,7 +1,5 @@
 import { useState, useEffect } from 'react';
 import { getProjects, getProject, getStatistics } from '../api/projects';
-// import getProject from '../api/projects';
-// import getStatistics from '../api/projects';
 
 export function useProjects() {
     const [projects, setProjects] = useState([]);
@@ -24,8 +22,6 @@ export function useProjects() {
 
 }
 
-// import { useState, useEffect } from 'react';
-
 export function useProject(projectId) {
     const [project, setProject] = useState();
     const [isLoading, setIsLoading] = useState(true);
@@ -33,7 +29,6 @@ export function useProject(projectId) {
     const [pledges, setPledges] = useState([]);
 
     useEffect(() => {
-        // Pass projectId to getProject function
         getProject(projectId)
             .then((project) => {
                 setProject(project);
@@ -51,9 +46,6 @@ export function useProject(projectId) {
 
     return { project, pledges, isLoading, error, setProject, setPledges };
 }
-
-// import { useState, useEffect } from 'react';
-// import getStatistics from '../api/projects';
 
 export function useStatistics() {
     const [statistics, setStatistics] = useState();
