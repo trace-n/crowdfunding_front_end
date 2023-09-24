@@ -123,10 +123,10 @@ const NavBar = () => {
             </div>  
                 <nav className={`mobile-nav ${displayCloseButton}`}> 
                     <li className='nav-logo-text-mobile'>
-                         <Link to='/'>FUNDLING<img src={fundlingLogoCol} alt='fundling small logo' className='image-nav' /></Link>
+                         <Link to='/' onClick={handleClick}>FUNDLING<img src={fundlingLogoCol} alt='fundling small logo' className='image-nav' /></Link>
                      </li>                   
                     <li>
-                        <Link to='/about' onClick={handleClick}className='mobile-about'>About</Link>
+                        <Link to='/about' onClick={handleClick} className='mobile-about'>About</Link>
                     </li>
                     <li>
                         <Link to='/project' onClick={handleClick}>Start Project</Link>
