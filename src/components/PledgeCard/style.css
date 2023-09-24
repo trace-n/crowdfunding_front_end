@@ -49,6 +49,7 @@
     color: var(--main-button-hover);
     font-weight: bold;
     text-wrap: nowrap;
+    white-space: nowrap;
 }
 
 .pledge-icons {
