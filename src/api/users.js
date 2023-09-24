@@ -5,7 +5,6 @@ export async function getUser(userId) {
     
     if (!response.ok) {
         const fallbackError = `Error fetching user id ${userId}`;
-        console.log("response",response);
 
         const data = await response.json().catch(() => {
             throw new Error(fallbackError);

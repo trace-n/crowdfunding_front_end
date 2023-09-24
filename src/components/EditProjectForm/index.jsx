@@ -56,14 +56,15 @@ const EditProjectForm = () => {
     };
 
     const dateStrip = project.date_end.substr(0, 10);
-
+    const today = Date.parse(new Date());
+    const endDate = Date.parse(project.date_end);
+    
     if ( auth.token ) {
         if (auth.id == project.owner) {
             return (
                 <div className='project-page'>
                     <>
                     <h3 className='project-header'>Need to finetune your project?</h3>
-                    {/* <h3 className='login-text'>Welcome {project.owner}</h3>  */}
                     <form className='project-form' onSubmit={handleSubmit}>
         
                     <li className='label'>
@@ -132,12 +133,25 @@ const EditProjectForm = () => {
                                 defaultValue={dateStrip}
                             />
                         </li> 
+                        { today > endDate && 
+                            <>
+                                <li className='message-end'></li>
+                                <li className='label message-end'>
+                                    <MessageCard 
+                                        message='Project has ended' 
+                                    />
+                                </li> 
+                            </>
+                        }
                                                   
                     <button type='submit' className='btn-wide'>SAVE</button>
-                    { messageBlock ? (
-                        <li className='message'><MessageCard message='Project updated  successfully' />
+                    { messageBlock &&
+                        <li className='message'>
+                            <MessageCard 
+                                message='Project updated  successfully' 
+                            />
                         </li>
-                    ) :( null ) }     
+                    }     
                 </form>
 
                 </>

@@ -18,6 +18,7 @@
 
 .footer a {
     padding: 4px 20px;
+    font-size: 14px;
 }
 
 .footer a:hover {
@@ -31,7 +32,8 @@
 .logo-text  {
     font-family: 'Bellota', Arial, sans-serif;  
     font-weight: bold;
-    font-size: 20px;
+    font-size: 16px;
+    white-space: nowrap; 
 }
 
 .logo-text img {
@@ -40,8 +42,8 @@
 }
 
 .footer p {
-    font-size: 16px;
-    font-weight: bold;
+    font-size: 12px;
+    /* font-weight: bold; */
 }
 
 @media (min-width: 768px) {

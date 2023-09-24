@@ -70,7 +70,7 @@ const CreateProjectForm = () => {
                     />
                 </li>
                 <li className='label'>
-                    <label htmlFor='goal'>Goal</label>
+                    <label htmlFor='goal'>Goal $</label>
                 </li>
                 <li className='label'>               
                     <input 

@@ -7,7 +7,7 @@
 .user-page {
     font-family: 'Bellota Text', Arial, sans-serif;  
     background-color: var(--background-color-offset);
-    max-width: 500px;
+    max-width: 85%;
     margin: 20px auto;
     color: var(--offset-text);
     border-color: black;
@@ -36,5 +36,9 @@
     .user-form {
         display: grid;
         grid-template-columns: auto auto;
+    }
+
+    .user-page {
+        max-width: 500px;
     }
 }

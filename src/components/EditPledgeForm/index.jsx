@@ -72,7 +72,7 @@ const EditPledgeForm = () => {
                 <form className='project-form' onSubmit={handleSubmit}>
         
                     <li className='label'>
-                        <label htmlFor='amount'>Amount</label>
+                        <label htmlFor='amount'>Amount $</label>
                         </li><li className='label'>
                         <input 
                             className='form-input'

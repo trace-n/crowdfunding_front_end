@@ -42,7 +42,6 @@ const MyPledgesPage = () => {
             ).then((response) => {
                 const myPledges = filteredPledges.filter((pledgeData) => pledgeData.id !== id);
                 setPledges(myPledges);
-                // console.log('after set my proj', Pledges);
             }); 
         }
     }; 
@@ -57,9 +56,6 @@ const MyPledgesPage = () => {
                         {filteredPledges.map((pledgeData, key) => {
                             
                             let relatedProject = projects.find((project) => project.id === pledgeData.project );
-                            // console.log('project pledge:', pledgeData.project)
-                          
-                            // console.log('single related project', relatedProject)
 
                             return <PledgeCard 
                                         key={key} 

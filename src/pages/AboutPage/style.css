@@ -1,11 +1,15 @@
 .main-section {
-    width: 70%;
+    width: 75%;
     font-family: 'Montserrat', Arial, sans-serif;  
     background-color: var(--main-background-offset); 
     color: var(--offset-text);
     margin: auto;
-    padding: 48px;
+    padding: 24px;
     
+}
+
+.main-section h2 {
+    margin-bottom: 0px;
 }
 
 .main-section p {
@@ -32,7 +36,9 @@
     font-size: 1.8rem;  
     font-weight: bold;  
     font-family: 'Bellota Text', Arial, sans-serif;      
-    
+    width: 80%;
+    margin: auto;
+    padding-bottom: 16px;
 }
 
 .main-section img {
@@ -41,4 +47,18 @@
     margin: auto;
 }
 
+
+@media (min-width: 768px) {
+
+    .main-section {
+        width: 60%;
+        padding: 48px;
+    }
+
+    .main-section h2 {
+        margin: 0px;
+    }
+
+    
+}
 

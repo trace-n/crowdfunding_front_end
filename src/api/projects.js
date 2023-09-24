@@ -7,7 +7,7 @@ export async function getProject(projectId) {
         const fallbackError = `Error fetching project with id ${projectId}`;
 
         const data = await response.json().catch(() => {
-            console.log("awaitput project error response status", response,  data, response.status, response.statusText);
+
             throw new Error(fallbackError);
         });
 
@@ -105,7 +105,6 @@ export async function postProject(title, description, goal, image, date_end ) {
             throw new Error(fallbackError);
         });
         const errorMessage = data?.detail ?? fallbackError;
-        console.log(response);
         throw new Error(errorMessage);
     }
 

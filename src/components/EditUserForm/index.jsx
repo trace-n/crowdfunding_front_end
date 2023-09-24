@@ -21,7 +21,7 @@ const EditUserForm = () => {
     }
 
     if (errorUser) {
-        console.log("errorUser", errorUser);
+
         return (
             <div className='user-page'>
                 <MessageCard 

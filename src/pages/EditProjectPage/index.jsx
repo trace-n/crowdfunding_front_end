@@ -9,16 +9,13 @@ const EditProjectPage = () => {
 
     const {auth, setAuth} = useAuth();
     const { id } = useParams();
-    // console.log('userid',id);
-    // console.log("auth id",auth.id);
     
     return (
 
         <div>
             { auth.token ? (
                 <>
-                    <h2 className='login-text'>EDIT PROJECT</h2>    
-                        {/* <EditUserForm userId={auth.id}/> */}
+                    <h2 className='login-text'>Edit Project</h2>    
                         <EditProjectForm id={id}/>
                 </>
                 ) : (

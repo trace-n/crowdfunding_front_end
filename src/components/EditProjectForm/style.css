@@ -7,7 +7,7 @@
 .project-page {
     font-family: 'Bellota Text', Arial, sans-serif;  
     background-color: var(--background-color-offset);
-    max-width: 500px;
+    max-width: 85%;
     margin: 20px auto;
     color: var(--offset-text);
     border-color: black;
@@ -29,4 +29,23 @@
     color: var(--offset-text);
     padding-top: 10px;
     padding-bottom: 30px;
+}
+
+.message-end {
+    list-style-type: none;
+}
+
+.message-end p {
+    color: var(--main-text-dark);
+    font-weight: bold;
+    margin: 0px;
+    width: 90%;
+    padding-bottom: 0px;
+}
+
+
+@media  (min-width: 768px) {
+    .project-page {
+        max-width: 500px;
+    }
 }
