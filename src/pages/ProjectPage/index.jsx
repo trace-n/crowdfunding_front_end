@@ -10,6 +10,7 @@ import { useState } from 'react';
 import { postPledge, deletePledge } from '../../api/pledges';
 import EditPledgeButton from '../../components/EditPledgeButton';
 import Spinner from '../../components/Spinner';
+import Count from '../../components/Count/Count';
 import MessageCard from '../../components/MessageCard';
 
 const ProjectPage = () => {
@@ -151,7 +152,12 @@ const ProjectPage = () => {
             <div className='project-summary'>
                 <section><img src={project.image} alt='project image'></img></section>
                 <section className='project-side'>
-                <h2 className='pledge-amount'>${valuePledges.toLocaleString()}</h2>
+                {/* <h2 className='pledge-amount'>${valuePledges.toLocaleString()}</h2> */}
+                <Count 
+                            number={valuePledges} 
+                            duration='1'
+                            increment='100'
+                            />
                 <h3> Raised of $ {project.goal.toLocaleString()} Goal</h3>
                  <div className='progress-bar'>
                     <ProgressBar bgcolor={'#6a1b9a'} completed={progress} />

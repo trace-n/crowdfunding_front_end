@@ -6,6 +6,7 @@ import ProjectCard from '../../components/ProjectCard';
 import fundlingLogoHeader from '../../assets/logo-no-background-no-icon.png';
 import fundlingLogoCol from '../../assets/fundling-website-favicon-color.png';
 import Spinner from '../../components/Spinner';
+import Count from '../../components/Count/Count';
 import { deleteProject } from '../../api/projects';
 
 const HomePage = () => {
@@ -57,15 +58,30 @@ const HomePage = () => {
             </section>
             <div className='statistics-card'>
                 <section>
-                <h2>{statistics.project_count.toLocaleString()}</h2>
+                {/* <h2>{statistics.project_count.toLocaleString()}</h2> */}
+                <Count 
+                            number={statistics.project_count} 
+                            duration='1'
+                            increment='1'
+                            />
                 <h3>PROJECTS</h3>
                 </section>
                 <section>
-                <h2>$ {statistics.pledge_amount.toLocaleString()}</h2>
-                <h3>AMOUNT RAISED</h3>
+                {/* <h2>$ {statistics.pledge_amount.toLocaleString()}</h2> */}
+                <Count 
+                            number={statistics.pledge_amount} 
+                            duration='1'
+                            increment='250'
+                            />
+                <h3>$ AMOUNT RAISED</h3>
                 </section>
                 <section>
-                <h2>{statistics.pledge_count.toLocaleString()}</h2>
+                {/* <h2>{statistics.pledge_count.toLocaleString()}</h2> */}
+                <Count 
+                            number={statistics.pledge_count} 
+                            duration='1'
+                            increment='1'
+                            />
                 <h3>PLEDGES</h3> 
                 </section>
                 
